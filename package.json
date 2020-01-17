@@ -4,5 +4,9 @@
   "description": "Our main repository for internal libraries & tools.",
   "main": "index.js",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^3.20.2"
+  }
 }
