@@ -3,15 +3,4 @@
 * Exemple: overflow-auto, overflow-md-auto, overflow-hidden, etc..
 */
 
-$overflow: () !default;
-$overflow: map-merge(
-  (
-    "auto": "auto",
-    "hidden": "hidden",
-    "scroll": "scroll",
-    "visible": "visible"
-  ),
-  $overflow
-);
-
 @include generate-variants("overflow", $overflow);

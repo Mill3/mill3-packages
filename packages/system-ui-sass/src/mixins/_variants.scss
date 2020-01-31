@@ -40,7 +40,6 @@
 
 
 @function set-unit($key, $value, $unit, $important) {
-  // @warn $key;
 
   // Assign $key to value if empty
   // this is for theme value using array instead of objects

@@ -12,6 +12,6 @@
     "node-sass": "^4.13.1"
   },
   "scripts": {
-    "build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js"
+    "build": "export NODE_ENV=production && node build.js"
   }
 }

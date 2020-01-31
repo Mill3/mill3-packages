@@ -2,6 +2,5 @@
  * Utility classes for pointer-events property.
  * Exemple: pointer-events-auto, pointer-events-md-auto, pointer-events-none, etc..
  */
-$pointer-events: ("auto", "none", "all") !default;
 
-@include generate-variants("pointer-events", $pointer-events);
+// @include generate-variants("pointer-events", $pointer-events);

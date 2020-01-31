@@ -1,35 +1,43 @@
-@mixin generate-column($property, $values, $classname, $breakpoint) {
-  // Generate media query if needed
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+@mixin generate-column($values, $classname) {
 
-    @if type-of($values) == "map" {
-      // Loop over each values in map
-      @each $key, $value in $values {
-        .#{$classname}#{$infix}-#{$key} {
-          width: calcultate-value($value);
-          flex: 0 0 calcultate-value($value);
-          padding-left: $grid-gutter-base / 2;
-          padding-right: $grid-gutter-base / 2;
+  // Loop over each breakpoint
+  @each $breakpoint in map-keys($grid-breakpoints) {
+
+    // Generate media query if needed
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      // create for for breakpoint
+      .row#{$infix} {
+        display: flex;
+        flex-wrap: nowrap;
+        margin-left: -$gutter / 2;
+        margin-right: -$gutter / 2;
+      }
+
+      // create each column
+      @if type-of($values) == "map" {
+        // Loop over each values in map
+        @each $key, $value in $values {
+          .#{$classname}#{$infix}-#{$key} {
+            flex: 0 0 calcultate-value($value);
+            padding-left: $gutter / 2;
+            padding-right: $gutter / 2;
+          }
         }
       }
     }
 
-    .col-padding#{$infix} {
-      padding-left: $grid-gutter-base / 2;
-      padding-right: $grid-gutter-base / 2;
-    }
   }
+
 }
 
 @function calcultate-value($value) {
-  @if type-of($value) == "number" {
-    @return percentage($value/100);
-  }
-
   @if type-of($value) == "string" {
     @return unquote($value);
   }
+
+  @return $value;
 }
 
 @function column($key) {

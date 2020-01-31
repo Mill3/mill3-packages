@@ -3,17 +3,4 @@
 * Exemple: d-none, d-md-block, d-flex, etc..
 */
 
-$display: () !default;
-$display: map-merge(
-  (
-    "none": "none",
-    "inline": "inline",
-    "inline-block": "inline-block",
-    "block": "block",
-    "flex": "flex",
-    "inline-flex": "inline-flex"
-  ),
-  $display
-);
-
 @include generate-variants("display", $display, "d");

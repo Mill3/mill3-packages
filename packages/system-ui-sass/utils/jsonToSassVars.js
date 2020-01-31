@@ -30,6 +30,7 @@ module.exports = function(obj) {
     // Put string values back (now that we're done converting)
     storedStrings.forEach(function (str) {
       str.value = str.value.replace(/["']/g, '');
+      // console.log('str.id:', str.id)
       sassString = sassString.replace(str.id, str.value);
     });
 

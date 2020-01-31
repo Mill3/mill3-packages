@@ -5,5 +5,8 @@
   "main": "index.js",
   "license": "MIT",
   "private": true,
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "lerna-wizard": "^1.1.1"
+  }
 }
