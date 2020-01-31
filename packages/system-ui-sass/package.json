@@ -9,7 +9,7 @@
   "main": "dist/system-ui.css",
   "devDependencies": {
     "node-sass": "^4.13.1",
-    "chalk": "^3.0.0",
+    "chalk": "^3.0.0"
   },
   "scripts": {
     "build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js"
