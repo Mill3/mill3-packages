@@ -1,0 +1,8 @@
+@mixin generate-translate($value, $direction, $rule, $coeficient, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .translate#{$infix}-#{$direction}-#{$value} {
+      transform: #{$rule}"(#{$value * $coeficient}%)";
+    }
+  }
+}

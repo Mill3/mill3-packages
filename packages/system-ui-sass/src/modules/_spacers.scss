@@ -1,0 +1,25 @@
+/*
+ * Utility classes for margin and padding property.
+ * Exemple: m-0, m-lg-0, m-1, p-0, p-lg-0, etc..
+ *          mt-0, pt-0, etc...
+ *          {m | p}-{breakpoint}-{orientation (x, y, t, l, r, b)}-{value}
+ */
+
+
+@include generate-variants("margin", $spacers, "m");
+@include generate-variants("margin-top", $spacers, "mt");
+@include generate-variants("margin-bottom", $spacers, "mb");
+@include generate-variants("margin-left", $spacers, "ml");
+@include generate-variants("margin-right", $spacers, "mr");
+
+@include generate-variants(("margin-top", "margin-bottom"), $spacers, "my");
+@include generate-variants(("margin-left", "margin-right"), $spacers, "mx");
+
+@include generate-variants("padding", $spacers, "p");
+@include generate-variants("padding-top", $spacers, "pt");
+@include generate-variants("padding-bottom", $spacers, "pb");
+@include generate-variants("padding-left", $spacers, "pl");
+@include generate-variants("padding-right", $spacers, "pr");
+
+@include generate-variants(("padding-top", "padding-bottom"), $spacers, "py");
+@include generate-variants(("padding-left", "padding-right"), $spacers, "px");

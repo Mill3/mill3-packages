@@ -1,0 +1,12 @@
+
+//
+// write css-var
+//
+@include color-css-variables($colors);
+
+//
+// colors classes
+//
+@each $color, $value in $colors {
+  @include color-classes($color, $value);
+}

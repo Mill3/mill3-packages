@@ -1,0 +1,43 @@
+@mixin generate-column($property, $values, $classname, $breakpoint) {
+  // Generate media query if needed
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @if type-of($values) == "map" {
+      // Loop over each values in map
+      @each $key, $value in $values {
+        .#{$classname}#{$infix}-#{$key} {
+          width: calcultate-value($value);
+          flex: 0 0 calcultate-value($value);
+          padding-left: $grid-gutter-base / 2;
+          padding-right: $grid-gutter-base / 2;
+        }
+      }
+    }
+
+    .col-padding#{$infix} {
+      padding-left: $grid-gutter-base / 2;
+      padding-right: $grid-gutter-base / 2;
+    }
+  }
+}
+
+@function calcultate-value($value) {
+  @if type-of($value) == "number" {
+    @return percentage($value/100);
+  }
+
+  @if type-of($value) == "string" {
+    @return unquote($value);
+  }
+}
+
+@function column($key) {
+  $value: map-get($columns, $key);
+
+  @if not $value {
+    @error "column `#{$key}` not found in `#{$columns}`";
+  }
+
+  @return $value;
+}

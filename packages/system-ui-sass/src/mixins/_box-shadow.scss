@@ -1,0 +1,8 @@
+@mixin generate-box-shadow($color, $value, $breakpoint) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .box-shadow#{$infix}-#{$color} {
+      box-shadow: 0 14px 14px rgba($value, 0.35);
+    }
+  }
+}

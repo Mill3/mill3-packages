@@ -1,0 +1,8 @@
+
+@include generate-variants("border-radius", $radiuses, "radius");
+@include generate-variants("border-top-left-radius", $radiuses, "radius-tl");
+@include generate-variants("border-top-right-radius", $radiuses, "radius-tr");
+@include generate-variants("border-bottom-left-radius", $radiuses, "radius-bl");
+@include generate-variants("border-bottom-right-radius", $radiuses, "radius-br");
+@include generate-variants(("border-top-left-radius", "border-top-right-radius"), $radiuses, "radius-t");
+@include generate-variants(("border-bottom-left-radius", "border-bottom-right-radius"), $radiuses, "radius-b");

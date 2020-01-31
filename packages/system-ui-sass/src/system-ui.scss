@@ -1,4 +1,5 @@
+// mixins
+@import 'mixins/index';
 
-body {
-  padding: 0;
-}
+// all modules
+@import 'modules/index';

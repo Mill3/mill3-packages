@@ -1,0 +1,56 @@
+// TODO: add function for handling "auto" values
+
+@mixin generate-variants($property, $values, $classname: $property, $unit: "", $important: false) {
+  // @warn $property;
+  // @warn $classname;
+  // @warn type-of($values);
+
+  // Loop over each breakpoint
+  @each $breakpoint in map-keys($grid-breakpoints) {
+
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      // Loop over each values in map
+      @each $key, $value in $values {
+
+        @if type-of($property) != "string" {
+
+        .#{$classname}#{$infix}-#{$key} {
+            @each $prop in $property {
+              #{$prop}: set-unit($value, $unit, $important);
+            }
+          }
+
+        } @else {
+
+          .#{$classname}#{$infix}-#{$key} {
+            #{$property}: set-unit($value, $unit, $important);
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
+
+
+@function set-unit($value, $unit, $important) {
+
+  // append value unless its set to `auto`
+  @if $value != 'auto' {
+    $value : #{$value}#{$unit};
+  }
+
+  // append !important flag
+  @if $important {
+    $value: $value unquote('!important');
+  }
+
+  @return $value;
+
+}

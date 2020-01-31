@@ -1,0 +1,18 @@
+/*
+ * Utility classes for width, height, min-width, max-width, min-height and max-height property (in % or vw/vh).
+ * Exemple: w-100, w-md-50, h-50, min-w-100, max-w-100, vw-100, vh-100, min-vh-100, max-vh-100
+ */
+
+@include generate-variants("width", $sizes, "w", "%");
+@include generate-variants("width", $sizes, "vw", "vw");
+@include generate-variants("min-width", $sizes, "min-w", "%");
+@include generate-variants("max-width", $sizes, "max-w", "%");
+@include generate-variants("min-width", $sizes, "min-vw", "vw");
+@include generate-variants("max-width", $sizes, "max-vw", "vw");
+
+@include generate-variants("height", $sizes, "h", "%");
+@include generate-variants("height", $sizes, "vh", "vh");
+@include generate-variants("min-height", $sizes, "min-h", "%");
+@include generate-variants("max-height", $sizes, "max-h", "%");
+@include generate-variants("min-height", $sizes, "min-vh", "vh");
+@include generate-variants("max-height", $sizes, "max-vh", "vh");
