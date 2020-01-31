@@ -18,14 +18,14 @@
 
         .#{$classname}#{$infix}-#{$key} {
             @each $prop in $property {
-              #{$prop}: set-unit($value, $unit, $important);
+              #{$prop}: set-unit($key, $value, $unit, $important);
             }
           }
 
         } @else {
 
           .#{$classname}#{$infix}-#{$key} {
-            #{$property}: set-unit($value, $unit, $important);
+            #{$property}: set-unit($key, $value, $unit, $important);
           }
 
         }
@@ -39,9 +39,16 @@
 }
 
 
-@function set-unit($value, $unit, $important) {
+@function set-unit($key, $value, $unit, $important) {
+  // @warn $key;
 
-  // append value unless its set to `auto`
+  // Assign $key to value if empty
+  // this is for theme value using array instead of objects
+  @if $value == null {
+    $value : $key;
+  }
+
+  // append the unit to value unless its set to `auto`
   @if $value != 'auto' {
     $value : #{$value}#{$unit};
   }
