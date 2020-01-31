@@ -1,6 +1,6 @@
 {
   "name": "@mill3-packages/system-ui-sass",
-  "version": "0.0.1-alpha.0",
+  "version": "0.1.0",
   "description": "Utility CSS classes system for typography, layout, sizings, colors, effects. Built with SASS, inspired by Bootstrap and TailWindCSS.",
   "repository": "https://github.com/Mill3/mill3-packages",
   "author": "Mill3 Studio",
@@ -8,8 +8,8 @@
   "private": true,
   "main": "dist/system-ui.css",
   "devDependencies": {
-    "node-sass": "^4.13.1",
-    "chalk": "^3.0.0"
+    "chalk": "^3.0.0",
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js"
