@@ -5,7 +5,6 @@
   "repository": "https://github.com/Mill3/mill3-packages",
   "author": "Mill3 Studio",
   "license": "MIT",
-  "private": true,
   "main": "dist/system-ui.css",
   "devDependencies": {
     "chalk": "^3.0.0",

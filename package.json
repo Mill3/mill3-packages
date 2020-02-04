@@ -4,7 +4,7 @@
   "description": "Our main repository for internal libraries & tools.",
   "main": "index.js",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {},
   "dependencies": {
     "lerna-wizard": "^1.1.1"
