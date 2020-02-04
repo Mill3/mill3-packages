@@ -21,5 +21,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "gitHead": "06abcb049ef71bcb41ca602f6803262d32091278"
 }
