@@ -1,6 +1,1 @@
-/*
-* Utility classes for overflow property.
-* Exemple: overflow-auto, overflow-md-auto, overflow-hidden, etc..
-*/
-
 @include generate-variants("overflow", $overflow);

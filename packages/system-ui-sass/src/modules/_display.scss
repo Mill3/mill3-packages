@@ -1,6 +1,1 @@
-/*
-* Utility classes for display property.
-* Exemple: d-none, d-md-block, d-flex, etc..
-*/
-
 @include generate-variants("display", $display, "d");

@@ -9,9 +9,18 @@
   "main": "dist/system-ui.css",
   "devDependencies": {
     "chalk": "^3.0.0",
-    "node-sass": "^4.13.1"
+    "husky": "^4.2.1",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1"
   },
   "scripts": {
-    "build": "export NODE_ENV=production && node build.js"
+    "build": "export NODE_ENV=production && node build.js",
+    "prettier": "prettier ./src/**/*.scss --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }

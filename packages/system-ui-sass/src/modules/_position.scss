@@ -1,0 +1,5 @@
+@include generate-variants("position", $position);
+@include generate-variants("top", $sizes, "t", "%");
+@include generate-variants("bottom", $sizes, "b", "%");
+@include generate-variants("left", $sizes, "l", "%");
+@include generate-variants("right", $sizes, "r", "%");

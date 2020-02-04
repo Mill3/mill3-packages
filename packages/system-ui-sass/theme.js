@@ -15,12 +15,7 @@ module.exports = {
     cover: "cover",
     contain: "contain"
   },
-  overflow: {
-    auto: "auto",
-    hidden: "hidden",
-    scroll: "scroll",
-    visible: "visible"
-  },
+  overflow: ["auto", "hidden", "visible", "scroll"],
   display: [
     "none",
     "inline",
@@ -30,12 +25,19 @@ module.exports = {
     "inline-flex",
     "inline-flex"
   ],
-  "flex-direction": [
-    "column",
-    "column-reverse",
-    "row",
-    "row-reverse"
-  ],
+  boxes: {
+    narrow: "38%",
+    superscope: "45%",
+    "half-square": "50%",
+    widescreen: "56.25%",
+    landscape: "74%",
+    "wide-angle": "87.5%",
+    square: "100%",
+    portrait: "130%"
+  },
+  "flex-direction": ["column", "column-reverse", "row", "row-reverse"],
+  visiblity: ["visible", "hidden"],
+  "pointer-events": ["all", "none"],
   "justify-content": {
     center: "center",
     end: "flex-end",
@@ -72,7 +74,8 @@ module.exports = {
   "font-family": {
     sans: "sans",
     serif: "serif",
-    mono: "monospace"
+    mono: "monospace",
+    headings: "sans"
   },
   "font-size": {
     xs: "0.75rem",
@@ -94,7 +97,13 @@ module.exports = {
     h5: "0.8rem",
     h6: "0.7rem"
   },
+  position: ["static", "fixed", "absolute", "sticky"],
   "font-weight": [100, 200, 300, 400, 500, 600, 700, 800, 900],
+  "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
+  "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
+  "text-decoration": ["normal", "italic", "oblique", "inherit"],
+  "text-align": ["left", "right", "center"],
+  "font-style": ["normal", "italic", "oblique", "inherit"],
   "line-height": {
     none: "1",
     tight: "1.25",
@@ -153,35 +162,32 @@ module.exports = {
     125
   ],
   columns: {
-    "auto": "auto",
-    "1_2": "50%",
-    "1_3": "33.333333%",
-    "2_3": "66.666667%",
-    "1_4": "25%",
-    "2_4": "50%",
-    "3_4": "75%",
-    "1_5": "20%",
-    "2_5": "40%",
-    "3_5": "60%",
-    "4_5": "80%",
-    "1_6": "16.666667%",
-    "2_6": "33.333333%",
-    "3_6": "50%",
-    "4_6": "66.666667%",
-    "5_6": "83.333333%",
-    "1_12": "8.333333%",
-    "2_12": "16.666667%",
-    "3_12": "25%",
-    "4_12": "33.333333%",
-    "5_12": "41.666667%",
-    "6_12": "50%",
-    "7_12": "58.333333%",
-    "8_12": "66.666667%",
-    "9_12": "75%",
-    "10_12": "83.333333%",
-    "11_12": "91.666667%",
-    "full": "100%",
-    "screen": "100vw"
+    auto: "auto",
+    // 12 columns base
+    "1": "8.3333%",
+    "2": "50%",
+    "3": "40%",
+    "4": "30%",
+    "5": "41.66667%",
+    "6": "50%",
+    "7": "58.3333%",
+    "8": "66.666667",
+    "9": "75%",
+    "10": "83.33333%",
+    "11": "91.66667%",
+    "12": "100%",
+    // 10 columns base
+    "100": "10%",
+    "200": "20%",
+    "300": "30%",
+    "400": "40%",
+    "500": "50%",
+    "600": "60%",
+    "700": "70%",
+    "800": "80%",
+    "900": "90%",
+    "1000": "100%",
+    screen: "100vw"
   },
   radiuses: {
     "0": "0",
@@ -194,6 +200,13 @@ module.exports = {
     "50": "50%",
     "70": "70px",
     "100": "100px"
+  },
+  boxShadow: {
+    "1": "0 14px 14px rgba(0,0,0,0.35)",
+    "2": "0 14px 14px rgba(0,0,0,0.35)",
+    "3": "0 14px 14px rgba(0,0,0,0.35)",
+    "4": "0 14px 14px rgba(0,0,0,0.35)",
+    "5": "0 14px 14px rgba(0,0,0,0.35)"
   },
   colors: {
     red: "red",

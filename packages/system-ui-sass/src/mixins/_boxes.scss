@@ -1,25 +1,30 @@
-@mixin generate-box($shape, $value, $breakpoint) {
-  @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
-    .box#{$infix}-#{$shape} {
-      display: block;
-      position: relative;
+@mixin generate-boxes($boxes) {
+  // Loop over each breakpoint
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      &:before {
-        content: "";
-        display: block;
-        padding-top: $value;
-      }
+      @each $key, $value in $boxes {
+        .box#{$infix}-#{$key} {
+          display: block;
+          position: relative;
 
-      > .content,
-      > .box-content {
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
+          &:before {
+            content: "";
+            display: block;
+            padding-top: $value;
+          }
+
+          > .content {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+          }
+        }
       }
     }
   }
