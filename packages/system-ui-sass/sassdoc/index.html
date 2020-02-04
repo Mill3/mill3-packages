@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>@mill3-packages/system-ui-sass - v0.2.5</title>
+    <title>@mill3-packages/system-ui-sass - v0.2.6</title>
     <link rel="stylesheet" href="assets/css/main.css" />
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700"
@@ -31,7 +31,7 @@
         <h1 class="sidebar__title">
           <a
             href="https://github.com/Mill3/mill3-packages/tree/master/packages/system-ui-sass"
-            >@mill3-packages/system-ui-sass - v0.2.5</a
+            >@mill3-packages/system-ui-sass - v0.2.6</a
           >
         </h1>
       </div>
@@ -167,24 +167,68 @@
             </li>
           </ul>
         </div>
-        <p class="sidebar__item sidebar__item--heading" data-slug="mixins">
-          <a href="#mixins">mixins</a>
+        <p class="sidebar__item sidebar__item--heading" data-slug="boxes">
+          <a href="#boxes">boxes</a>
         </p>
         <div>
           <p
             class="sidebar__item sidebar__item--sub-heading"
-            data-slug="mixins-mixin"
+            data-slug="boxes-css"
           >
-            <a href="#mixins-mixin">mixins</a>
+            <a href="#boxes-css">css</a>
           </p>
           <ul class="list-unstyled">
             <li
               class="sidebar__item sassdoc__item"
-              data-group="mixins"
-              data-name="generate-variants"
-              data-type="mixin"
+              data-group="boxes"
+              data-name=".box-[size]"
+              data-type="css"
             >
-              <a href="#mixins-mixin-generate-variants">generate-variants</a>
+              <a href="#boxes-css-.box-[size]">.box-[size]</a>
+            </li>
+          </ul>
+        </div>
+        <p class="sidebar__item sidebar__item--heading" data-slug="colors">
+          <a href="#colors">colors</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="colors-css"
+          >
+            <a href="#colors-css">css</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="colors"
+              data-name=".color-[value], .bg-color-[value]"
+              data-type="css"
+            >
+              <a href="#colors-css-.color-[value], .bg-color-[value]"
+                >.color-[value], .bg-color-[value]</a
+              >
+            </li>
+          </ul>
+        </div>
+        <p class="sidebar__item sidebar__item--heading" data-slug="display">
+          <a href="#display">display</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="display-css"
+          >
+            <a href="#display-css">css</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="display"
+              data-name=".d-[value]"
+              data-type="css"
+            >
+              <a href="#display-css-.d-[value]">.d-[value]</a>
             </li>
           </ul>
         </div>
@@ -192,6 +236,48 @@
           <a href="#undefined">General</a>
         </p>
         <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="undefined-mixin"
+          >
+            <a href="#undefined-mixin">mixins</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="generate-boxes"
+              data-type="mixin"
+            >
+              <a href="#undefined-mixin-generate-boxes">generate-boxes</a>
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="color-css-variables"
+              data-type="mixin"
+            >
+              <a href="#undefined-mixin-color-css-variables"
+                >color-css-variables</a
+              >
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="color-classes"
+              data-type="mixin"
+            >
+              <a href="#undefined-mixin-color-classes">color-classes</a>
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="generate-variants"
+              data-type="mixin"
+            >
+              <a href="#undefined-mixin-generate-variants">generate-variants</a>
+            </li>
+          </ul>
           <p
             class="sidebar__item sidebar__item--sub-heading"
             data-slug="undefined-function"
@@ -206,6 +292,14 @@
               data-type="function"
             >
               <a href="#undefined-function-strip-unit">strip-unit</a>
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="set-unit"
+              data-type="function"
+            >
+              <a href="#undefined-function-set-unit">set-unit</a>
             </li>
           </ul>
         </div>
@@ -680,16 +774,316 @@
         </section>
       </section>
       <section class="main__section">
-        <h1 class="main__heading" id="mixins">
-          <div class="container">mixins</div>
+        <h1 class="main__heading" id="boxes">
+          <div class="container">boxes</div>
         </h1>
-        <section class="main__sub-section" id="mixins-mixin">
+        <section class="main__sub-section" id="boxes-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section class="main__item container item" id="boxes-css-.box-[size]">
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.box-[size]">.box-[size]</a>
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.box-[size] {
+  ...
+}</code>"
+                data-collapsed=".box-[size] { ... }"
+              ><code>.box-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>
+                Generate responsive boxes container with various height ratio
+              </p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>&lt;figure class=&quot;box-square&quot;&gt;&lt;picture class=&quot;box-content&quot;&gt;[box content starts here]&lt;/picture&gt;&lt;/figure&gt;</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-boxes"><code>generate-boxes</code></a>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="colors">
+          <div class="container">colors</div>
+        </h1>
+        <section class="main__sub-section" id="colors-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="colors-css-.color-[value], .bg-color-[value]"
+          >
+            <h3 class="item__heading">
+              <a
+                class="item__name"
+                href="#css-.color-[value], .bg-color-[value]"
+                >.color-[value], .bg-color-[value]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.color-[value], .bg-color-[value] {
+  ...
+}</code>"
+                data-collapsed=".color-[value], .bg-color-[value] { ... }"
+              ><code>.color-[value], .bg-color-[value] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>
+                Color classes for changing color or background-color of an
+                element, native CSS variables are also available, check both
+                examples below.
+              </p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>&lt;span class=&quot;bg-color-red&quot;&gt;&lt;span class=&quot;color-gray-200&quot;&gt;&lt;/span&gt;&lt;/span&gt;</code></pre>
+            </div>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.my-custom-selector {
+  box-shadow: var(--color-red);
+}</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-color-classes"><code>color-classes</code></a>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="display">
+          <div class="container">display</div>
+        </h1>
+        <section class="main__sub-section" id="display-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="display-css-.d-[value]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.d-[value]">.d-[value]</a>
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.d-[value] {
+  ...
+}</code>"
+                data-collapsed=".d-[value] { ... }"
+              ><code>.d-[value] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Display classes, block, flex, inline, etc</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>&lt;span class=&quot;d-none d-md-flex&quot;&gt;&lt;/span&gt;</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="undefined">
+          <div class="container">General</div>
+        </h1>
+        <section class="main__sub-section" id="undefined-mixin">
           <h2 class="main__heading--secondary">
             <div class="container">mixins</div>
           </h2>
           <section
             class="main__item container item"
-            id="mixins-mixin-generate-variants"
+            id="undefined-mixin-generate-boxes"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#mixin-generate-boxes"
+                >generate-boxes</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded='@mixin generate-boxes() { 
+  // Loop over each breakpoint
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      @each $key, $value in $boxes {
+        .box#{$infix}-#{$key} {
+          display: block;
+          position: relative;
+
+          &amp;:before {
+            content: "";
+            display: block;
+            padding-top: $value;
+          }
+
+          &gt; .box-content {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+          }
+        }
+      }
+    }
+  }
+ }'
+                data-collapsed="@mixin generate-boxes() { ... }"
+              ><code>@mixin generate-boxes() { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description"><p>generate-boxes</p></div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <p>None.</p>
+          </section>
+          <section
+            class="main__item container item"
+            id="undefined-mixin-color-css-variables"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#mixin-color-css-variables"
+                >color-css-variables</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded='@mixin color-css-variables() { 
+  :root {
+    @each $color, $value in $colors {
+      // color grouped in theme
+      @if type-of($value) == "map" {
+        @each $c, $c_value in $value {
+          --color-#{$c}: #{$c_value};
+        }
+        // first level color values
+      } @else {
+        --color-#{$color}: #{$value};
+      }
+    }
+  }
+ }'
+                data-collapsed="@mixin color-css-variables() { ... }"
+              ><code>@mixin color-css-variables() { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description"><p>color-css-variables</p></div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <p>None.</p>
+          </section>
+          <section
+            class="main__item container item"
+            id="undefined-mixin-color-classes"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#mixin-color-classes"
+                >color-classes</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="@mixin color-classes() { 
+  .color-#{$color} {
+    color: var(--color-#{$color});
+  }
+
+  .bg-#{$color},
+  .background-#{$color},
+  .background-color--#{$color} {
+    background-color: var(--color-#{$color});
+  }
+
+  // TODO: move this in a border module/mixins
+  .border-color-#{$color} {
+    border-color: var(--color-#{$color});
+  }
+ }"
+                data-collapsed="@mixin color-classes() { ... }"
+              ><code>@mixin color-classes() { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description"><p>color-classes</p></div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <p>None.</p>
+          </section>
+          <section
+            class="main__item container item"
+            id="undefined-mixin-generate-variants"
           >
             <h3 class="item__heading">
               <a class="item__name" href="#mixin-generate-variants"
@@ -730,13 +1124,19 @@
             <div class="item__description"><p>generate-variants</p></div>
             <h3 class="item__sub-heading">Parameters</h3>
             <p>None.</p>
+            <h3 class="item__sub-heading">Requires</h3>
+            <ul class="list-unstyled">
+              <li class="item__description item__description--inline">
+                <span class="item__cross-type">[function]</span>
+                <a href="#undefined-function-set-unit"><code>set-unit</code></a>
+              </li>
+              <li class="item__description item__description--inline">
+                <span class="item__cross-type">[function]</span>
+                <a href="#undefined-function-set-unit"><code>set-unit</code></a>
+              </li>
+            </ul>
           </section>
         </section>
-      </section>
-      <section class="main__section">
-        <h1 class="main__heading" id="undefined">
-          <div class="container">General</div>
-        </h1>
         <section class="main__sub-section" id="undefined-function">
           <h2 class="main__heading--secondary">
             <div class="container">functions</div>
@@ -801,6 +1201,59 @@
               <p>Unitless number</p>
             </div>
           </section>
+          <section
+            class="main__item container item"
+            id="undefined-function-set-unit"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#function-set-unit">set-unit</a>
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded='@function set-unit() { 
+  // Assign $key to value if empty
+  // this is for theme value using array instead of objects
+  @if $value == null {
+    $value: $key;
+  }
+
+  // append the unit to value unless its set to `auto`
+  @if $value != "auto" {
+    $value: #{$value}#{$unit};
+  }
+
+  // append !important flag
+  @if $important {
+    $value: $value unquote("!important");
+  }
+
+  @return $value;
+ }'
+                data-collapsed="@function set-unit() { ... }"
+              ><code>@function set-unit() { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description"><p>set-unit</p></div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <p>None.</p>
+            <h3 class="item__sub-heading">Used by</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#undefined-mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#undefined-mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
         </section>
       </section>
       <footer class="footer" role="contentinfo">
@@ -812,7 +1265,7 @@
               href="https://github.com/Mill3/mill3-packages/tree/master/packages/system-ui-sass"
               >@mill3-packages/system-ui-sass</a
             ><!-- Version -->
-            <span class="project-info__version">- v0.2.5</span
+            <span class="project-info__version">- v0.2.6</span
             ><!-- License -->
             <span class="project-info__license">, under MIT</span>
           </div>

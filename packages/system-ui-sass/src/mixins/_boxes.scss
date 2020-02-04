@@ -1,3 +1,4 @@
+/// generate-boxes
 @mixin generate-boxes($boxes) {
   // Loop over each breakpoint
   @each $breakpoint in map-keys($grid-breakpoints) {
@@ -15,7 +16,7 @@
             padding-top: $value;
           }
 
-          > .content {
+          > .box-content {
             display: block;
             position: absolute;
             left: 0;

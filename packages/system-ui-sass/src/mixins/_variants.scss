@@ -1,7 +1,4 @@
 /// generate-variants
-///
-/// @group mixins
-
 @mixin generate-variants(
   $property,
   $values,
@@ -32,6 +29,7 @@
   }
 }
 
+/// set-unit
 @function set-unit($key, $value, $unit, $important) {
   // Assign $key to value if empty
   // this is for theme value using array instead of objects
