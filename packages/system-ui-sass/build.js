@@ -1,5 +1,3 @@
-// TODO: clean up code here
-
 // build.js
 const sass = require("node-sass");
 const chalk = require("chalk");
@@ -31,8 +29,6 @@ fs.readFile(PATHS[`main`], (err, data) => {
 
   // get file source as string
   const source = data.toString();
-
-  // console.log(jsonToSassVars(theme));
 
   sass.render(
     {
