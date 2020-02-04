@@ -14,10 +14,14 @@
     "husky": "^4.2.1",
     "node-sass": "^4.13.1",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "sass-convert": "^0.5.2",
+    "sassdoc": "^2.7.1",
+    "sassdocify": "^0.3.4"
   },
   "scripts": {
     "build": "export NODE_ENV=production && node build.js",
+    "doc": "sassdoc src/**/*.scss",
     "prettier": "prettier ./src/**/*.scss --write"
   },
   "husky": {

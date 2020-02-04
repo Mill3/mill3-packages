@@ -1,1 +1,16 @@
+////
+/// @group background
+////
+
+/// Set background-size property
+///
+/// @see {mixin} generate-variants
+///
+/// @name .bg-size-[type]
+///
+/// @example .bg-size-auto, .bg-size-xxl-cover
+
+// note: keep this line below for SassDoc
+// .bg-size-[type] { background-size: [value] }
+
 @include generate-variants("background-size", $background-size, "bg-size");

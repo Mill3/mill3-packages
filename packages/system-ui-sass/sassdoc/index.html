@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>@mill3-packages/system-ui-sass - v0.2.5</title>
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,500,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta content="IE=edge, chrome=1" http-equiv="X-UA-Compatible" />
+    <!-- Open Graph tags -->
+    <meta
+      property="og:title"
+      content="@mill3-packages/system-ui-sass - SassDoc"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="<p>Utility CSS classes system for typography, layout, sizings, colors, effects. Built with SASS, inspired by Bootstrap and TailWindCSS.</p>
+"
+    />
+    <!-- Thanks to Sass-lang.com for the icons -->
+    <link href="assets/images/favicon.png" rel="shortcut icon" />
+  </head>
+  <body>
+    <aside class="sidebar" role="nav">
+      <div class="sidebar__header">
+        <h1 class="sidebar__title">
+          <a
+            href="https://github.com/Mill3/mill3-packages/tree/master/packages/system-ui-sass"
+            >@mill3-packages/system-ui-sass - v0.2.5</a
+          >
+        </h1>
+      </div>
+      <div class="sidebar__body">
+        <button
+          type="button"
+          class="btn-toggle js-btn-toggle"
+          data-alt="Open all"
+        >
+          Close all
+        </button>
+        <p class="sidebar__item sidebar__item--heading" data-slug="background">
+          <a href="#background">background</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="background-css"
+          >
+            <a href="#background-css">css</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="background"
+              data-name=".bg-size-[type]"
+              data-type="css"
+            >
+              <a href="#background-css-.bg-size-[type]">.bg-size-[type]</a>
+            </li>
+          </ul>
+        </div>
+        <p
+          class="sidebar__item sidebar__item--heading"
+          data-slug="border-radius"
+        >
+          <a href="#border-radius">border-radius</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="border-radius-css"
+          >
+            <a href="#border-radius-css">css</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-[size]">.radius-[size]</a>
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-tl-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-tl-[size]"
+                >.radius-tl-[size]</a
+              >
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-tr-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-tr-[size]"
+                >.radius-tr-[size]</a
+              >
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-bl-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-bl-[size]"
+                >.radius-bl-[size]</a
+              >
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-br-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-br-[size]"
+                >.radius-br-[size]</a
+              >
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-t-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-t-[size]">.radius-t-[size]</a>
+            </li>
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="border-radius"
+              data-name=".radius-b-[size]"
+              data-type="css"
+            >
+              <a href="#border-radius-css-.radius-b-[size]">.radius-b-[size]</a>
+            </li>
+          </ul>
+        </div>
+        <p class="sidebar__item sidebar__item--heading" data-slug="box-shadow">
+          <a href="#box-shadow">box-shadow</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="box-shadow-css"
+          >
+            <a href="#box-shadow-css">css</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="box-shadow"
+              data-name=".box-shadow-[size]"
+              data-type="css"
+            >
+              <a href="#box-shadow-css-.box-shadow-[size]"
+                >.box-shadow-[size]</a
+              >
+            </li>
+          </ul>
+        </div>
+        <p class="sidebar__item sidebar__item--heading" data-slug="mixins">
+          <a href="#mixins">mixins</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="mixins-mixin"
+          >
+            <a href="#mixins-mixin">mixins</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="mixins"
+              data-name="generate-variants"
+              data-type="mixin"
+            >
+              <a href="#mixins-mixin-generate-variants">generate-variants</a>
+            </li>
+          </ul>
+        </div>
+        <p class="sidebar__item sidebar__item--heading" data-slug="undefined">
+          <a href="#undefined">General</a>
+        </p>
+        <div>
+          <p
+            class="sidebar__item sidebar__item--sub-heading"
+            data-slug="undefined-function"
+          >
+            <a href="#undefined-function">functions</a>
+          </p>
+          <ul class="list-unstyled">
+            <li
+              class="sidebar__item sassdoc__item"
+              data-group="undefined"
+              data-name="strip-unit"
+              data-type="function"
+            >
+              <a href="#undefined-function-strip-unit">strip-unit</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+    <article class="main" role="main">
+      <header class="header" role="banner">
+        <div class="container">
+          <div class="sassdoc__searchbar searchbar">
+            <label for="js-search-input" class="visually-hidden">Search</label>
+            <div class="searchbar__form" id="js-search">
+              <input
+                name="search"
+                type="search"
+                class="searchbar__field"
+                autocomplete="off"
+                autofocus
+                id="js-search-input"
+                placeholder="Search"
+              />
+              <ul
+                class="searchbar__suggestions"
+                id="js-search-suggestions"
+              ></ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="main__section">
+        <h1 class="main__heading" id="background">
+          <div class="container">background</div>
+        </h1>
+        <section class="main__sub-section" id="background-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="background-css-.bg-size-[type]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.bg-size-[type]"
+                >.bg-size-[type]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.bg-size-[type] {
+  background-size: [value]
+}</code>"
+                data-collapsed=".bg-size-[type] { ... }"
+              ><code>.bg-size-[type] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Set background-size property</p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.bg-size-auto, .bg-size-xxl-cover</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="border-radius">
+          <div class="container">border-radius</div>
+        </h1>
+        <section class="main__sub-section" id="border-radius-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-[size]"
+                >.radius-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-[size] {
+  border-radius: [value]
+}</code>"
+                data-collapsed=".radius-[size] { ... }"
+              ><code>.radius-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius on all sides</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-10, .radius-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-tl-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-tl-[size]"
+                >.radius-tl-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-tl-[size] {
+  border-top-left-radius: [value]
+}</code>"
+                data-collapsed=".radius-tl-[size] { ... }"
+              ><code>.radius-tl-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius top left</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-tl-10, .radius-tl-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-tr-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-tr-[size]"
+                >.radius-tr-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-tr-[size] {
+  border-top-right-radius: [value]
+}</code>"
+                data-collapsed=".radius-tr-[size] { ... }"
+              ><code>.radius-tr-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius top right</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-tr-10, .radius-tr-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-bl-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-bl-[size]"
+                >.radius-bl-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-bl-[size] {
+  border-bottom-left-radius: [value]
+}</code>"
+                data-collapsed=".radius-bl-[size] { ... }"
+              ><code>.radius-bl-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius bottom left</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-bl-10, .radius-bl-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-br-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-br-[size]"
+                >.radius-br-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-br-[size] {
+  border-bottom-right-radius: [value]
+}</code>"
+                data-collapsed=".radius-br-[size] { ... }"
+              ><code>.radius-br-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius bottom right</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-br-10, .radius-br-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-t-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-t-[size]"
+                >.radius-t-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-t-[size] {
+  border-top-left-radius: [value]; border-top-right-radius: [value];
+}</code>"
+                data-collapsed=".radius-t-[size] { ... }"
+              ><code>.radius-t-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius top sides</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-t-10, .radius-t-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+          <section
+            class="main__item container item"
+            id="border-radius-css-.radius-b-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.radius-b-[size]"
+                >.radius-b-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.radius-b-[size] {
+  border-bottom-left-radius: [value]; border-bottom-right-radius: [value];
+}</code>"
+                data-collapsed=".radius-b-[size] { ... }"
+              ><code>.radius-b-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add radius bottom sides</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.radius-b-10, .radius-b-xl-20</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="box-shadow">
+          <div class="container">box-shadow</div>
+        </h1>
+        <section class="main__sub-section" id="box-shadow-css">
+          <h2 class="main__heading--secondary">
+            <div class="container">css</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="box-shadow-css-.box-shadow-[size]"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#css-.box-shadow-[size]"
+                >.box-shadow-[size]</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded="<code>.box-shadow-[size] {
+  box-shadow: 0 14px 14px rgba(0,0,0,0.35)
+}</code>"
+                data-collapsed=".box-shadow-[size] { ... }"
+              ><code>.box-shadow-[size] { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Add a box-shadow</p>
+              <p>
+                Check
+                <a
+                  href="https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js"
+                  >theme.js</a
+                >
+                for available values.
+              </p>
+            </div>
+            <h3 class="item__sub-heading">Example</h3>
+            <div class="item__example example">
+              <pre
+                class="example__code language-scss"
+              ><code>.box-shadow-1, .box-shadow-xl-2</code></pre>
+            </div>
+            <h3 class="item__sub-heading">See</h3>
+            <ul class="list-unstyled">
+              <li>
+                <span class="item__cross-type">[mixin]</span>
+                <a href="#mixin-generate-variants"
+                  ><code>generate-variants</code></a
+                >
+              </li>
+            </ul>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="mixins">
+          <div class="container">mixins</div>
+        </h1>
+        <section class="main__sub-section" id="mixins-mixin">
+          <h2 class="main__heading--secondary">
+            <div class="container">mixins</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="mixins-mixin-generate-variants"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#mixin-generate-variants"
+                >generate-variants</a
+              >
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded='@mixin generate-variants() { 
+  // Loop over each breakpoint
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      // Loop over each values in map
+      @each $key, $value in $values {
+        @if type-of($property) != "string" {
+          .#{$classname}#{$infix}-#{$key} {
+            @each $prop in $property {
+              #{$prop}: set-unit($key, $value, $unit, $important);
+            }
+          }
+        } @else {
+          .#{$classname}#{$infix}-#{$key} {
+            #{$property}: set-unit($key, $value, $unit, $important);
+          }
+        }
+      }
+    }
+  }
+ }'
+                data-collapsed="@mixin generate-variants() { ... }"
+              ><code>@mixin generate-variants() { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description"><p>generate-variants</p></div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <p>None.</p>
+          </section>
+        </section>
+      </section>
+      <section class="main__section">
+        <h1 class="main__heading" id="undefined">
+          <div class="container">General</div>
+        </h1>
+        <section class="main__sub-section" id="undefined-function">
+          <h2 class="main__heading--secondary">
+            <div class="container">functions</div>
+          </h2>
+          <section
+            class="main__item container item"
+            id="undefined-function-strip-unit"
+          >
+            <h3 class="item__heading">
+              <a class="item__name" href="#function-strip-unit">strip-unit</a>
+            </h3>
+            <div class="item__code-wrapper">
+              <pre
+                class="item__code item__code--togglable language-scss"
+                data-current-state="collapsed"
+                data-expanded='@function strip-unit($number) { 
+  @if type-of($number) == "number" and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+ }'
+                data-collapsed="@function strip-unit($number) { ... }"
+              ><code>@function strip-unit($number) { ... }</code></pre>
+            </div>
+            <h3 class="item__sub-heading">Description</h3>
+            <div class="item__description">
+              <p>Remove the unit of a length</p>
+            </div>
+            <h3 class="item__sub-heading">Parameters</h3>
+            <table class="item__parameters">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span class="visually-hidden">parameter </span>Name
+                  </th>
+                  <th scope="col">
+                    <span class="visually-hidden">parameter </span>Description
+                  </th>
+                  <th scope="col">
+                    <span class="visually-hidden">parameter </span>Type
+                  </th>
+                  <th scope="col">
+                    <span class="visually-hidden">parameter </span>Default value
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="item__parameter">
+                  <th scope="row" data-label="name"><code>$number</code></th>
+                  <td data-label="desc"><p>Number to remove unit from</p></td>
+                  <td data-label="type"><code>Number</code></td>
+                  <td data-label="default">
+                    &mdash;<span class="visually-hidden"> none</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="item__sub-heading">Returns</h3>
+            <div class="item__description item__description--inline">
+              <code>Number</code> &mdash;
+              <p>Unitless number</p>
+            </div>
+          </section>
+        </section>
+      </section>
+      <footer class="footer" role="contentinfo">
+        <div class="container">
+          <div class="footer__project-info project-info">
+            <!-- Name and URL -->
+            <a
+              class="project-info__name"
+              href="https://github.com/Mill3/mill3-packages/tree/master/packages/system-ui-sass"
+              >@mill3-packages/system-ui-sass</a
+            ><!-- Version -->
+            <span class="project-info__version">- v0.2.5</span
+            ><!-- License -->
+            <span class="project-info__license">, under MIT</span>
+          </div>
+          <a class="footer__watermark" href="http://sassdoc.com"
+            ><img src="assets/images/logo_light_inline.svg" alt="SassDoc Logo"
+          /></a>
+        </div>
+      </footer>
+    </article>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="assets/js/vendor/jquery.min.js"><\/script>'
+        );
+    </script>
+    <script src="assets/js/main.min.js"></script>
+  </body>
+</html>

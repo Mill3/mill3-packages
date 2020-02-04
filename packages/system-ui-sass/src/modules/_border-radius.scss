@@ -1,17 +1,118 @@
+////
+/// @group border-radius
+////
+
+/// Add radius on all sides
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-[size]
+///
+/// @example .radius-10, .radius-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-[size] { border-radius: [value] }
+
 @include generate-variants("border-radius", $radiuses, "radius");
+
+/// Add radius top left
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-tl-[size]
+///
+/// @example .radius-tl-10, .radius-tl-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-tl-[size] { border-top-left-radius: [value] }
+
 @include generate-variants("border-top-left-radius", $radiuses, "radius-tl");
+
+/// Add radius top right
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-tr-[size]
+///
+/// @example .radius-tr-10, .radius-tr-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-tr-[size] { border-top-right-radius: [value] }
+
 @include generate-variants("border-top-right-radius", $radiuses, "radius-tr");
+
+/// Add radius bottom left
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-bl-[size]
+///
+/// @example .radius-bl-10, .radius-bl-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-bl-[size] { border-bottom-left-radius: [value] }
+
 @include generate-variants("border-bottom-left-radius", $radiuses, "radius-bl");
+
+/// Add radius bottom right
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-br-[size]
+///
+/// @example .radius-br-10, .radius-br-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-br-[size] { border-bottom-right-radius: [value] }
+
 @include generate-variants(
   "border-bottom-right-radius",
   $radiuses,
   "radius-br"
 );
+
+/// Add radius top sides
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-t-[size]
+///
+/// @example .radius-t-10, .radius-t-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-t-[size] { border-top-left-radius: [value]; border-top-right-radius: [value]; }
+
 @include generate-variants(
   ("border-top-left-radius", "border-top-right-radius"),
   $radiuses,
   "radius-t"
 );
+
+/// Add radius bottom sides
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .radius-b-[size]
+///
+/// @example .radius-b-10, .radius-b-xl-20
+
+// note: keep this line below for SassDoc
+// .radius-b-[size] { border-bottom-left-radius: [value]; border-bottom-right-radius: [value]; }
+
 @include generate-variants(
   ("border-bottom-left-radius", "border-bottom-right-radius"),
   $radiuses,

@@ -3,7 +3,5 @@ node_modules
 /packages/*/node_modules
 *.log
 *.cache
-/build
 /.eslintcache
-dist
 yarn.lock
