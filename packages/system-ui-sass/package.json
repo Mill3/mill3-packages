@@ -1,6 +1,6 @@
 {
   "name": "@mill3-packages/system-ui-sass",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Utility CSS classes system for typography, layout, sizings, colors, effects. Built with SASS, inspired by Bootstrap and TailWindCSS.",
   "repository": "https://github.com/Mill3/mill3-packages",
   "author": "Mill3 Studio",
