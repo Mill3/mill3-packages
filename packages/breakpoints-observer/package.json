@@ -1,0 +1,23 @@
+{
+  "name": "@mill3-packages/breakpoints-observer",
+  "version": "0.0.0",
+  "description": "Breakpoints observer attachable class. Comes with utility methods for checking current breakpoint & announce event on breakpoint change.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mill3/mill3-packages.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "breakpoints",
+    "media",
+    "queries"
+  ],
+  "author": "Mill3 Studio",
+  "license": "MIT",
+  "dependencies": {
+    "component-emitter": "^1.3.0"
+  }
+}

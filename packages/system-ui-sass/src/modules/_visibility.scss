@@ -1,6 +1,1 @@
-/*
- * Utility classes for visibility property.
- * Exemple: visibility-hidden, visibility-md-hidden, visibility-visible, etc..
- */
-
 @include generate-variants("visibility", $visiblity, "visibility");
