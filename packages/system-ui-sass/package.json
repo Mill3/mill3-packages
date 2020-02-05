@@ -24,6 +24,9 @@
     "doc": "sassdoc src/**/*.scss",
     "prettier": "prettier ./src/**/*.scss --write"
   },
+  "bin": {
+    "system-ui-cli": "./cli.js"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
