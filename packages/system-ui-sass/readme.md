@@ -98,9 +98,9 @@ All classes, mixins & functions are documented on our Sassdoc site.
 - [X] Line-height module
 - [ ] Write quick start usage documentation in this file
 - [X] Add normalizing css
-- [ ] Modules and variables for basic HTML text body elements: H1-H6, p, ul, ol
+- [X] Modules and variables for basic HTML text body elements: H1-H6, p, ul, ol
 - [ ] Add tests and Travis config
 - [ ] Finish Sassdoc documentation
-- [ ] Add extra colors variations
+- [X] Add extra colors
 - [ ] Add .prettierrc file
 
