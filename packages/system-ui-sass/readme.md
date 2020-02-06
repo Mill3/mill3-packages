@@ -11,6 +11,8 @@ Our utility CSS classes system for typography, layout, sizings, colors, effects.
 * Responsive @mixins taken from [Bootstrap](https://github.com/twbs/bootstrap) functions.
 * CSS resets from [Normalize.css](github.com/necolas/normalize.css)
 
+## Package install
+
 Install with NPM :
 
 ```npm install @mill3-packages/system-ui-sass```
@@ -19,7 +21,7 @@ Install with Yarn :
 
 ```yarn add @mill3-packages/system-ui-sass```
 
-## Installation
+## Installation in your project
 
 **Option 1** : import precompiled CSS version in your main css file.
 
@@ -78,7 +80,7 @@ Now start webpack, customize theme.js file, enjoy !
 
 ## Usage
 
-Quick start documentation comming soon, refer to our Sassdoc below.
+Quick start documentation coming soon, refer to our Sassdoc below.
 
 ## SassDoc :
 
