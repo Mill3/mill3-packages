@@ -9,7 +9,6 @@ class BreakpointsObserver {
     this._orders = orders;
     this._widths = widths;
 
-    // first inject CSS in page
     this.injectCSS();
 
     this._checkBreakpoint = this._checkBreakpoint.bind(this);
