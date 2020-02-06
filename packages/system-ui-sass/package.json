@@ -11,10 +11,7 @@
   "main": "dist/system-ui.css",
   "devDependencies": {
     "chalk": "^3.0.0",
-    "husky": "^4.2.1",
     "node-sass": "^4.13.1",
-    "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
     "sass-convert": "^0.5.2",
     "sassdoc": "^2.7.1",
     "sassdocify": "^0.3.4"
@@ -26,11 +23,6 @@
   },
   "bin": {
     "system-ui-cli": "./cli.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "bugs": {
     "url": "https://github.com/Mill3/mill3-packages/issues"

@@ -6,8 +6,8 @@ const BREAKPOINTS_WIDTH = [0, 576, 768, 992, 1200, 1441];
 
 class BreakpointsObserver {
   constructor(orders = BREAKPOINTS_ORDER, widths = BREAKPOINTS_WIDTH) {
-    this.orders = orders;
-    this.widths = widths;
+    this._orders = orders;
+    this._widths = widths;
 
     // first inject CSS in page
     this.injectCSS();
@@ -30,19 +30,19 @@ class BreakpointsObserver {
       &:after {
         display: none;
         content: "xs";
-        @media (min-width: ${this.widths[1]}px) {
+        @media (min-width: ${this._widths[1]}px) {
           content: "sm";
         }
-        @media (min-width: ${this.widths[2]}px) {
+        @media (min-width: ${this._widths[2]}px) {
           content: "md";
         }
-        @media (min-width: ${this.widths[3]}px) {
+        @media (min-width: ${this._widths[3]}px) {
           content: "lg";
         }
-        @media (min-width: ${this.widths[4]}px) {
+        @media (min-width: ${this._widths[4]}px) {
           content: "xl";
         }
-        @media (min-width: ${this.widths[5]}px) {
+        @media (min-width: ${this._widths[5]}px) {
           content: "xxl";
         }
       }
@@ -62,15 +62,15 @@ class BreakpointsObserver {
 
   isBreakpointDown(breakpoint) {
     return (
-      this.orders.indexOf(this.currentBreakpoint) <
-      this.orders.indexOf(breakpoint)
+      this._orders.indexOf(this.currentBreakpoint) <
+      this._orders.indexOf(breakpoint)
     );
   }
 
   isBreakpointUp(breakpoint) {
     return (
-      this.orders.indexOf(this.currentBreakpoint) >=
-      this.orders.indexOf(breakpoint)
+      this._orders.indexOf(this.currentBreakpoint) >=
+      this._orders.indexOf(breakpoint)
     );
   }
 
