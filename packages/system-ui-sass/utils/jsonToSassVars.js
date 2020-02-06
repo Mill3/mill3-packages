@@ -8,6 +8,7 @@ module.exports = function(obj) {
 
     Object.keys(obj).forEach(key => {
       const val = JSON.stringify(obj[key], null);
+      // console.log('val:', val)
       sassString += `$${key}:${val};\n`;
     });
 

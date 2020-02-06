@@ -5,10 +5,14 @@
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-      // create for for breakpoint
+      // row's container
+      .container#{$infix} {
+        padding-left: $gutter / 2;
+        padding-right: $gutter / 2;
+      }
+
+      // row columns container
       .row#{$infix} {
-        // display: flex;
-        // flex-wrap: nowrap;
         margin-left: -$gutter / 2;
         margin-right: -$gutter / 2;
       }

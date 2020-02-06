@@ -8,16 +8,16 @@
 }
 
 /// color-classes
-@mixin color-classes($color, $value) {
+@mixin color-classes($colors) {
 
-  .color-#{$color} {
-    color: var(--color-#{$color});
+  @each $color, $value in $colors {
+    .color-#{$color} {
+      color: var(--color-#{$color});
+    }
+    .bg-#{$color} {
+      background-color: var(--color-#{$color});
+    }
   }
-
-  .bg-#{$color} {
-    background-color: var(--color-#{$color});
-  }
-
 
 }
 

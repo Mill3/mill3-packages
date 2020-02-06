@@ -19,11 +19,10 @@
 /// }
 
 // note: keep this line below for SassDoc
-// .box-[size] { ... }
+// .color-[value] { ... }
 
-@each $color, $value in $colors {
-  @include color-classes($color, $value);
-}
+@include color-classes($colors);
+
 
 //
 // set all native css-var
