@@ -7,21 +7,19 @@ Our utility CSS classes system for typography, layout, sizings, colors, effects.
 
 ## Credits
 
-Original code structure idea by [@ebhoren](https://github.com/ebhoren).
+* Original code structure idea by [@ebhoren](https://github.com/ebhoren).
+* Responsive @mixins taken from [Bootstrap](https://github.com/twbs/bootstrap) functions.
+* CSS resets from [Normalize.css](github.com/necolas/normalize.css)
 
-Responsive @mixins taken from [Bootstrap](https://github.com/twbs/bootstrap) functions.
-
-## Install
-
-With NPM :
+Install with NPM :
 
 ```npm install @mill3-packages/system-ui-sass```
 
-With Yarn :
+Install with Yarn :
 
 ```yarn add @mill3-packages/system-ui-sass```
 
-## Usage
+## Installation
 
 **Option 1** : import precompiled CSS version in your main css file.
 
@@ -78,21 +76,27 @@ rules : [
 
 Now start webpack, customize theme.js file, enjoy !
 
-## Todo
+## Usage
 
-- [X] Package bin script for copying `theme.js` file outside `node_modules` (WIP)
-- [ ] Add tests and Travis config
-- [ ] Finish basic documentation in this file
-- [ ] Finish Sassdoc documentation
-- [ ] Add instructions for Webpack loaders
-- [ ] Add extra colors variations
-- [ ] Add normalizing css
-- [ ] Line-height module
-- [ ] Modules and variables for basic HTML text body elements: H1-H6, p, ul, ol
-- [ ] Add .prettierrc file
+Quick start documentation comming soon, refer to our Sassdoc below.
 
 ## SassDoc :
 
 All classes, mixins & functions are documented on our Sassdoc site.
 
 [https://mill3-system-ui-sass-docs.netlify.com/](https://mill3-system-ui-sass-docs.netlify.com/)
+
+## Todo
+
+- [X] Package bin script for copying `theme.js` file outside `node_modules` (WIP)
+- [X] Finish basic documentation in this file
+- [x] Add instructions for Webpack loaders
+- [X] Line-height module
+- [ ] Write quick start usage documentation in this file
+- [X] Add normalizing css
+- [ ] Modules and variables for basic HTML text body elements: H1-H6, p, ul, ol
+- [ ] Add tests and Travis config
+- [ ] Finish Sassdoc documentation
+- [ ] Add extra colors variations
+- [ ] Add .prettierrc file
+
