@@ -2,35 +2,23 @@
 @mixin color-css-variables($colors) {
   :root {
     @each $color, $value in $colors {
-      // color grouped in theme
-      @if type-of($value) == "map" {
-        @each $c, $c_value in $value {
-          --color-#{$c}: #{$c_value};
-        }
-        // first level color values
-      } @else {
-        --color-#{$color}: #{$value};
-      }
+      --color-#{$color}: #{$value};
     }
   }
 }
 
 /// color-classes
 @mixin color-classes($color, $value) {
+
   .color-#{$color} {
     color: var(--color-#{$color});
   }
 
-  .bg-#{$color},
-  .background-#{$color},
-  .background-color--#{$color} {
+  .bg-#{$color} {
     background-color: var(--color-#{$color});
   }
 
-  // TODO: move this in a border module/mixins
-  .border-color-#{$color} {
-    border-color: var(--color-#{$color});
-  }
+
 }
 
 @mixin text-contrast($n) {
@@ -56,14 +44,4 @@
   }
 
   @return $color;
-}
-
-@function gray($key) {
-  $gray: map-get($grays, #{$key});
-
-  @if not $gray {
-    @error "color gray-#{$key} not found in `#{$grays}`";
-  }
-
-  @return $gray;
 }

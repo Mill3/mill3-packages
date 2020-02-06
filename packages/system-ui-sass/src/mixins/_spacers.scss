@@ -1,0 +1,10 @@
+
+@function spacer($key) {
+  $value: map-get($spacers, $key);
+
+  @if not $value {
+    @error "font-family `#{$key}` not found in `#{$spacers}`";
+  }
+
+  @return $value;
+}

@@ -1,28 +1,38 @@
 @function font-size($key) {
-  $value: map-get($font-sizes, $key);
+  $value: map-get($font-size, $key);
 
   @if not $value {
-    @error "font-size `#{$key}` not found in `#{$font-sizes}`";
+    @error "font-size `#{$key}` not found in `#{$font-size}`";
   }
 
   @return $value;
 }
 
 @function font-family($key) {
-  $value: map-get($font-families, $key);
+  $value: map-get($font-family, $key);
 
   @if not $value {
-    @error "font-family `#{$key}` not found in `#{$font-families}`";
+    @error "font-family `#{$key}` not found in `#{$font-family}`";
+  }
+
+  @return $value;
+}
+
+@function line-height($key) {
+  $value: map-get($line-height, $key);
+
+  @if not $value {
+    @error "font-family `#{$key}` not found in `#{$line-height}`";
   }
 
   @return $value;
 }
 
 @function heading($key) {
-  $value: map-get($headings-font-size, $key);
+  $value: map-get($heading, $key);
 
   @if not $value {
-    @error "headings-font-size `#{$key}` not found in `#{$headings-font-size}`";
+    @error "headings-font-size `#{$key}` not found in `#{$heading}`";
   }
 
   @return $value;

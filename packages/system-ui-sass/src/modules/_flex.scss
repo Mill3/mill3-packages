@@ -7,7 +7,7 @@
 @include generate-variants("align-items", $align-items, "align-items");
 @include generate-variants("align-self", $align-self, "align-self");
 @include generate-variants("align-content", $align-content, "align-content");
-@include generate-variants("flex-wrap", $flex-wrap, "flex");
+@include generate-variants("flex-wrap", $flex-wrap, "flex", "", true);
 @include generate-variants("flex-grow", $flex-grow, "flex-grow");
 @include generate-variants("flex-shrink", $flex-shrink, "flex-shrink");
 @include generate-variants("order", $order, "order");

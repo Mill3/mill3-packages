@@ -7,8 +7,8 @@
 
       // create for for breakpoint
       .row#{$infix} {
-        display: flex;
-        flex-wrap: nowrap;
+        // display: flex;
+        // flex-wrap: nowrap;
         margin-left: -$gutter / 2;
         margin-right: -$gutter / 2;
       }

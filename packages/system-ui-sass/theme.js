@@ -10,11 +10,7 @@ module.exports = {
     "right-top": "right top",
     top: "top"
   },
-  "background-size": {
-    auto: "auto",
-    cover: "cover",
-    contain: "contain"
-  },
+  "background-size": ["auto", "cover", "contain"],
   overflow: ["auto", "hidden", "visible", "scroll"],
   display: [
     "none",
@@ -72,10 +68,30 @@ module.exports = {
   "flex-shrink": [0, 1, 2, 3, 4, 5],
   order: [0, 1, 2, 3, 4, 5],
   "font-family": {
-    sans: "sans",
-    serif: "serif",
-    mono: "monospace",
-    headings: "sans"
+    sans: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "Segoe UI",
+      "Roboto",
+      "Helvetica Neue",
+      "Arial",
+      "Noto Sans",
+      "sans-serif",
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol",
+      "Noto Color Emoji"
+    ],
+    serif: ["Georgia", "serif"],
+    mono: [
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      "Liberation Mono",
+      "Courier New",
+      "monospace"
+    ]
   },
   "font-size": {
     xs: "0.75rem",
@@ -89,7 +105,7 @@ module.exports = {
     "5xl": "3rem",
     "6xl": "4rem"
   },
-  headings: {
+  heading: {
     h1: "4rem",
     h2: "3rem",
     h3: "2rem",
@@ -106,9 +122,7 @@ module.exports = {
   "font-style": ["normal", "italic", "oblique", "inherit"],
   "line-height": {
     none: "1",
-    tight: "1.25",
-    snug: "1.375",
-    normal: "1.5",
+    base: "1.25",
     relaxed: "1.625",
     loose: "2"
   },
@@ -122,6 +136,8 @@ module.exports = {
   },
   gutter: "18px",
   spacers: {
+    auto: "auto",
+    base: "1rem",
     "0": "0",
     "1": "8px",
     "2": "12px",
@@ -209,22 +225,30 @@ module.exports = {
     "5": "0 14px 14px rgba(0,0,0,0.35)"
   },
   colors: {
-    red: "red",
+    transparent: "transparent",
+    black: "#000",
     white: "#fff",
-    grays: {
-      "gray-100": "#f7f7f7",
-      "gray-200": "#f3f3f3",
-      "gray-300": "#dee2e6",
-      "gray-400": "#ced4da",
-      "gray-500": "#979797",
-      "gray-600": "#777777",
-      "gray-700": "#495057",
-      "gray-800": "#343a40",
-      "gray-900": "#212529"
-    },
-    orange: {
-      "orange-100": "#fff",
-      "orange-200": "#fff"
-    }
+    primary: "#0d6efd",
+    secondary: "#6610f2",
+    blue: "#0d6efd",
+    indigo: "#6610f2",
+    purple: "#6f42c1",
+    pink: "#d63384",
+    red: "#dc3545",
+    orange: "#fd7e14",
+    yellow: "#ffc107",
+    green: "#28a745",
+    teal: "#20c997",
+    cyan: "#17a2b8",
+    gray: "#a0aec0",
+    "gray-100": "#f7fafc",
+    "gray-200": "#edf2f7",
+    "gray-300": "#e2e8f0",
+    "gray-400": "#cbd5e0",
+    "gray-500": "#a0aec0",
+    "gray-600": "#718096",
+    "gray-700": "#4a5568",
+    "gray-800": "#2d3748",
+    "gray-900": "#1a202c"
   }
 };
