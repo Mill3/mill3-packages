@@ -6,10 +6,11 @@
     "type": "git",
     "url": "git+https://github.com/Mill3/mill3-packages.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel index.js -d dist"
+    "serve": "http-server -b",
+    "build": "export NODE_ENV=production && webpack --config webpack.config.js"
   },
   "keywords": [
     "breakpoints",
@@ -28,6 +29,7 @@
     "@babel/preset-env": "^7.8.4",
     "@purtuga/esm-webpack-plugin": "^1.2.1",
     "babel-loader": "^8.0.6",
+    "brotli-webpack-plugin": "^1.1.0",
     "http-server": "^0.12.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"

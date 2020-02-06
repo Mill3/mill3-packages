@@ -1232,7 +1232,7 @@ var BreakpointsObserver = (function(e) {
           Object.defineProperties(e, { raw: { value: Object.freeze(t) } })
         );
       })([
-        "\n      &:after {\n        content: 'xs';\n        display: block;\n        @media (min-width: ",
+        '\n      &:after {\n        display: none;\n        content: "xs";\n        @media (min-width: ',
         'px) {\n          content: "sm";\n        }\n        @media (min-width: ',
         'px) {\n          content: "md";\n        }\n        @media (min-width: ',
         'px) {\n          content: "lg";\n        }\n        @media (min-width: ',
