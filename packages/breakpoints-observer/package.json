@@ -31,5 +31,6 @@
     "http-server": "^0.12.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
-  }
+  },
+  "homepage": "https://github.com/Mill3/mill3-packages/tree/master/packages/breakpoints-observer"
 }
