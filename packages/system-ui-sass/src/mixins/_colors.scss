@@ -1,11 +1,9 @@
 /// color-css-variables
 @mixin color-css-variables($colors) {
   :root {
-    @each $color, $value in $colors {
-      // hack for fixing variables name like $white, $black converted to #hex or rgba() values
-      // this happen only with css var, not regular class name like color classes in the very next mixin
-      $str-color: quote($color);
-      --color-#{unquote($str-color)}: #{$value};
+
+    @each $key, $value in $colors {
+      --#{$key}: #{$value};
     }
   }
 }
@@ -14,11 +12,12 @@
 @mixin color-classes($colors) {
 
   @each $color, $value in $colors {
-    .color-#{$color} {
-      color: $value;
+    @debug $color;
+    .#{$color} {
+      color: var(--#{$color});
     }
     .bg-#{$color} {
-      background-color: $value;
+      background-color: var(--#{$color});
     }
   }
 

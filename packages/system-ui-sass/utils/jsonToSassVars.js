@@ -8,7 +8,7 @@ module.exports = function(obj) {
 
     Object.keys(obj).forEach(key => {
       const val = JSON.stringify(obj[key], null);
-      sassString += `$${key}:${val};\n`;
+      sassString += `'$${key}':${val};\n`;
     });
 
     if (!sassString) {
@@ -18,7 +18,6 @@ module.exports = function(obj) {
     // Store string values (so they remain unaffected)
     const storedStrings = [];
     sassString = sassString.replace(/(["'])(?:(?=(\\?))\2.)*?\1/g, function (str) {
-
       const id = '___JTS' + storedStrings.length;
       storedStrings.push({ id: id, value: str });
       return id;
@@ -30,9 +29,10 @@ module.exports = function(obj) {
     // Put string values back (now that we're done converting)
     storedStrings.forEach(function (str) {
       str.value = str.value.replace(/["']/g, '');
-      // console.log('str.id:', str.id)
       sassString = sassString.replace(str.id, str.value);
     });
+
+    // console.log(sassString);
 
     return sassString;
   }

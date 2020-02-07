@@ -30,6 +30,8 @@ fs.readFile(PATHS[`main`], (err, data) => {
   // get file source as string
   const source = data.toString();
 
+  // console.log(jsonToSassVars(theme));
+
   sass.render(
     {
       // concat parsed JSON theme variables with SCSS raw string source
