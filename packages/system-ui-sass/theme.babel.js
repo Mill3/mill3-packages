@@ -116,8 +116,7 @@ const theme = {
   position: ["static", "fixed", "absolute", "sticky"],
   "font-weight": [100, 200, 300, 400, 500, 600, 700, 800, 900],
   "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
-  "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
-  "text-decoration": ["normal", "italic", "oblique", "inherit"],
+  "text-decoration": ["none", "underline", "inherit"],
   "text-align": ["left", "right", "center"],
   "font-style": ["normal", "italic", "oblique", "inherit"],
   "line-height": {
