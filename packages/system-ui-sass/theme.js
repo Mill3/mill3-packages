@@ -225,7 +225,7 @@ module.exports = {
     "5": "0 14px 14px rgba(0,0,0,0.35)"
   },
   colors: {
-    transparent: "transparent",
+    "transparent": "transparent",
     "black": "#000000",
     "white": "#ffffff",
     primary: "#0d6efd",
