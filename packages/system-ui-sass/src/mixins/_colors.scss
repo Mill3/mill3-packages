@@ -1,7 +1,6 @@
 /// color-css-variables
 @mixin color-css-variables($colors) {
   :root {
-
     @each $key, $value in $colors {
       --#{$key}: #{$value};
     }
@@ -12,7 +11,6 @@
 @mixin color-classes($colors) {
 
   @each $color, $value in $colors {
-    @debug $color;
     .#{$color} {
       color: var(--#{$color});
     }
