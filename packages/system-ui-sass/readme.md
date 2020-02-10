@@ -82,7 +82,7 @@ Now start webpack, customize theme.js file, enjoy !
 
 Quick start documentation coming soon, refer to our Sassdoc below.
 
-Demo page : [https://mill3-system-ui-sass-demo-site.netlify.com/](https://mill3-system-ui-sass-demo-site.netlify.com/)
+StoryBook stories (WIP) : [https://mill3-system-ui-sass-demo-site.netlify.com/](https://mill3-system-ui-sass-demo-site.netlify.com/)
 
 ## SassDoc :
 
@@ -102,6 +102,7 @@ All classes, mixins & functions are documented on our Sassdoc site.
 - [ ] Add tests and Travis config
 - [ ] Finish Sassdoc documentation
 - [X] Add extra colors
+- [ ] Finish stories
 - [ ] Add .prettierrc file
 
 
