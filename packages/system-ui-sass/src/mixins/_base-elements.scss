@@ -4,7 +4,9 @@
 ///
 @mixin base-elements() {
 
-  * {
+  *,
+  *::before,
+  &::after {
     box-sizing: border-box;
   }
 
