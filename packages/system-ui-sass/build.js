@@ -19,6 +19,7 @@ const PATHS = {
 
 // load theme file
 const theme = require(PATHS["theme"]);
+console.log('theme:', theme)
 
 // Read main SCSS content
 fs.readFile(PATHS[`main`], (err, data) => {
@@ -29,8 +30,6 @@ fs.readFile(PATHS[`main`], (err, data) => {
 
   // get file source as string
   const source = data.toString();
-
-  // console.log(jsonToSassVars(theme));
 
   sass.render(
     {

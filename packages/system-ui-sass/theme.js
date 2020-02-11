@@ -1,3 +1,9 @@
+
+const generateValues = (start, end, step = 1) => {
+  const len = Math.floor((end - start) / step) + 1
+  return Array(len).fill().map((_, idx) => start + (idx * step))
+}
+
 const theme = {
   "background-position": {
     bottom: "bottom",
@@ -64,9 +70,9 @@ const theme = {
     stretch: "stretch"
   },
   "flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
-  "flex-grow": [0, 1, 2, 3, 4, 5],
-  "flex-shrink": [0, 1, 2, 3, 4, 5],
-  order: [0, 1, 2, 3, 4, 5],
+  "flex-grow": generateValues(0,5),
+  "flex-shrink": generateValues(0,5),
+  order: generateValues(0,5),
   "font-family": {
     sans: [
       "-apple-system",
@@ -177,6 +183,7 @@ const theme = {
     120,
     125
   ],
+  "z-index": generateValues(0, 10000, 1000),
   columns: {
     auto: "auto",
     // 12 columns base
