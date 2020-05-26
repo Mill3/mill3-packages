@@ -18,3 +18,18 @@ or using yarn:
 ```sh
 yarn add @barba/scripts --dev
 ```
+
+## How to use
+
+First, import script in your file where you also init Barba.
+
+```js
+import scripts from "@mill3-packages/barba-scripts/dist";
+```
+
+Then just before your main Barba init call, ```use()``` this script.
+
+```js
+barba.use(scripts);
+barba.init();
+```
