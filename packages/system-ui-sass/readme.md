@@ -1,4 +1,4 @@
-![npm](https://img.shields.io/npm/v/@mill3-packages/system-ui-sass?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/@mill3-packages/system-ui-sass?style=flat-square)
 
 
 # Mill3-packages : system-ui-sass
