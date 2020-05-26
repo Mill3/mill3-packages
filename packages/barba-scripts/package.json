@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Mill3/mill3-packages.git"
   },
-  "main": "dist/barba-scripts.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "http-server -b",
