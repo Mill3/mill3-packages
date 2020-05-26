@@ -1,6 +1,6 @@
 {
   "name": "@mill3-packages/barba-scripts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Helper that manage your scripts dependencies during Barba.js transitions",
   "repository": {
     "type": "git",
