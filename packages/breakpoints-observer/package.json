@@ -1,6 +1,6 @@
 {
   "name": "@mill3-packages/breakpoints-observer",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Breakpoints observer attachable class. Comes with utility methods for checking current breakpoint & announce event on breakpoint change.",
   "repository": {
     "type": "git",
