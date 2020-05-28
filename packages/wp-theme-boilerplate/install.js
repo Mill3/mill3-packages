@@ -1,5 +1,4 @@
 const prompts = require("prompts");
-// const fs = require("fs");
 const fs = require("fs-extra");
 const path = require("path");
 const pathExists = require("path-exists");
@@ -7,12 +6,8 @@ const figlet = require("figlet");
 const chalk = require("chalk");
 const replace = require("replace-in-file");
 
-// method for filtering hidden files (.dot. DStore, .git)
-// const isUnixHiddenPath = path => /(^|\/)\.[^\/\.]/g.test(path);
-
 const ROOT_PATH = path.join(__dirname);
 const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/`);
-// console.log("INSTALL_SRC_PATH:", INSTALL_SRC_PATH);
 
 // default values for i18n domain & php classes namespace
 const DEFAULT_THEME_DOMAIN = "mill3wp";
