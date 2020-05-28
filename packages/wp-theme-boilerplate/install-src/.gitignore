@@ -3,12 +3,12 @@
 bower_components
 npm-debug.log
 .DS_Store
+package-lock.json
 yarn.lock
 yarn-error.log
 node_modules
 .vscode
 dist/
-test-install-dir/
 
 # OS files
 .tm_properties
