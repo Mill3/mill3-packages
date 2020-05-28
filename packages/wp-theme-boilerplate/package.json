@@ -1,5 +1,5 @@
 {
-  "name": "mill3-wp-boilerplate",
+  "name": "@mill3-packages/wp-boilerplate",
   "version": "0.0.2",
   "main": "scrc/js/App.js",
   "repository": "git@github.com:Mill3/mill3-wp-boilerplate.git",
