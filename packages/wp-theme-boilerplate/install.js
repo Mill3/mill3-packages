@@ -6,6 +6,7 @@ const figlet = require("figlet");
 const chalk = require("chalk");
 const replace = require("replace-in-file");
 
+const PROCESS_PATH = path.join(process.cwd());
 const ROOT_PATH = path.join(__dirname);
 const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/`);
 
@@ -16,7 +17,7 @@ const DEFAULT_THEME_NAMESPACE = "Mill3WP";
 let cancelled = false;
 
 let settings = {
-  INSTALL_PATH: ROOT_PATH,
+  INSTALL_PATH: PROCESS_PATH,
   THEME_DOMAIN: DEFAULT_THEME_DOMAIN,
   THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE
 };
@@ -34,7 +35,7 @@ let settings = {
       message: "Install path for theme (must be relative, defaults to current directory) :",
       initial: settings["INSTALL_PATH"],
       format: val => {
-        return val !== settings["INSTALL_PATH"] ? path.join(ROOT_PATH, val) : val;
+        return val !== settings["INSTALL_PATH"] ? path.join(PROCESS_PATH, val) : val;
       },
       validate: async text => {
         return (await pathExists(text)) ? true : `The relative path '${text}' doesn't existing`;
