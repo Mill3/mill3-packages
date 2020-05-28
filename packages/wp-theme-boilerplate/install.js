@@ -21,39 +21,28 @@ const DEFAULT_THEME_NAMESPACE = "Mill3WP";
 let cancelled = false;
 
 let settings = {
-  INSTALL_PATH: path.join(ROOT_PATH, "test-install-dir"),
+  INSTALL_PATH: ROOT_PATH,
   THEME_DOMAIN: DEFAULT_THEME_DOMAIN,
   THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE
 };
 
-console.log("settings:", settings);
-
-// intro message
-console.log(
-  chalk.blue("************************************************************")
-);
-console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
-console.log(
-  chalk.blue("************************************************************")
-);
-
 (async () => {
+  // First Intro message
+  console.log(chalk.blue("*****************************************************"));
+  console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
+  console.log(chalk.blue("*****************************************************"));
+
   const questions = [
     {
       type: "text",
       name: "INSTALL_PATH",
-      message:
-        "Install path for theme (must be relative, defaults to current directory) :",
+      message: "Install path for theme (must be relative, defaults to current directory) :",
       initial: settings["INSTALL_PATH"],
       format: val => {
-        return val !== settings["INSTALL_PATH"]
-          ? path.join(ROOT_PATH, val)
-          : val;
+        return val !== settings["INSTALL_PATH"] ? path.join(ROOT_PATH, val) : val;
       },
       validate: async text => {
-        return (await pathExists(text))
-          ? true
-          : `The relative path '${text}' doesn't existing`;
+        return (await pathExists(text)) ? true : `The relative path '${text}' doesn't existing`;
       }
     },
     {
@@ -67,95 +56,75 @@ console.log(
       name: "THEME_NAMESPACE",
       initial: settings["THEME_NAMESPACE"],
       message: "Namespace for PHP classes :"
+    },
+    {
+      type: "toggle",
+      name: "confirm",
+      message: `Are you sure? This will overwrite any same exiting file in ${settings["INSTALL_PATH"]} directory`,
+      initial: false,
+      active: "yes",
+      inactive: "no"
     }
   ];
 
   const onSubmit = (prompt, answer) => {
+    // merge each answer to settings
     answer.length ? (settings[prompt.name] = answer) : null;
-
-    // copy all files
-    // install(settings)
   };
 
   const onCancel = prompt => {
-    console.log(chalk.red("✖ Abort Abort !"));
+    console.log(chalk.red("✖ Abort Abort Abort !"));
     cancelled = true;
     return false;
   };
 
   const response = await prompts(questions, { onSubmit, onCancel });
 
+  // stop here if not confirm
+  if (!response.confirm) return;
+
   // stop here if canceled
   if (cancelled) return;
 
-  console.log(
-    chalk.blue(
-      `Done with questions, installing in directory ${settings["INSTALL_PATH"]}`
-    )
-  );
+  console.log(chalk.blue(`\nDone with questions, starting installation in directory ${settings["INSTALL_PATH"]}\n`));
 
+  // install all files
   await install();
+
+  // rename to new namespace
   await rename();
 
-  console.log(chalk.blue(`Installation done!`));
+  console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}!\n`));
 })();
 
 // install all files
 const install = async () => {
   try {
     await fs.copy(INSTALL_SRC_PATH, settings["INSTALL_PATH"]);
-    console.log("Success, copied all files!");
+    console.log(chalk.green("Step 1/2 : copied all files."));
   } catch (err) {
     console.error(err);
   }
-
-  // ncp(INSTALL_SRC_PATH, settings["INSTALL_PATH"], (err) => {
-  //   if (err) {
-  //     return console.error(err);
-  //   }
-  //   // console.log("done!");
-  //   // return true;
-
-  //   // start renaming all
-  //   // await rename();
-  //   // const results = await rename()
-  //   // console.log('Replacement results:', results);
-
-  //   return true;
-  // });
 };
 
 const rename = async () => {
-  // regex
+  // regex for domain and namespace
   var reDomain = new RegExp(DEFAULT_THEME_DOMAIN, "g");
   var reNamespace = new RegExp(DEFAULT_THEME_NAMESPACE, "g");
 
   // replace options
   const options = {
-    files: [
-      `${settings["INSTALL_PATH"]}/**/*.php`,
-      `${settings["INSTALL_PATH"]}/**/*.js`
-    ],
+    files: [`${settings["INSTALL_PATH"]}/**/*.php`, `${settings["INSTALL_PATH"]}/**/*.js`],
     ignore: ["install-src/**", "node_modules/**"],
     from: [reDomain, reNamespace],
     to: [settings["THEME_DOMAIN"], settings["THEME_NAMESPACE"]],
-    // dry: true,
     countMatches: true
   };
 
   try {
     await replace(options);
-    console.log("Success, renamed all files");
+    console.log(chalk.green("Step 2/2 : renamed all files."));
   } catch (err) {
     console.error(err);
   }
-
-  // // replace all files with new ThemeDomain and PHP Namespace
-  // await replace(options)
-  //   .then(changes => {
-  //     console.log(`Scanned ${changes.length} file(s)!`);
-  //   })
-  //   .catch(error => {
-  //     console.error("Error occurred:", error);
-  //   });
 };

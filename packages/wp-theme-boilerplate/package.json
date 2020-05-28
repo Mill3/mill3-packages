@@ -6,8 +6,10 @@
   "author": "Mill3 Studio <info@mill3.studio>",
   "license": "MIT",
   "scripts": {
-    "theme-init": "node install.js",
     "precommit": "npm test"
+  },
+  "bin": {
+    "mill3-wp": "./install.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
