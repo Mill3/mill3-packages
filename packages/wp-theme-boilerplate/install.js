@@ -1,18 +1,18 @@
 const prompts = require("prompts");
-const fs = require("fs");
+// const fs = require("fs");
+const fs = require("fs-extra");
 const path = require("path");
 const pathExists = require("path-exists");
 const figlet = require("figlet");
 const chalk = require("chalk");
 const replace = require("replace-in-file");
-var ncp = require("ncp").ncp;
 
 // method for filtering hidden files (.dot. DStore, .git)
-const isUnixHiddenPath = path => /(^|\/)\.[^\/\.]/g.test(path);
+// const isUnixHiddenPath = path => /(^|\/)\.[^\/\.]/g.test(path);
 
 const ROOT_PATH = path.join(__dirname);
-const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/acf-json`);
-console.log("INSTALL_SRC_PATH:", INSTALL_SRC_PATH);
+const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/`);
+// console.log("INSTALL_SRC_PATH:", INSTALL_SRC_PATH);
 
 // default values for i18n domain & php classes namespace
 const DEFAULT_THEME_DOMAIN = "mill3wp";
@@ -21,10 +21,12 @@ const DEFAULT_THEME_NAMESPACE = "Mill3WP";
 let cancelled = false;
 
 let settings = {
-  INSTALL_PATH: ROOT_PATH,
+  INSTALL_PATH: path.join(ROOT_PATH, "test-install-dir"),
   THEME_DOMAIN: DEFAULT_THEME_DOMAIN,
   THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE
 };
+
+console.log("settings:", settings);
 
 // intro message
 console.log(
@@ -42,9 +44,11 @@ console.log(
       name: "INSTALL_PATH",
       message:
         "Install path for theme (must be relative, defaults to current directory) :",
-      initial: ROOT_PATH,
+      initial: settings["INSTALL_PATH"],
       format: val => {
-        return val !== ROOT_PATH ? path.join(ROOT_PATH, val) : val;
+        return val !== settings["INSTALL_PATH"]
+          ? path.join(ROOT_PATH, val)
+          : val;
       },
       validate: async text => {
         return (await pathExists(text))
@@ -55,11 +59,13 @@ console.log(
     {
       type: "text",
       name: "THEME_DOMAIN",
+      initial: settings["THEME_DOMAIN"],
       message: "Theme domain for i18n strings :"
     },
     {
       type: "text",
       name: "THEME_NAMESPACE",
+      initial: settings["THEME_NAMESPACE"],
       message: "Namespace for PHP classes :"
     }
   ];
@@ -89,30 +95,67 @@ console.log(
   );
 
   await install();
+  await rename();
 
   console.log(chalk.blue(`Installation done!`));
 })();
 
-//
+// install all files
 const install = async () => {
-  // console.log(settings);
+  try {
+    await fs.copy(INSTALL_SRC_PATH, settings["INSTALL_PATH"]);
+    console.log("Success, copied all files!");
+  } catch (err) {
+    console.error(err);
+  }
 
-  ncp(INSTALL_SRC_PATH, settings["INSTALL_PATH"], function(err) {
-    if (err) {
-      return console.error(err);
-    }
-    console.log("done!");
-    // return true;
-  });
+  // ncp(INSTALL_SRC_PATH, settings["INSTALL_PATH"], (err) => {
+  //   if (err) {
+  //     return console.error(err);
+  //   }
+  //   // console.log("done!");
+  //   // return true;
 
-  return true;
+  //   // start renaming all
+  //   // await rename();
+  //   // const results = await rename()
+  //   // console.log('Replacement results:', results);
+
+  //   return true;
+  // });
 };
 
-// (async () => {
-//   const response = await prompts();
+const rename = async () => {
+  // regex
+  var reDomain = new RegExp(DEFAULT_THEME_DOMAIN, "g");
+  var reNamespace = new RegExp(DEFAULT_THEME_NAMESPACE, "g");
 
-//   settings.INSTALL_PATH = response.INSTALL_PATH;
+  // replace options
+  const options = {
+    files: [
+      `${settings["INSTALL_PATH"]}/**/*.php`,
+      `${settings["INSTALL_PATH"]}/**/*.js`
+    ],
+    ignore: ["install-src/**", "node_modules/**"],
+    from: [reDomain, reNamespace],
+    to: [settings["THEME_DOMAIN"], settings["THEME_NAMESPACE"]],
+    // dry: true,
+    countMatches: true
+  };
 
-//   console.log(settings);
+  try {
+    await replace(options);
+    console.log("Success, renamed all files");
+  } catch (err) {
+    console.error(err);
+  }
 
-// })();
+  // // replace all files with new ThemeDomain and PHP Namespace
+  // await replace(options)
+  //   .then(changes => {
+  //     console.log(`Scanned ${changes.length} file(s)!`);
+  //   })
+  //   .catch(error => {
+  //     console.error("Error occurred:", error);
+  //   });
+};

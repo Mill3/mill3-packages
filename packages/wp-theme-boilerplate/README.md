@@ -73,3 +73,11 @@ npm run prettier
 ```
 
 Please also note that there's a pre-commit hook using [pretty-quick](https://github.com/azz/pretty-quick) which can be disabled in `package.json`.
+
+<!-- "babel-node": "babel-node",
+"lint": "eslint --fix ./src/js",
+"prettier": "prettier-eslint ./src/js/*/*.js ./src/scss/**/*.scss --write",
+"build_doc": "sassdoc src/scss/**/*.scss",
+"dev": "export NODE_ENV=development && webpack-dev-server",
+"monitor": "export NODE_ENV=development && webpack-dashboard",
+"build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js" -->

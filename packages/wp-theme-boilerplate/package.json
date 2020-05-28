@@ -1,20 +1,13 @@
 {
   "name": "mill3-wp-boilerplate",
-  "version": "2.0.0",
+  "version": "0.1.0",
   "main": "scrc/js/App.js",
   "repository": "git@github.com:Mill3/mill3-wp-boilerplate.git",
   "author": "Mill3 Studio <info@mill3.studio>",
   "license": "MIT",
   "scripts": {
     "theme-init": "node install.js",
-    "precommit": "npm test",
-    "babel-node": "babel-node",
-    "lint": "eslint --fix ./src/js",
-    "prettier": "prettier-eslint ./src/js/*/*.js ./src/scss/**/*.scss --write",
-    "build_doc": "sassdoc src/scss/**/*.scss",
-    "dev": "export NODE_ENV=development && webpack-dev-server",
-    "monitor": "export NODE_ENV=development && webpack-dashboard",
-    "build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js"
+    "precommit": "npm test"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
@@ -42,7 +35,6 @@
     "husky": "^3.0.9",
     "image-webpack-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "ncp": "^2.0.0",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "path": "^0.12.7",
@@ -74,6 +66,7 @@
     "debounce": "^1.2.0",
     "domready": "^1.0.8",
     "eventemitter3": "^3.1.0",
+    "fs-extra": "^9.0.0",
     "imagesloaded": "^4.1.4",
     "locomotive-scroll": "^3.3.11",
     "mobile-detect": "^1.4.3",
