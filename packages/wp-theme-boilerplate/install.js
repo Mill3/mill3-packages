@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const prompts = require("prompts");
 const fs = require("fs-extra");
 const path = require("path");
@@ -11,8 +12,8 @@ const ROOT_PATH = path.join(__dirname);
 const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/`);
 
 // default values for i18n domain & php classes namespace
-const DEFAULT_THEME_DOMAIN = "mill3wp";
-const DEFAULT_THEME_NAMESPACE = "Mill3WP";
+const DEFAULT_THEME_DOMAIN = "foobar";
+const DEFAULT_THEME_NAMESPACE = "FooBarWP";
 
 let cancelled = false;
 
