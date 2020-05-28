@@ -1,0 +1,23 @@
+{% set link = link|default("#") %}
+{% set style = style|default("default") %}
+{% set attributes = attributes|default([]) %}
+
+{% if id %}
+  {% set attributes = attributes|merge(["id", id])|join("=") %}
+{% endif %}
+
+{% if target %}
+  {% set attributes = attributes|merge(["target", target])|join("=") %}
+{% endif %}
+
+{% if aria-label %}
+  {% set attributes = attributes|merge(["aria-label", aria-label])|join("=") %}
+{% endif %}
+
+<a
+  href="{{ link }}"
+  class="btn {{ classname }} --{{ style }}"
+  {{ attributes|join(" ") }}
+>
+  <span class="btn__label">{{ title }}</span>
+</a>

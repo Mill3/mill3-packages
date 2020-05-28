@@ -1,0 +1,12 @@
+{% set label = label|default('Crédits') %}
+<a
+  class="mill3 {{ classname }}"
+  href="https://mill3.studio/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="{{ label }} - MILL3"
+  data-barba-prevent="all"
+>
+  <span class="mill3__label" aria-hidden="true">{{ label }}</span>
+  <span class="mill3__credits" aria-hidden="true">MILL3</span>
+</a>

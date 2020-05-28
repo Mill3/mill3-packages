@@ -1,0 +1,26 @@
+{% set style = style|default("default") %}
+{% set attributes = attributes|default([]) %}
+{% set label_attributes = [] %}
+{% set label_attributes = label_attributes|merge(['aria-hidden="true"']) %}
+
+{% if id %}
+  {% set attributes = attributes|merge(['id="'~ id ~'"']) %}
+{% endif %}
+
+{% if aria-label %}
+  {% set attributes = attributes|merge(['aria-label="'~ aria-label ~'"']) %}
+{% else %}
+  {% set attributes = attributes|merge(['aria-label="'~ title ~'"']) %}
+{% endif %}
+
+{% if style in ['play', 'pause', 'reveal'] %}
+  {% set label_attributes = label_attributes|merge(["data-splitting"]) %}
+{% endif %}
+
+<button class="btn {{ classname }} --{{ style }}" {{ attributes|join(" ") }}>
+  <span class="btn__label" aria-hidden="true" {{ label_attributes|join(" ") }}>{{ title }}</span>
+
+  {% if style == 'play' or style == 'pause' %}
+    {{ source("src/svg/menu-circle.svg") }}
+  {% endif %}
+</button>

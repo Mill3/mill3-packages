@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% set embed = function('get_field', 'embed', 'option') %}
+{% set embed_ratio = function('get_field', 'embed_ratio', 'option') %}
+
+{% block content %}
+	<section class="home w-100 vh-100 position-relative" data-home>
+		<canvas class="home__canvas"></canvas>
+
+		<div class="home__cursor position-absolute t-0 l-0 pointer-events-none fz-xl visibility-hidden" aria-hidden="true"></div>
+
+		<div
+			class="home__loader position-absolute t-0 l-0 w-100 h-100 d-flex align-items-center justify-content-center bg-color-black"
+			aria-hidden="true"
+		>
+			<div class="home__loaderWrap position-relative">
+				<div class="home__loaderProgressBar position-absolute t-0 l-0 w-100 h-100 pointer-events-none">
+					{{ source("src/svg/menu-circle.svg") }}
+					<span class="home__loaderProgessBarText position-absolute t-0 l-0 w-100 h-100 d-flex justify-content-center align-items-center text-align-center fz-xl"></span>
+				</div>
+				{% include 'partial/button.twig' with {
+					'title': 'Entrer ↗',
+					'style': 'reveal',
+					'classname': 'home__loaderBtn position-absolute t-0 l-0 w-100 h-100 d-flex justify-content-center align-items-center fz-sm color-current --js-hidden',
+				} only %}
+			</div>
+		</div>
+
+		{% if embed %}
+			<script id="home--embed" type="text/html">
+				<div class="embed-responsive w-100 {{ embed_ratio.ratio }}">
+					<div class="box-content">
+						{{ embed|embeded_settings({'autoplay': 1, 'portrait': 0, 'byline': 0, 'title': 0}) }}
+					</div>
+				</div>
+			</script>
+		{% endif %}
+	</section>
+{% endblock %}
+
+{# NO FOOTER FOR THIS TEMPLATE #}
+{% block footer %}
+{% endblock %}

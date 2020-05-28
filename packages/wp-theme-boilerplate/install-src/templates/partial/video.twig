@@ -1,0 +1,25 @@
+{# To learn about ?? operator, read https://twig.symfony.com/doc/3.x/templates.html#other-operators #}
+
+{% set muted = muted ?? true %}
+{% set autoplay = autoplay ?? true %}
+{% set loop = loop ?? true %}
+{% set playsInline = playsInline ?? true %}
+{% set disableRemotePlayback = disableRemotePlayback ?? true %}
+{% set playOnEnter = playOnEnter ?? false %}
+{% set pauseOnExit = pauseOnExit ?? true %}
+
+<video
+  class="w-100 {{ classname }}"
+  src="{{ src }}"
+  {% if muted %}muted{% endif %}
+  {% if autoplay %}autoplay{% endif %}
+  {% if loop %}loop{% endif %}
+  {% if playsInline %}playsInline{% endif %}
+  {% if disableRemotePlayback %}disableRemotePlayback{% endif %}
+  {% if playOnEnter or pauseOnExit %}
+  data-scroll
+  data-scroll-call="video"
+  {% endif %}
+  {% if pauseOnExit %}data-scroll-repeat="true"{% endif %}
+>
+</video>

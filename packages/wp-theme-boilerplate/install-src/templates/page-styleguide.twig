@@ -1,0 +1,127 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="content-wrapper bg-color-white" data-scroll-section>
+		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
+			<section class="styleguide py-8 px-4">
+				<h1 class="styleguide-title">{{post.title}}</h1>
+
+				<div class="d-flex flex-column flex-lg-row">
+
+					<aside class="w-100 w-lg-60">
+						<h2 class="styleguide-subtitle">Thème de couleurs</h2>
+						<div class="styleguide-row d-flex">
+							<div class="styleguide-color bg-color-black" data-label="Black"></div>
+							<div class="styleguide-color bg-color-white" data-label="White"></div>
+							<div class="styleguide-color bg-color-gray" data-label="Gray"></div>
+						</div>
+					</aside>
+
+				</div>
+
+				<div class="d-flex flex-column flex-lg-row">
+
+					<aside class="w-100 w-lg-60">
+						<h2 class="styleguide-subtitle">Police de caractère</h2>
+						<div class="styleguide-row d-flex flex-column">
+							<div class="styleguide-font heading-h1">Favorit</div>
+						</div>
+					</aside>
+
+					<aside class="w-100 w-lg-40">
+						<h2 class="styleguide-subtitle">Graisses</h2>
+						<div class="styleguide-row d-flex flex-column">
+							<div class="styleguide-font fw-300">Light (300)</div>
+							<div class="styleguide-font fw-300 fs-italic">Light Italic</div>
+
+							<div class="styleguide-font fw-400">Regular (400)</div>
+							<div class="styleguide-font fw-400 fs-italic">Regular Italic</div>
+							<!--
+							<div class="styleguide-font fw-700">Bold (700)</div>
+							<div class="styleguide-font fw-700 fs-italic">Bold Italic</div>
+							-->
+						</div>
+					</aside>
+
+				</div>
+
+				<h2 class="styleguide-subtitle">Grosseur des polices - Desktop</h2>
+				<div class="styleguide-row d-flex flex-column">
+					<div class="styleguide-font fz-6xl lh-heading" data-label="180px - Très gros texte"></div>
+					<div class="styleguide-font fz-5xl lh-heading" data-label="90px - Gros texte déroulant"></div>
+					<h1 class="styleguide-font" data-label="70px - H1"></h1>
+					<h2 class="styleguide-font" data-label="42px - H2"></h2>
+					<h3 class="styleguide-font" data-label="34px - H3"></h3>
+					<h4 class="styleguide-font" data-label="24px - H4"></h4>
+					<h5 class="styleguide-font" data-label="20px - H5"></h5>
+					<h6 class="styleguide-font" data-label="18px - H6"></h6>
+					<div class="styleguide-font fz-base lh-heading" data-label="18px - texte courant"></div>
+					<div class="styleguide-font fz-sm lh-heading" data-label="16px - petit texte, menu, tags, réseaux sociaux"></div>
+					<div class="styleguide-font fz-xs lh-heading" data-label="14px - petit texte, menu, tags, réseaux sociaux"></div>
+				</div>
+
+				<h2 class="styleguide-subtitle">Grosseur des polices - Mobile</h2>
+				<div class="styleguide-row d-flex flex-column">
+					<div class="styleguide-font fz-6xl lh-heading" data-label="100px - Très gros texte"></div>
+					<div class="styleguide-font fz-5xl lh-heading" data-label="50px - Gros texte déroulant"></div>
+					<h1 class="styleguide-font" data-label="40px - H1, menu mobile"></h1>
+					<h2 class="styleguide-font" data-label="30px - H2"></h2>
+					<h3 class="styleguide-font" data-label="27px - H3"></h3>
+					<h4 class="styleguide-font" data-label="20px - H4"></h4>
+					<h5 class="styleguide-font" data-label="18px - H5"></h5>
+					<h6 class="styleguide-font" data-label="16px - H6"></h6>
+					<div class="styleguide-font fz-base lh-heading" data-label="18px - texte courant"></div>
+					<div class="styleguide-font fz-sm lh-heading" data-label="16px - petit texte, menu, tags, réseaux sociaux"></div>
+					<div class="styleguide-font fz-xs lh-heading" data-label="14px - petit texte, menu, tags, réseaux sociaux"></div>
+				</div>
+
+				<h2 class="styleguide-subtitle">Boutons</h2>
+				<div class="d-flex">
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/button.twig' with {'title': 'Bouton', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/button.twig' with {'title': 'Bouton'} only %}
+					</div>
+
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Lien', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Lien'} only %}
+					</div>
+
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Tag', 'style': 'tag', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Tag', 'style': 'tag'} only %}
+					</div>
+
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/link.twig' with {'href': 'https://facebook.com', 'title': 'Facebook', 'style': 'social', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/link.twig' with {'href': 'https://facebook.com', 'title': 'Facebook', 'style': 'social'} only %}
+					</div>
+
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Link', 'style': 'link', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/link.twig' with {'href': '#', 'title': 'Link', 'style': 'link'} only %}
+					</div>
+
+					<div class="d-flex align-items-center p-2 bg-color-black">
+						{% include 'partial/button.twig' with {'title': 'Reveal', 'style': 'reveal', 'classname': 'color-white'} only %}
+					</div>
+					<div class="d-flex align-items-center p-2">
+						{% include 'partial/button.twig' with {'title': 'Reveal', 'style': 'reveal'} only %}
+					</div>
+				</div>
+
+
+			</section>
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+@import "@mill3-packages/system-ui-sass/src/system-ui";
+@import "~sass-easing";
+
+/*** THEME SPECIFICS ***/
+
+// mixins
+@import "mixins/index";
+
+// commons
+@import "commons/index";
+
+// modules
+@import "modules/index";
+
+// content types
+@import "post-type/posts/index";
+
+// layouts
+@import "layouts/index";
+
+// UI
+@import "ui/index";

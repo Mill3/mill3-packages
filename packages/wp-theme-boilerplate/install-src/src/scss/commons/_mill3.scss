@@ -1,0 +1,53 @@
+.mill3 {
+  $self: &;
+
+  &:not([class*="position-"]) {
+    position: relative;
+  }
+  &:not([class*="d-"]) {
+    display: inline-block;
+  }
+  &:not([class*="color-"]) {
+    color: currentColor;
+  }
+  &:not([class*="td-"]) {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &__label,
+  &__credits {
+    display: block;
+    pointer-events: none;
+    transition: opacity 350ms linear, transform 225ms ease-out;
+  }
+
+  &__label {
+    transform: translate3d(0%, 0, 0);
+    opacity: 1;
+  }
+  &__credits {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate3d(-60%, 0, 0);
+    white-space: nowrap;
+    opacity: 0;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    #{$self}__label {
+      transform: translate3d(100%, 0, 0);
+      opacity: 0;
+    }
+    #{$self}__credits {
+      transform: translate3d(0%, 0, 0);
+      opacity: 1;
+    }
+  }
+}
