@@ -18,26 +18,14 @@ program
   .command('dev')
   .description('start Webpack dev server')
   .action(() => {
-    const webpack_dev = spawn(`${PROCESS_PATH}/node_modules/.bin/webpack-dev-server`);
-    webpack_dev.stdout.on("data", data => {
-      console.log(`${data}`);
-    });
-    webpack_dev.stderr.on("data", data => {
-      console.log(`${data}`);
-    });
+    const cmd = spawn(`${PROCESS_PATH}/node_modules/.bin/webpack-dev-server`, [], {stdio: "inherit"});
   });
 
 program
   .command('build')
   .description('Build static files with Webpack')
   .action(() => {
-    const webpack_build = spawn(`${PROCESS_PATH}/node_modules/webpack/bin/webpack.js`, ['--config webpack.config.babel.js', '--mode=production']);
-    webpack_build.stdout.on("data", data => {
-      console.log(`${data}`);
-    });
-    webpack_build.stderr.on("data", data => {
-      console.log(`${data}`);
-    });
+    const cms = spawn(`${PROCESS_PATH}/node_modules/webpack/bin/webpack.js`, ['--config webpack.config.babel.js', '--mode=production'], {stdio: "inherit"});
   });
 
 
