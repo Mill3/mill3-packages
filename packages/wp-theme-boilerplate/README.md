@@ -1,4 +1,4 @@
-# MILL3 Wordpress Theme Boilerplate
+# MILL3-packages : Wordpress Theme Boilerplate with Webpack
 
 Our WP theme boilerplate using Timber/Twig templates
 
@@ -60,6 +60,10 @@ Then start Webpack dev server
 ```bash
 npm run mill3-wp install
 ```
+
+## Local development with Docker
+
+You can also use our [Docker boilerplate](https://github.com/Mill3/wordpress-docker-boilerplate) for WP which will set the `THEME_DEV` constant for you on initial Docker up command. Check out the repository : https://github.com/Mill3/wordpress-docker-boilerplate
 
 ## Production assets build
 
