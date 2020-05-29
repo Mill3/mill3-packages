@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const prompts = require("prompts");
-const fs = require("fs-extra");
+const fse = require("fs-extra");
 const path = require("path");
 const pathExists = require("path-exists");
 const figlet = require("figlet");
@@ -106,7 +106,7 @@ const run = async () => {
 // install all files
 const install = async () => {
   try {
-    await fs.copy(INSTALL_SRC_PATH, settings["INSTALL_PATH"]);
+    await fse.copy(INSTALL_SRC_PATH, settings["INSTALL_PATH"]);
     console.log(chalk.green("Step 1/2 : copied all files."));
   } catch (err) {
     console.error(err);

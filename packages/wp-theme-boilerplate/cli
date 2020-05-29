@@ -1,28 +1,28 @@
 #!/usr/bin/env node
 
-const { exec, spawn } = require("child_process");
+const { spawn } = require("child_process");
 const path = require("path");
 const { program } = require('commander');
 
 const PROCESS_PATH = path.join(process.cwd());
+const ROOT_PATH = path.join(__dirname);
 
 program
   .command('install')
-  .description('install theme in current directory')
-  .action((destination) => {
-    require("./install");
+  .description('Start installation process')
+  .action(() => {
+    require(`${ROOT_PATH}/install`);
   });
 
 program
   .command('dev')
   .description('start Webpack dev server')
   .action(() => {
-    console.log(`should start webpack dev server`);
-    const webpack = spawn("./node_modules/.bin/webpack-dev-server");
-    webpack.stdout.on("data", data => {
+    const webpack_dev = spawn(`${PROCESS_PATH}/node_modules/.bin/webpack-dev-server`);
+    webpack_dev.stdout.on("data", data => {
       console.log(`${data}`);
     });
-    webpack.stderr.on("data", data => {
+    webpack_dev.stderr.on("data", data => {
       console.log(`${data}`);
     });
   });
@@ -31,16 +31,15 @@ program
   .command('build')
   .description('Build static files with Webpack')
   .action(() => {
-    process.env.NODE_ENV = "production";
-    const webpack = spawn("./node_modules/webpack/bin/webpack.js", ['--config webpack.config.babel.js', '--mode=production']);
-    webpack.stdout.on("data", data => {
+    const webpack_build = spawn(`${PROCESS_PATH}/node_modules/webpack/bin/webpack.js`, ['--config webpack.config.babel.js', '--mode=production']);
+    webpack_build.stdout.on("data", data => {
       console.log(`${data}`);
     });
-    webpack.stderr.on("data", data => {
+    webpack_build.stderr.on("data", data => {
       console.log(`${data}`);
     });
   });
 
 
-// parse program
+// parse program argv
 program.parse(process.argv);
