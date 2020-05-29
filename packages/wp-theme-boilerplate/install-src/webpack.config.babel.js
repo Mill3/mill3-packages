@@ -5,6 +5,8 @@ import { webpackModules } from "./webpack.modules";
 import { webpackPlugins } from "./webpack.plugins";
 import { webpackOptimization } from "./webpack.optimization";
 import { webpackDevServer } from "./webpack.devServer";
+import dotenv from "dotenv";
+dotenv.config();
 
 const DEV = process.env.NODE_ENV !== "production";
 

@@ -66,7 +66,7 @@ const run = async () => {
     {
       type: "toggle",
       name: "confirm",
-      message: `Are you sure? This will overwrite any same exiting file in ${settings["INSTALL_PATH"]} directory`,
+      message: `Are you sure? This will overwrite any same exiting file in target directory!`,
       initial: false,
       active: "yes",
       inactive: "no"
@@ -100,13 +100,14 @@ const run = async () => {
   // rename to new namespace
   await rename();
 
-  console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}!\n`));
+  console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
 };
 
 // install all files
 const install = async () => {
   try {
     await fse.copy(INSTALL_SRC_PATH, settings["INSTALL_PATH"]);
+    await fse.move(`${settings["INSTALL_PATH"]}/.env.sample`, `${settings["INSTALL_PATH"]}/.env`, { overwrite: true });
     console.log(chalk.green("Step 1/2 : copied all files."));
   } catch (err) {
     console.error(err);

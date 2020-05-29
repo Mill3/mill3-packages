@@ -13,7 +13,9 @@ Our WP theme boilerplate using Timber/Twig templates
 
 ## How to install
 
-Our boilerplate package is distributed with NPMJS, init a new project and install it :
+Our boilerplate package is distributed with NPM, init a new project and install with it :
+
+**Note:** make sure you run thoses commands inside a fresh empty WP theme directory. Not at the root of your Wordpress installation.
 
 ```bash
 npm init
@@ -36,6 +38,8 @@ Make sure the _name_ line in `package.json` matches your theme's directory name.
   "version": "2.0.0"
 }
 ```
+
+Directory :
 
 ```
 /wp-content/themes/mill3-wp-boilerplate/
@@ -60,12 +64,12 @@ npm run mill3-wp install
 Then start Webpack dev server
 
 ```bash
-npm run mill3-wp install
+npm run mill3-wp dev
 ```
 
 ## Local development with Docker
 
-You can also use our [Docker boilerplate](https://github.com/Mill3/wordpress-docker-boilerplate) for WP which will set the `THEME_DEV` constant for you on initial Docker up command. Check out the repository : https://github.com/Mill3/wordpress-docker-boilerplate
+You can also use our [Docker boilerplate](https://github.com/Mill3/wordpress-docker-boilerplate) for WordPress which will set the `THEME_DEV` constant for you on initial Docker up command. Check out the repository : https://github.com/Mill3/wordpress-docker-boilerplate
 
 ## Production assets build
 

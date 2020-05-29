@@ -49,6 +49,7 @@
     "debounce": "^1.2.0",
     "directory-named-webpack-plugin": "^4.0.1",
     "domready": "^1.0.8",
+    "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
     "eventemitter3": "^3.1.0",
     "figlet": "^1.4.0",
