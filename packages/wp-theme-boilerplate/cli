@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+const { exec, spawn } = require("child_process");
+const path = require("path");
+const { program } = require('commander');
+
+const PROCESS_PATH = path.join(process.cwd());
+
+program
+  .command('install')
+  .description('install theme in current directory')
+  .action((destination) => {
+    require("./install");
+  });
+
+program
+  .command('dev')
+  .description('start Webpack dev server')
+  .action(() => {
+    console.log(`should start webpack dev server`);
+    const webpack = spawn("./node_modules/.bin/webpack-dev-server");
+    webpack.stdout.on("data", data => {
+      console.log(`${data}`);
+    });
+    webpack.stderr.on("data", data => {
+      console.log(`${data}`);
+    });
+  });
+
+program
+  .command('build')
+  .description('Build static files with Webpack')
+  .action(() => {
+    process.env.NODE_ENV = "production";
+    const webpack = spawn("./node_modules/webpack/bin/webpack.js", ['--config webpack.config.babel.js', '--mode=production']);
+    webpack.stdout.on("data", data => {
+      console.log(`${data}`);
+    });
+    webpack.stderr.on("data", data => {
+      console.log(`${data}`);
+    });
+  });
+
+
+// parse program
+program.parse(process.argv);

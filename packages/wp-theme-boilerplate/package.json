@@ -9,7 +9,7 @@
     "precommit": "npm test"
   },
   "bin": {
-    "mill3-wp": "./install.js"
+    "mill3-wp": "./cli"
   },
   "dependencies": {
     "@babel/cli": "^7.4.3",
@@ -30,6 +30,7 @@
     "base64-inline-loader": "^1.1.1",
     "chalk": "^4.0.0",
     "clean-webpack-plugin": "^3.0.0",
+    "commander": "^5.1.0",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
     "debounce": "^1.2.0",

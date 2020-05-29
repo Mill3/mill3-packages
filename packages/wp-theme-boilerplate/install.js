@@ -26,7 +26,7 @@ let settings = {
 };
 
 // start Prompts
-(async () => {
+const run = async () => {
   // First Intro message
   console.log(chalk.blue("*****************************************************"));
   console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
@@ -101,7 +101,7 @@ let settings = {
   await rename();
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}!\n`));
-})();
+};
 
 // install all files
 const install = async () => {
@@ -134,3 +134,7 @@ const rename = async () => {
     console.error(err);
   }
 };
+
+run();
+
+exports.module = run;
