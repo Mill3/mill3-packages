@@ -2,10 +2,21 @@
 
 Our WP theme boilerplate using Timber/Twig templates
 
+![Demo](https://media.giphy.com/media/XyJjfbEPltkHE4s7hg/giphy.gif)
+
 ## Requirements
 
 - npm / yarn
 - [Timber WP plugin](https://github.com/timber/timber/)
+
+## How to install
+
+Our boilerplate package is distributed with NPMJS, init a new project and install it :
+
+```bash
+npm init
+npm install @mill3-packages/wp-boilerplate
+```
 
 ## How to use for local development
 
@@ -21,29 +32,33 @@ Make sure the _name_ line in `package.json` matches your theme's directory name.
 {
   "name": "mill3-wp-boilerplate",
   "version": "2.0.0"
-  ...
+}
 ```
 
 ```
 /wp-content/themes/mill3-wp-boilerplate/
 ```
 
-Install all node requirements :
+Add bin command to your package.json file :
 
-```bash
-npm install
+```json
+{
+  "scripts": {
+    "mill3-wp": "mill3-wp"
+  }
+}
 ```
 
-Run the install script to find and replace the theme domain name and namespace
+Run the install script :
 
 ```bash
-node install.js  --domain="mytheme" --namespace="MyTheme"
+npm run mill3-wp install
 ```
 
-Then start Webpack
+Then start Webpack dev server
 
 ```bash
-npm run dev
+npm run mill3-wp install
 ```
 
 ## Production assets build
@@ -51,16 +66,25 @@ npm run dev
 Simply run :
 
 ```bash
-npm run build
+npm run mill3-wp build
 ```
-
-Then Git add everything in `dist/*` directory.
 
 In production mode, assets are loaded from dist/assets.json file, cache busting included !
 
 ## Prettier/ESLint
 
 You can ESLint your code with the following command :
+
+First add in package's script :
+
+```json
+{
+  "scripts": {
+    "lint": "eslint --fix ./src/js",
+    "prettier": "prettier-eslint ./src/js/*/*.js ./src/scss/**/*.scss --write"
+  }
+}
+```
 
 ```bash
 npm run lint
@@ -72,12 +96,12 @@ And Prettier formatting :
 npm run prettier
 ```
 
-Please also note that there's a pre-commit hook using [pretty-quick](https://github.com/azz/pretty-quick) which can be disabled in `package.json`.
+Please also note that there's a pre-commit hook using [pretty-quick](https://github.com/azz/pretty-quick) which can be added in `package.json`.
 
-<!-- "babel-node": "babel-node",
-"lint": "eslint --fix ./src/js",
-"prettier": "prettier-eslint ./src/js/*/*.js ./src/scss/**/*.scss --write",
-"build_doc": "sassdoc src/scss/**/*.scss",
-"dev": "export NODE_ENV=development && webpack-dev-server",
-"monitor": "export NODE_ENV=development && webpack-dashboard",
-"build": "export NODE_ENV=production && ./node_modules/webpack/bin/webpack.js --config webpack.config.babel.js" -->
+```json
+"husky": {
+  "hooks": {
+    "pre-commit": "pretty-quick --staged"
+  }
+}
+```
