@@ -11,18 +11,21 @@ const PROCESS_PATH = path.join(process.cwd());
 const ROOT_PATH = path.join(__dirname);
 const INSTALL_SRC_PATH = path.join(ROOT_PATH, `./install-src/`);
 
-// default values for i18n domain & php classes namespace
-const DEFAULT_THEME_DOMAIN = "foobar";
-const DEFAULT_THEME_NAMESPACE = "FooBarWP";
+// current values for i18n domain & php classes namespace
+const DEFAULT_THEME_DOMAIN = "mill3wp";
+const DEFAULT_THEME_NAMESPACE = "Mill3WP";
 
+// holder when user is cancel Prompts
 let cancelled = false;
 
+// defaults
 let settings = {
   INSTALL_PATH: PROCESS_PATH,
   THEME_DOMAIN: DEFAULT_THEME_DOMAIN,
   THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE
 };
 
+// start Prompts
 (async () => {
   // First Intro message
   console.log(chalk.blue("*****************************************************"));
@@ -46,13 +49,19 @@ let settings = {
       type: "text",
       name: "THEME_DOMAIN",
       initial: settings["THEME_DOMAIN"],
-      message: "Theme domain for i18n strings :"
+      message: "Theme domain for i18n strings :",
+      validate: text => {
+        return /^\S*$/.test(text) ? true : "No spaces allowed.";
+      }
     },
     {
       type: "text",
       name: "THEME_NAMESPACE",
       initial: settings["THEME_NAMESPACE"],
-      message: "Namespace for PHP classes :"
+      message: "Namespace for PHP classes :",
+      validate: text => {
+        return /[A-Z]/.test(text) ? true : "Please use CamelCase style";
+      }
     },
     {
       type: "toggle",
