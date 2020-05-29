@@ -86,7 +86,7 @@ const run = async () => {
 
   const response = await prompts(questions, { onSubmit, onCancel });
 
-  // stop here if not confirm
+  // stop here if did not confirm
   if (!response.confirm) return;
 
   // stop here if canceled

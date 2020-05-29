@@ -2,15 +2,28 @@
   "name": "@mill3-packages/wp-boilerplate",
   "version": "0.0.10",
   "main": "scrc/js/App.js",
-  "repository": "git@github.com:Mill3/mill3-wp-boilerplate.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mill3/mill3-packages.git"
+  },
   "author": "Mill3 Studio <info@mill3.studio>",
   "license": "MIT",
+  "keywords": [
+    "webpack",
+    "wordpress",
+    "sass",
+    "boilerplate"
+  ],
   "scripts": {
     "precommit": "npm test"
   },
   "bin": {
     "mill3-wp": "./cli"
   },
+  "bugs": {
+    "url": "https://github.com/Mill3/mill3-packages/issues"
+  },
+  "homepage": "https://github.com/Mill3/mill3-packages/tree/master/packages/wp-theme-boilerplate",
   "dependencies": {
     "@babel/cli": "^7.4.3",
     "@babel/core": "^7.4.3",
