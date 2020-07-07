@@ -24,12 +24,13 @@ class App {
     // init ui
     this.siteHeader = new SiteHeader(false);
     this.siteNav = new SiteNav(false);
+    //this.siteScroll = new SiteScroll(false);
 
     // triggered before leave animation
     barba.hooks.beforeLeave(() => {
       moduleActions("stop");
 
-      this.siteScroll.stop();
+      //this.siteScroll.stop();
       this.siteNav.close();
     });
 
@@ -48,7 +49,7 @@ class App {
 
       this.siteHeader.init();
       this.siteNav.init();
-      this.siteScroll.init();
+      //this.siteScroll.init();
     });
 
     // triggered just before enter transition
@@ -61,7 +62,7 @@ class App {
 
       this.siteHeader.init();
       this.siteNav.init();
-      this.siteScroll.init();
+      //this.siteScroll.init();
     });
 
     // init barba
@@ -70,8 +71,7 @@ class App {
       logLevel: 4,
       sync: false,
       timeout: 5000,
-      prevent: ({ el }) =>
-        hasAdminBar() ? true : el.classList && el.classList.contains("ab-item"),
+      prevent: ({ el }) => (hasAdminBar() ? true : el.classList && el.classList.contains("ab-item")),
       transitions: transitions,
       views: views
     });
