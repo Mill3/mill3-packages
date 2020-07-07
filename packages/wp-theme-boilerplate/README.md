@@ -4,7 +4,7 @@
 
 Our WP theme boilerplate using Timber/Twig templates
 
-![Demo](https://media.giphy.com/media/XyJjfbEPltkHE4s7hg/giphy.gif)
+![](https://media.giphy.com/media/XyJjfbEPltkHE4s7hg/giphy.gif)
 
 ## Requirements
 
