@@ -1,0 +1,37 @@
+////
+/// @group grid
+////
+
+/// Set grid template columns
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .grid-column-[value]
+///
+/// @example .grid-column-1, .grid-column-md-3
+
+// note: keep this line below for SassDoc
+// .grid-column-[size] { ... }
+
+@include generate-variants(
+  "grid-template-columns",
+  $grid-columns,
+  "grid-column"
+);
+
+/// Set grid gap
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
+///
+/// @see {mixin} generate-variants
+///
+/// @name .grid-gap-[value]
+///
+/// @example .grid-gap-4, .grid-gap-md-2
+
+// note: keep this line below for SassDoc
+// .grid-gap-[size] { ... }
+
+@include generate-variants("grid-gap", $spacers);
