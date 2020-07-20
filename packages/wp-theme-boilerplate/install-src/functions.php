@@ -47,6 +47,7 @@ $includes = [
     'lib/extra-timber-filters.php',
     'lib/actions.php',
     'lib/barba.php',
+    'lib/menu.php',
     'lib/gravity-form.php',
     'lib/yoast.php',
     'lib/utils.php',

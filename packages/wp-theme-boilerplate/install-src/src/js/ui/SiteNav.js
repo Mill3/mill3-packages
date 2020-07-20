@@ -1,4 +1,5 @@
 import { $, $$ } from "@utils/dom";
+import { on, off } from "@utils/listener";
 
 export const SELECTOR = `[data-site-nav]`;
 export const CLASSNAME = "--js-site-nav-opened";
@@ -34,18 +35,10 @@ class SiteNav {
   }
 
   _bindEvents() {
-    if (this.triggers) {
-      this.triggers.forEach(btn => {
-        btn.addEventListener("click", this._handleTriggers);
-      });
-    }
+    if (this.triggers) on(this.triggers, "click", this._handleTriggers);
   }
   _unbindEvents() {
-    if (this.triggers) {
-      this.triggers.forEach(btn => {
-        btn.removeEventListener("click", this._handleTriggers);
-      });
-    }
+    if (this.triggers) off(this.triggers, "click", this._handleTriggers);
   }
 
   open() {
