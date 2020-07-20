@@ -18,7 +18,7 @@ once(element, type, callback);
 
 import Browser from "./browser";
 import { isUndefined } from "./is";
-import { $$ } from "./query";
+import { $$ } from "./dom";
 
 const PASSIVE_EVENTS = ["touchmove", "mousemove", "scroll", "mouseWheel", "touchstart", "deviceorientation"];
 
@@ -36,7 +36,7 @@ const normalizeEventType = type => {
 const listen = (el, action, type, callback, options = {}) => {
   const els = $$(el);
   const t = normalizeEventType(type);
-  const o = Object.assign(...options, getOptions(type));
+  const o = Object.assign(options, getOptions(type));
 
   for (let i = 0, n = els.length; i < n; i++) {
     els[i][`${action}EventListener`](t, callback, o);
@@ -63,11 +63,11 @@ export const once = (el, type, callback, options) => {
 };
 
 export const trigger = (el, type) => {
-  const el = $$(el);
+  const els = $$(el);
   const t = normalizeEventType(type);
 
-  for (let i = 0, n = el.length; i < n; i++) {
-    el[i].dispatchEvent(new Event(t));
+  for (let i = 0, n = els.length; i < n; i++) {
+    els[i].dispatchEvent(new Event(t));
   }
 };
 
