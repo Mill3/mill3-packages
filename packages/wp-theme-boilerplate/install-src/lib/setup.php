@@ -27,6 +27,7 @@ function setup()
     // http://codex.wordpress.org/Function_Reference/add_image_size
     add_theme_support('post-thumbnails');
     add_image_size('pixel', 100);
+    add_image_size('small', 576);
     add_image_size('large', 1024);
     add_image_size('full', '');
     add_image_size('largest', 1800);
