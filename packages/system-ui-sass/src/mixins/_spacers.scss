@@ -1,9 +1,24 @@
-
 @function spacer($key) {
   $value: map-get($spacers, $key);
 
   @if not $value {
     @error "font-family `#{$key}` not found in `#{$spacers}`";
+  } @else {
+    $unit: "";
+
+    // get value unit if is a number
+    @if type-of($value) == "number" {
+      $unit: unit($value);
+    }
+
+    // if value is in vw, use our custom vw function
+    @if $unit == "vw" {
+      $value: vw(strip-unit($value));
+    }
+    // if value is in vh, use our custom vh function
+    @else if $unit == "vh" {
+      $value: vh(strip-unit($value));
+    }
   }
 
   @return $value;

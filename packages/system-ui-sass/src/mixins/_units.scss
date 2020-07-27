@@ -9,3 +9,13 @@
 
   @return $number;
 }
+
+///
+@function vw($value) {
+  @return #{strip-unit($value)}vw;
+}
+
+///
+@function vh($value) {
+  @return #{strip-unit($value)}vh;
+}

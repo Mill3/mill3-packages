@@ -39,7 +39,25 @@
 
   // append the unit to value unless its set to `auto`
   @if $value != "auto" {
-    $value: #{$value}#{$unit};
+    $value_unit: "";
+
+    // get value unit if is a number
+    @if type-of($value) == "number" {
+      $value_unit: unit($value);
+    }
+
+    // if value is in vw, use our custom vw function
+    @if $unit == "vw" or $value_unit == "vw" {
+      $value: vw($value);
+    }
+    // if value is in vh, use our custom vh function
+    @else if $unit == "vh" or $value_unit == "vh" {
+      $value: vh($value);
+    }
+    // otherwise, use argument unit
+    @else {
+      $value: #{$value}#{$unit};
+    }
   }
 
   // append !important flag

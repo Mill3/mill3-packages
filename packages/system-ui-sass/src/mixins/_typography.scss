@@ -3,6 +3,22 @@
 
   @if not $value {
     @error "font-size `#{$key}` not found in `#{$font-size}`";
+  } @else {
+    $unit: "";
+
+    // get value unit if is a number
+    @if type-of($value) == "number" {
+      $unit: unit($value);
+    }
+
+    // if value is in vw, use our custom vw function
+    @if $unit == "vw" {
+      $value: vw(strip-unit($value));
+    }
+    // if value is in vh, use our custom vh function
+    @else if $unit == "vh" {
+      $value: vh(strip-unit($value));
+    }
   }
 
   @return $value;
@@ -33,6 +49,22 @@
 
   @if not $value {
     @error "headings-font-size `#{$key}` not found in `#{$heading}`";
+  } @else {
+    $unit: "";
+
+    // get value unit if is a number
+    @if type-of($value) == "number" {
+      $unit: unit($value);
+    }
+
+    // if value is in vw, use our custom vw function
+    @if $unit == "vw" {
+      $value: vw(strip-unit($value));
+    }
+    // if value is in vh, use our custom vh function
+    @else if $unit == "vh" {
+      $value: vh(strip-unit($value));
+    }
   }
 
   @return $value;
