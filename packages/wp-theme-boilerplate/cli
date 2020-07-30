@@ -25,7 +25,7 @@ program
   .command('build')
   .description('Build static files with Webpack')
   .action(() => {
-    const cms = spawn(`${PROCESS_PATH}/node_modules/webpack/bin/webpack.js`, ['--config webpack.config.babel.js', '--mode=production'], {stdio: "inherit"});
+    const cmd = spawn(`${PROCESS_PATH}/node_modules/webpack/bin/webpack.js`, ['--config webpack.config.babel.js', '--mode=production'], {stdio: "inherit"});
   });
 
 
