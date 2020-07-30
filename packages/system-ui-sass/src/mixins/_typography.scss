@@ -38,7 +38,7 @@
   $value: map-get($line-height, $key);
 
   @if not $value {
-    @error "font-family `#{$key}` not found in `#{$line-height}`";
+    @error "line-height `#{$key}` not found in `#{$line-height}`";
   }
 
   @return $value;
