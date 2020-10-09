@@ -1,7 +1,6 @@
-{% set style = style|default("default") %}
+{% set style = style|default(null) %}
+{% set variation = variation|default(null) %}
 {% set attributes = attributes|default([]) %}
-{% set label_attributes = [] %}
-{% set label_attributes = label_attributes|merge(['aria-hidden="true"']) %}
 
 {% if id %}
   {% set attributes = attributes|merge(['id="'~ id ~'"']) %}
@@ -13,14 +12,15 @@
   {% set attributes = attributes|merge(['aria-label="'~ title ~'"']) %}
 {% endif %}
 
-{% if style in ['play', 'pause', 'reveal'] %}
-  {% set label_attributes = label_attributes|merge(["data-splitting"]) %}
+{% if style and style in ['cta', 'link'] %}
+  {% set classname = classname|split(' ')|merge(['--' ~ style])|join(' ')%}
 {% endif %}
 
-<button class="btn {{ classname }} --{{ style }}" {{ attributes|join(" ") }}>
-  <span class="btn__label" aria-hidden="true" {{ label_attributes|join(" ") }}>{{ title }}</span>
+{% if style and variation %}
+  {% set classname = classname|split(' ')|merge(variation|split(' ')|map(v => '--' ~ style ~ '-' ~ v))|join(' ')%}
+{% endif %}
 
-  {% if style == 'play' or style == 'pause' %}
-    {{ source("src/svg/menu-circle.svg") }}
-  {% endif %}
+<button class="btn {{ classname }}" {{ attributes|join(" ") }}>
+  <span class="btn__bg" aria-hidden="true" data-ignore-css-empty></span>
+  <span class="btn__label" aria-hidden="true">{{ title }}</span>
 </button>

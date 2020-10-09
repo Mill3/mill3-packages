@@ -42,7 +42,8 @@
       &::before {
         content: "The quick brown fox jumps over the lazy dog";
         display: block;
-        max-height: #{line-height("base")}em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         overflow: hidden;
       }
     }
@@ -50,6 +51,7 @@
     &[data-label] {
       &::after {
         color: #a4a4a4 !important;
+        font-family: monospace;
         font-size: 10px !important;
         padding-top: 0 !important;
       }
