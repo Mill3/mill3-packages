@@ -121,9 +121,8 @@ const theme = {
     h5: "0.8rem",
     h6: "0.7rem"
   },
-  position: ["static", "fixed", "absolute", "sticky"],
+  position: ["static", "fixed", "absolute", "sticky", "relative"],
   "font-weight": [100, 200, 300, 400, 500, 600, 700, 800, 900],
-  "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
   "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
   "text-decoration": ["none", "underline", "inherit"],
   "text-align": ["left", "right", "center"],
@@ -131,7 +130,7 @@ const theme = {
   "line-height": {
     none: "1",
     base: "1.25",
-    relaxed: "1.625",
+    relaxed: "1.5",
     loose: "2"
   },
   "grid-breakpoints": {
@@ -231,7 +230,6 @@ const theme = {
   radiuses: {
     "0": "0",
     "5": "5px",
-    "7": "7px",
     "10": "10px",
     "20": "20px",
     "30": "30px",
