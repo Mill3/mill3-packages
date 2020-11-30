@@ -19,20 +19,13 @@ const theme = {
   },
   "background-size": ["auto", "cover", "contain"],
   overflow: ["auto", "hidden", "visible", "scroll"],
-  display: [
-    "none",
-    "inline",
-    "inline-block",
-    "block",
-    "flex",
-    "inline-flex",
-    "inline-flex"
-  ],
+  display: ["none", "inline", "inline-block", "block", "flex", "inline-flex", "grid", "inline-grid"],
   boxes: {
+    narrow: "38%",
     superscope: "45%",
     "half-square": "50%",
     widescreen: "56.25%",
-    landscape: "75%",
+    landscape: "74%",
     "wide-angle": "87.5%",
     square: "100%",
     portrait: "130%"
@@ -75,7 +68,6 @@ const theme = {
   order: generateValues(0, 5),
   "font-family": {
     sans: [
-      "Favorit",
       "-apple-system",
       "BlinkMacSystemFont",
       "Segoe UI",
@@ -90,36 +82,29 @@ const theme = {
       "Noto Color Emoji"
     ],
     serif: ["Georgia", "serif"],
-    mono: [
-      "Menlo",
-      "Monaco",
-      "Consolas",
-      "Liberation Mono",
-      "Courier New",
-      "monospace"
-    ]
+    mono: ["SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"]
   },
   "font-size": {
-    xs: "14px",
-    sm: "16px",
-    base: "18px",
-    lg: "20px",
-    xl: "24px",
-    "2xl": "34px",
-    "3xl": "42px",
-    "4xl": "70px",
-    "5xl": "90px",
-    "6xl": "180px"
+    xs: "0.75rem",
+    sm: "0.875rem",
+    base: "1rem",
+    lg: "1.125rem",
+    xl: "1.25rem",
+    "2xl": "1.5rem",
+    "3xl": "1.875rem",
+    "4xl": "2.25rem",
+    "5xl": "3rem",
+    "6xl": "4rem"
   },
   heading: {
-    h1: "70px",
-    h2: "42px",
-    h3: "34px",
-    h4: "24px",
-    h5: "20px",
-    h6: "18px"
+    h1: "4rem",
+    h2: "3rem",
+    h3: "2rem",
+    h4: "1rem",
+    h5: "0.8rem",
+    h6: "0.7rem"
   },
-  position: ["static", "fixed", "relative", "absolute", "sticky"],
+  position: ["static", "fixed", "absolute", "sticky"],
   "font-weight": [100, 200, 300, 400, 500, 600, 700, 800, 900],
   "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
   "text-transform": ["lowercase", "uppercase", "capitalize", "none", "inherit"],
@@ -128,9 +113,9 @@ const theme = {
   "font-style": ["normal", "italic", "oblique", "inherit"],
   "line-height": {
     none: "1",
-    base: "1.5",
-    heading: "1.2",
-    loose: "1.777777778"
+    base: "1.25",
+    relaxed: "1.625",
+    loose: "2"
   },
   "grid-breakpoints": {
     xs: "0px",
@@ -140,51 +125,23 @@ const theme = {
     xl: "1200px",
     xxl: "1441px"
   },
-  gutter: "20px",
+  gutter: "18px",
   spacers: {
     auto: "auto",
     base: "1rem",
     "0": "0",
-    "1": "10px",
-    "2": "15px",
-    "3": "20px",
-    "4": "25px",
+    "1": "8px",
+    "2": "12px",
+    "3": "18px",
+    "4": "30px",
     "5": "40px",
-    "6": "50px",
+    "6": "52px",
     "7": "60px",
-    "8": "80px",
-    "9": "100px",
-    "10": "200px"
+    "8": "90px",
+    "9": "135px",
+    "10": "202px"
   },
-  sizes: [
-    "auto",
-    0,
-    5,
-    10,
-    15,
-    20,
-    25,
-    30,
-    35,
-    40,
-    45,
-    50,
-    55,
-    60,
-    65,
-    70,
-    75,
-    80,
-    85,
-    90,
-    95,
-    100,
-    105,
-    110,
-    115,
-    120,
-    125
-  ],
+  sizes: ["auto", 5, 10, 15, 20, 25, 30, 35, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110, 115, 120, 125],
   "z-index": generateValues(0, 10000, 1000),
   columns: {
     auto: "auto",
@@ -214,17 +171,65 @@ const theme = {
     "1000": "100%",
     screen: "100vw"
   },
+  "grid-columns": {
+    "1": "1fr",
+    "2": "repeat(2, 1fr)",
+    "3": "repeat(3, 1fr)",
+    "4": "repeat(4, 1fr)",
+    "5": "repeat(5, 1fr)",
+    "6": "repeat(6, 1fr)",
+    "7": "repeat(7, 1fr)",
+    "8": "repeat(8, 1fr)",
+    "9": "repeat(9, 1fr)",
+    "10": "repeat(10, 1fr)",
+    "11": "repeat(11, 1fr)",
+    "12": "repeat(12, 1fr)"
+  },
   radiuses: {
-    //"0": "0",
+    "0": "0",
+    "5": "5px",
+    "7": "7px",
+    "10": "10px",
+    "20": "20px",
+    "30": "30px",
+    "40": "40px",
+    "50": "50%",
+    "70": "70px",
+    "100": "100px"
   },
   boxShadow: {
-    //"1": "0 14px 14px rgba(0,0,0,0.35)"
+    "1": "0 14px 14px rgba(0,0,0,0.35)",
+    "2": "0 14px 14px rgba(0,0,0,0.35)",
+    "3": "0 14px 14px rgba(0,0,0,0.35)",
+    "4": "0 14px 14px rgba(0,0,0,0.35)",
+    "5": "0 14px 14px rgba(0,0,0,0.35)"
   },
   colors: {
     "color-transparent": "transparent",
-    "color-current": "currentColor",
     "color-black": "#000000",
-    "color-white": "#ffffff"
+    "color-white": "#ffffff",
+    "color-primary": "#0d6efd",
+    "color-secondary": "#6610f2",
+    "color-blue": "#0d6efd",
+    "color-indigo": "#6610f2",
+    "color-purple": "#6f42c1",
+    "color-pink": "#d63384",
+    "color-red": "#dc3545",
+    "color-orange": "#fd7e14",
+    "color-yellow": "#ffc107",
+    "color-green": "#28a745",
+    "color-teal": "#20c997",
+    "color-cyan": "#17a2b8",
+    "color-gray": "#a0aec0",
+    "gray-100": "#f7fafc",
+    "gray-200": "#edf2f7",
+    "gray-300": "#e2e8f0",
+    "gray-400": "#cbd5e0",
+    "gray-500": "#a0aec0",
+    "gray-600": "#718096",
+    "gray-700": "#4a5568",
+    "gray-800": "#2d3748",
+    "gray-900": "#1a202c"
   }
 };
 
