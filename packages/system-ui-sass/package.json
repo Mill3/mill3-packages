@@ -16,16 +16,13 @@
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
     "node-sass": "^4.13.1",
-    "sass-convert": "^0.5.2",
-    "sassdoc": "^2.7.1",
-    "sassdocify": "^0.3.4"
+    "sass-convert": "^0.5.2"
   },
   "scripts": {
     "build": "export NODE_ENV=production && node build.js",
-    "doc": "sassdoc src/**/*.scss",
     "prettier": "prettier ./src/**/*.scss --write",
-    "storybook-start": "start-storybook",
-    "storybook-build": "build-storybook"
+    "storybook-start": "node copy-theme-to-es6.js && start-storybook",
+    "storybook-build": "node copy-theme-to-es6.js && build-storybook"
   },
   "bin": {
     "system-ui-cli": "./cli.js"
