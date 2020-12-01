@@ -1,52 +1,39 @@
 import anime from "animejs";
 import imagesLoaded from "imagesloaded";
 
-import { $ } from "@utils/dom";
-
 class FadeTransition {
   constructor() {
     this.name = "fade";
 
     this._imagesLoaded = false;
+    this._imgLoader = null;
     this._onImagesLoaded = this._onImagesLoaded.bind(this);
   }
 
-  beforeOnce({ next }) {
-    this._imagesLoaded = false;
-
-    // preload images from next container before once transition
-    return new Promise(resolve => {
-      const imgLoad = imagesLoaded(next.container);
-      imgLoad.once("always", () => resolve);
-    });
-  }
   beforeLeave({ next }) {
     this._imagesLoaded = false;
 
+    // if next.container is not loaded, try again during `beforeEnter` hook.
+    if (!next.container) return;
+
     // preload images from next container during leave transition
     // do not wait to images preloading to finish to start leave transition
-    this.imgLoad = imagesLoaded(next.container);
-    this.imgLoad.once("always", this._onImagesLoaded);
+    this._imgLoader = imagesLoaded(next.container, this._onImagesLoaded);
   }
-  beforeEnter() {
+
+  beforeEnter({ next }) {
+    // if images are loaded, skip here
     if (this._imagesLoaded === true || !this._imagesLoaded) return;
 
-    // wait until images are loaded
-    return new Promise(resolve => this.imgLoad.once("always", () => resolve));
-  }
-
-  once({ next }) {
     return new Promise(resolve => {
-      anime({
-        targets: next.container,
-        opacity: [0, 1],
-        duration: 1000,
-        delay: 500,
-        easing: "linear",
-        complete: () => resolve()
-      });
+      // if imagesLoaded has not been initialized, because next.container was null in `beforeLeave` hook.
+      if (!this._imgLoader) this._imgLoader = new imagesLoaded(next.container, this._onImagesLoaded);
+
+      // wait until images are loaded
+      this._imgLoader.once("always", resolve);
     });
   }
+
   leave({ current }) {
     return new Promise(resolve => {
       anime({
@@ -58,6 +45,7 @@ class FadeTransition {
       });
     });
   }
+
   enter({ next }) {
     return new Promise(resolve => {
       anime({
@@ -72,6 +60,7 @@ class FadeTransition {
 
   _onImagesLoaded() {
     this._imagesLoaded = true;
+    this._imgLoader = null;
   }
 }
 

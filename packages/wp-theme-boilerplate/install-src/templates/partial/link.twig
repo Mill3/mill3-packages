@@ -1,5 +1,6 @@
 {% set link = link|default("#") %}
 {% set style = style|default(null) %}
+{% set target = target|default(null) %}
 {% set variation = variation|default(null) %}
 {% set attributes = attributes|default([]) %}
 
@@ -8,16 +9,16 @@
 {% endif %}
 
 {% if target %}
-  {% set attributes = attributes|merge(["target", target])|join("=") %}
+  {% set attributes = attributes|merge(['target="'~ target ~'"']) %}
 {% endif %}
 
-{% if aria-label %}
-  {% set attributes = attributes|merge(["aria-label", aria-label])|join("=") %}
+{% if aria_label %}
+  {% set attributes = attributes|merge(["aria-label", aria_label])|join("=") %}
 {% else %}
   {% set attributes = attributes|merge(['aria-label="'~ title ~'"']) %}
 {% endif %}
 
-{% if style and style in ['cta', 'link'] %}
+{% if style and style in ['cta', 'link', 'social'] %}
   {% set classname = classname|split(' ')|merge(['--' ~ style])|join(' ')%}
 {% endif %}
 
@@ -28,7 +29,7 @@
 <a
   href="{{ link }}"
   class="btn {{ classname }}"
-  title="{{ title }}"
+  title="{{ aria_label|default(title) }}"
   {{ attributes|join(" ") }}
 >
   <span class="btn__bg" aria-hidden="true" data-ignore-css-empty></span>

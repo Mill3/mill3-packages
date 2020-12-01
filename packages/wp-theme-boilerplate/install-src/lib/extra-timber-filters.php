@@ -32,3 +32,7 @@ function filter_slugify($slug)
 {
     return sanitize_title($slug);
 }
+
+function filter_facebook_share($url) {
+  return 'https://www.facebook.com/sharer/sharer.php?u=' . urlencode($url);
+}

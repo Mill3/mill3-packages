@@ -29,9 +29,9 @@ function setup()
     add_image_size('pixel', 100);
     add_image_size('small', 576);
     add_image_size('large', 1024);
-    add_image_size('full', '');
     add_image_size('largest', 1800);
     add_image_size('largest-retina', 2800);
+    add_image_size('full', '');
 
     // Enable features
     add_theme_support('post-formats');
@@ -51,7 +51,7 @@ function setup()
 
     // Use main stylesheet for visual editor
     // To add custom styles edit /assets/styles/layouts/_tinymce.scss
-    add_editor_style(Assets\Asset_File_path('editorStyle', 'css'));
+    add_editor_style(Assets\Asset_File_path('editor-style', 'css'));
 
     // options page for ACF
     if (function_exists('acf_add_options_page')) {
@@ -115,6 +115,15 @@ function assets()
         );
     }
 
+    // inject global Wordpress variables to Javascript
+    $wp_endpoints = array(
+      'admin_ajax' => admin_url('admin-ajax.php'),
+      //'rest-api' => get_rest_url(null, 'wp/v2/'),
+      //'nonce' => wp_create_nonce('tdp_nonce'),
+    );
+
+    wp_add_inline_script(THEME_DEV === true ? 'mill3wp/webpack' : 'mill3wp/js', 'window.wp = '.json_encode($wp_endpoints).';', 'before');
+
     // remove core scripts and freaking emoji
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('wp_print_styles', 'print_emoji_styles');
@@ -157,3 +166,18 @@ add_filter(
     'tiny_mce_before_init',
     __NAMESPACE__ . '\\mill3wp_tiny_mce_remove_unused_formats'
 );
+
+
+// Remove Gutenberg Block Styles
+add_action('wp_print_styles', function() { wp_dequeue_style('wp-block-library'); }, 100);
+
+
+// Set directory for Admin Columns settings
+add_filter('acp/storage/file/directory', function() {
+  return get_stylesheet_directory() . '/acp-settings';
+});
+
+
+if (THEME_DEV !== true) {
+  add_filter('acp/storage/file/directory/writable', '__return_false');
+}

@@ -1,13 +1,18 @@
 {% if image %}
 
+  {% set alt = alt|default('') %}
   {% set lazyload = lazyload|default(false) %}
+  {% set attributes = attributes|default([]) %}
+  {% set size = size|default('large') %}
 
   <img
-    src="{{ image.src("large") }}"
+    src="{{ image.src(size) }}"
     srcset="{{ image.srcset }}"
     sizes="{{ image.img_sizes }}"
-    alt="{{ image.alt|default('') }}"
+    alt="{{ image.alt|default(alt) }}"
     {% if lazyload %}loading="lazy"{% endif %}
-    class="{{ classname }}">
+    class="{{ classname }}"
+    {{ attributes|join(' ') }}
+  >
 
 {% endif %}

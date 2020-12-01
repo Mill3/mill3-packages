@@ -1,4 +1,8 @@
 <?php
+
+// require __DIR__ . '/vendor/autoload.php';
+
+
 /**
  * Timber starter-theme
  * https://github.com/timber/starter-theme
@@ -37,30 +41,33 @@ Timber::$autoescape = false;
 
 // include theme custom classes
 $includes = [
+    'lib/acf.php',
+    'lib/actions.php',
     'lib/assets.php',
-    'lib/post-type.php',
-    'lib/post-queries.php',
+    'lib/barba.php',
+    'lib/class-walker-nav-menu-edit.php',
+    'lib/customizer.php',
+    'lib/editor.php',
+    'lib/extra-timber-filters.php',
+    'lib/filters.php',
+    'lib/gravity-form.php',
+    'lib/menu.php',
     'lib/post-functions.php',
+    'lib/post-queries.php',
+    'lib/post-type.php',
+    'lib/setup.php',
+    'lib/shortcodes.php',
     'lib/taxonomies.php',
     'lib/taxonomy-queries.php',
-    'lib/customizer.php',
-    'lib/extra-timber-filters.php',
-    'lib/actions.php',
-    'lib/barba.php',
-    'lib/menu.php',
-    'lib/gravity-form.php',
-    'lib/yoast.php',
+    'lib/titles.php',
     'lib/utils.php',
-    'lib/utils.php',
-    'lib/setup.php',
-    'lib/editor.php',
-    'lib/shortcodes.php'
+    //'lib/yoast.php',
 ];
 
 foreach ($includes as $file) {
     if (!$filepath = locate_template($file)) {
         trigger_error(
-            sprintf(__('Error locating %s for inclusion', 'breather'), $file),
+            sprintf(__('Error locating %s for inclusion'), $file),
             E_USER_ERROR
         );
     }
@@ -102,12 +109,13 @@ class StarterSite extends Timber\Site
      */
     public function add_to_context($context)
     {
-        $context['foo'] = 'bar';
-        $context['stuff'] = 'I am a value set in your functions.php file';
-        $context['notes'] =
-            'These values are available everytime you call Timber::get_context();';
-        $context['menu'] = new Timber\Menu();
         $context['site'] = $this;
+        $context['primary_navigation'] = new Timber\Menu('primary_navigation');
+        $context['secondary_navigation'] = new Timber\Menu('secondary_navigation');
+        $context['footer_navigation'] = new Timber\Menu('footer_navigation');
+        $context['social_links'] = new Timber\Menu('social_links');
+        $context['options'] = get_fields('options');
+
         return $context;
     }
 
@@ -119,9 +127,31 @@ class StarterSite extends Timber\Site
     {
         $twig->addExtension(new Twig_Extension_StringLoader());
         $twig->addFilter(
-            'slugify',
-            new Twig_SimpleFilter('slugify', 'filter_slugify')
+          'slugify',
+          new Twig_SimpleFilter('slugify', 'filter_slugify')
         );
+
+        $twig->addFilter(
+          'lcfirst',
+          new Twig_SimpleFilter('lcfirst', 'lcfirst')
+        );
+        $twig->addFilter(
+          'facebook_share',
+          new Twig_SimpleFilter('facebook_share', 'filter_facebook_share')
+        );
+
+        $twig->addFunction(
+          new \Twig\TwigFunction('get_options', function () {
+            return get_fields('options');
+          })
+        );
+
+        if ( function_exists('rank_math_the_breadcrumbs') ) {
+          $twig->addFunction(new Timber\Twig_Function('breadcrumb', 'rank_math_the_breadcrumbs'));
+        } else {
+          $twig->addFunction(new Timber\Twig_Function('breadcrumb', function() { return "RankMath plugin is not installed"; } ));
+        }
+
         return $twig;
     }
 }

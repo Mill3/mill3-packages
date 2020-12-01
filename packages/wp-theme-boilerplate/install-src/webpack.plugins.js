@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import path from "path";
 import webpack from "webpack";
 import WebpackBar from "webpackbar";
@@ -29,8 +30,8 @@ export const webpackPlugins = (DEV = false) => {
       : // prod only
         [
           new MiniCssExtractPlugin({
-            filename: `css/[name].css?hash=[hash]`,
-            chunkFilename: `css/[id].css?hash=[hash]`
+            filename: "css/[name].css?hash=[hash]",
+            chunkFilename: "css/[id].[hash].css"
           }),
           new AssetsPlugin({
             path: path.resolve(PATHS.dist),

@@ -18,6 +18,7 @@ class SiteHeader {
     this.initialized = true;
     this.el = $(SELECTOR);
   }
+
   destroy() {
     this.el = null;
     this.initialized = false;

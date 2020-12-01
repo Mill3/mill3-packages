@@ -10,9 +10,9 @@ LOAD EDITOR STYLES
 function add_editor_stylesheet()
 {
     // Get CSS from assets.json
-    $editor_css = Assets\Asset_File_path('editorStyle', 'css');
+    $editor_css = Assets\Asset_File_path('editor-style', 'css');
     $css_relative = str_replace(
-        '/wp-content/themes/mill3-wp-boilerplate/',
+        '/wp-content/themes/mill3wp/',
         '',
         $editor_css
     );

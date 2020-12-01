@@ -23,11 +23,11 @@ class Divider_Walker_Nav_Menu_Edit extends Base_Divider_Walker_Nav_Menu_Edit {
 	 * @param int      $id     Not used.
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
-        // if not divider, use parent method
-        if( $item->title !== '_divider_' ) {
-            parent::start_el( $output, $item, $depth, $args, $id );
-            return;
-        }
+    // if not divider, use parent method
+    if( $item->title !== '_divider_' ) {
+      parent::start_el( $output, $item, $depth, $args, $id );
+      return;
+    }
 
 		// vars
 		$item_output = '';

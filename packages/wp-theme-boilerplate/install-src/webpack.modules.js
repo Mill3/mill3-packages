@@ -49,7 +49,7 @@ export const webpackModules = (DEV = false) => {
                 interlaced: false
               },
               pngquant: {
-                quality: `65-90`,
+                quality: [0.6, 1],
                 speed: 4
               },
               optipng: {

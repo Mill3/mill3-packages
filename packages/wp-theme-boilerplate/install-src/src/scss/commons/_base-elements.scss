@@ -20,47 +20,6 @@ h6,
   line-height: line-height("base");
 }
 
-// responsive typography
-/*
-@include media-breakpoint-down(md) {
-  .fz-6xl {
-    font-size: 100px;
-  }
-  .fz-5xl {
-    font-size: 50px;
-  }
-  h1,
-  .fz-4xl {
-    font-size: 40px;
-  }
-  h2,
-  .fz-3xl {
-    font-size: 30px;
-  }
-  h3,
-  .fz-2xl {
-    font-size: 27px;
-  }
-  h4,
-  .fz-xl {
-    font-size: 20px;
-  }
-  h5,
-  .fz-lg,
-  .fz-base {
-    font-size: 18px;
-  }
-  h6,
-  .fz-sm {
-    font-size: 16px;
-  }
-}
-*/
-
-.list-none {
-  list-style: none;
-}
-
 a {
   color: currentColor;
 }

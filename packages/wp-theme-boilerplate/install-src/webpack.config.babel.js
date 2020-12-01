@@ -37,9 +37,9 @@ const config = {
       "@modules": path.resolve(SRC_PATH, `js/modules/`),
       "@ui": path.resolve(SRC_PATH, `js/ui/`),
       "@utils": path.resolve(SRC_PATH, `js/utils/`),
+      "@core": path.resolve(SRC_PATH, `js/core/`),
       "@components": path.resolve(SRC_PATH, `js/components/`),
       "@controllers": path.resolve(SRC_PATH, `js/controllers/`),
-      "@core": path.resolve(SRC_PATH, `js/core/`),
       "@transitions": path.resolve(SRC_PATH, `js/transitions`),
       "@views": path.resolve(SRC_PATH, `js/views/`)
     }
@@ -48,12 +48,15 @@ const config = {
   // main entries
   entry: {
     app: PATHS.app,
-    editorStyle: path.join(PATHS.scss, `Editor-style.scss`)
+    style: path.join(PATHS.scss, `App.scss`),
+    "editor-style": path.join(PATHS.scss, `editor-style.scss`),
+    acfPreview: path.join(PATHS.scss, `ACF-preview.scss`)
   },
 
   output: {
     path: PATHS.dist,
     filename: DEV ? `js/[name].bundle.js` : `js/[name].[hash].bundle.js`,
+    chunkFilename: `js/[name].[hash].bundle.js`,
     publicPath: DEV ? `http://localhost:${SERVER_PORT}/` : PATHS.public
   },
 

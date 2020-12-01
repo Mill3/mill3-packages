@@ -1,42 +1,43 @@
 {% block html_head_container %}
-
-{% include 'html-header.twig' %}
-	{% block head %}
-	{% endblock %}
-	</head>
+  {% include 'html-header.twig' %}
+	{% block head %}{% endblock %}
+</head>
 {% endblock %}
 
-	<body class="{{body_class}}" data-template="base.twig">
+<body class="{{ body_class }} {% block body_extra_class %}{% endblock %}" data-template="base.twig" data-ui="body">
 
-		<div data-barba="wrapper" class="position-relative z-0">
-			<div data-barba="container" data-barba-namespace="{{ function('BienJoue\\Barba\\barba_namespace') }}">
-				<div data-scroll-container>
-					{% block header %}
-						{% include 'site-header.twig' %}
-						{% include 'site-nav.twig' %}
-					{% endblock %}
+  {% include 'site-loader.twig' %}
+  {% include 'site-transition.twig' %}
 
-					<main role="main">
-						<section class="{{sidebar_class}}">
-							{% block content %}
-								Sorry, no content
-							{% endblock %}
+  <div data-barba="wrapper" class="position-relative z-0">
+    <div data-barba="container" data-barba-namespace="default-transition" data-ui="site-scroll,locomotive-scroll-vimeo" data-scroll-container>
 
-							{% if sidebar %}
-								<aside class="layout-sidebar">
-									{{sidebar}}
-								</aside>
-							{% endif %}
-						</section>
-					</main>
+      {% block header %}
+        {% include 'site-header.twig' %}
+        {% include 'site-nav.twig' %}
+      {% endblock %}
 
-					{% block footer %}
-						{% include 'site-footer.twig' %}
-					{% endblock %}
-				</div>
-			</div>
-		</div>
+      <main role="main {{sidebar_class}}">
+        {% block content %}
+          Sorry, no content :(
+        {% endblock %}
 
-		{{ function('wp_footer') }}
-	</body>
+        {% if sidebar %}
+          <aside class="layout-sidebar">
+            {{sidebar}}
+          </aside>
+        {% endif %}
+      </main>
+
+      {% block footer %}
+        {% include 'site-footer.twig' %}
+      {% endblock %}
+
+      {% include 'partial/site-search.twig' %}
+
+    </div>
+  </div>
+
+  {{ function('wp_footer') }}
+</body>
 </html>

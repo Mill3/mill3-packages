@@ -77,6 +77,22 @@ const Browser = () => {
   };
 };
 
+// build a 'comparator' object for various comparison checks
+const comparator = {
+  "<": function(a, b) {
+    return a < b;
+  },
+  "<=": function(a, b) {
+    return a <= b;
+  },
+  ">": function(a, b) {
+    return a > b;
+  },
+  ">=": function(a, b) {
+    return a >= b;
+  }
+};
+
 // helper function which compares a version to a range
 const compareVersion = (version, range) => {
   const string = range + "";

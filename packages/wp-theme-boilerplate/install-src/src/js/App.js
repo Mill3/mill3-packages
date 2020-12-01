@@ -1,16 +1,22 @@
+/* eslint-disable object-shorthand */
+/* eslint-disable no-undef */
+
 import barba from "@barba/core";
 import domready from "domready";
 
 import "@core/barba";
-import { actions as moduleActions } from "@modules";
+import BarbaWebpackChunks from "@core/barba.webpack-chunks";
 import transitions from "@transitions";
 import views from "@views";
-import SiteHeader from "@ui/SiteHeader";
-import SiteNav from "@ui/SiteNav";
-import SiteScroll from "@ui/SiteScroll";
 
-// import main styles
-import "../scss/App.scss";
+// import main styles in dev mode only
+if (process.env.NODE_ENV === "development") {
+  import("../scss/App.scss");
+  import("../scss/debug/index.scss");
+}
+
+const BarbaWebpackChunksInstance = new BarbaWebpackChunks();
+barba.use(BarbaWebpackChunksInstance);
 
 /*
  * Main app
@@ -21,49 +27,7 @@ class App {
   }
 
   init() {
-    // init ui
-    this.siteHeader = new SiteHeader(false);
-    this.siteNav = new SiteNav(false);
-    //this.siteScroll = new SiteScroll(false);
-
-    // triggered before leave animation
-    barba.hooks.beforeLeave(() => {
-      moduleActions("stop");
-
-      //this.siteScroll.stop();
-      this.siteNav.close();
-    });
-
-    // triggered after leave transition
-    barba.hooks.afterLeave(() => {
-      moduleActions("destroy");
-
-      this.siteHeader.destroy();
-      this.siteNav.destroy();
-    });
-
-    // triggered just before once transition
-    barba.hooks.once(() => {
-      // init modules
-      moduleActions("init");
-
-      this.siteHeader.init();
-      this.siteNav.init();
-      //this.siteScroll.init();
-    });
-
-    // triggered just before enter transition
-    barba.hooks.enter(() => {
-      // destroy previous instance of scroller
-      this.siteScroll.destroy();
-
-      // init modules
-      moduleActions("init");
-
-      this.siteHeader.init();
-      this.siteNav.init();
-      //this.siteScroll.init();
-    });
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
     // init barba
     barba.init({
@@ -71,7 +35,20 @@ class App {
       logLevel: 4,
       sync: false,
       timeout: 5000,
-      prevent: ({ el }) => (hasAdminBar() ? true : el.classList && el.classList.contains("ab-item")),
+      prevent: ({ el }) => {
+        if (
+          /.pdf/.test(el.href.toLowerCase()) ||
+          /.jpg/.test(el.href.toLowerCase()) ||
+          /.png/.test(el.href.toLowerCase()) ||
+          /.gif/.test(el.href.toLowerCase())
+        ) {
+          return true;
+        }
+
+        if (el.classList && el.classList.contains("ais-Pagination-link")) {
+          return true;
+        }
+      },
       transitions: transitions,
       views: views
     });

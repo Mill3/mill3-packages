@@ -17,9 +17,8 @@ function resize(event) {
 }
 
 */
-//import is from 'is_js';
 
-import { on, off } from "../listener";
+import { on, off } from "./listener";
 import Throttle from "./throttle";
 
 const ResizeOrientation = (cb, delay = 200, onlyAtEnd = false) => {
