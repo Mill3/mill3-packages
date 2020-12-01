@@ -17,40 +17,40 @@
 
   h1 {
     font-size: heading("h1");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
   h2 {
     font-size: heading("h2");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
   h3 {
     font-size: heading("h3");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
   h4 {
     font-size: heading("h4");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
   h5 {
     font-size: heading("h5");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
   h6 {
     font-size: heading("h6");
-    margin-bottom: spacer("base");
+    //margin-bottom: spacer("base");
   }
 
-  p {
-    margin-bottom: spacer("base");
-  }
+  //p {
+  //margin-bottom: spacer("base");
+  //}
 
-  ul,
-  ol {
-    margin-bottom: spacer("base");
-  }
+  //ul,
+  //ol {
+  //margin-bottom: spacer("base");
+  //}
 }

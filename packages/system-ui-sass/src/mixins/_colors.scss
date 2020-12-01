@@ -9,7 +9,6 @@
 
 /// color-classes
 @mixin color-classes($colors) {
-
   @each $color, $value in $colors {
     .#{$color} {
       color: var(--#{$color});
@@ -18,7 +17,6 @@
       background-color: var(--#{$color});
     }
   }
-
 }
 
 @mixin text-contrast($n) {

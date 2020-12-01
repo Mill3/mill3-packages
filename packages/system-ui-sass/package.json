@@ -15,8 +15,7 @@
     "@storybook/html": "^5.3.12",
     "babel-loader": "^8.0.6",
     "chalk": "^3.0.0",
-    "node-sass": "^4.13.1",
-    "sass-convert": "^0.5.2"
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "build": "export NODE_ENV=production && node build.js",
