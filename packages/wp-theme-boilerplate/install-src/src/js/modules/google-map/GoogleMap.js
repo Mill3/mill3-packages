@@ -1,6 +1,6 @@
 import loadGoogleMapsApi from "load-google-maps-api";
 
-const API_KEY = "AIzaSyC5NQZZaLVwQxETeHylQ4jPslpyZxaKpc4";
+const API_KEY = "XXXXXX";
 const DEFAULT_OPTIONS = {
   zoom: 16,
   markers: null
