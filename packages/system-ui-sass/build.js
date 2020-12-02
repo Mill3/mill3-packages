@@ -19,7 +19,6 @@ const PATHS = {
 
 // load theme file
 const theme = require(PATHS["theme"]);
-console.log('theme:', theme)
 
 // Read main SCSS content
 fs.readFile(PATHS[`main`], (err, data) => {
