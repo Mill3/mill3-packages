@@ -3,20 +3,21 @@
 
 # MILL3-packages : @barba/scripts
 
-TODO: what it does
+Add new scripts, both external and inlined, during Barba.js transition. 
+A must use if you use Gravity Form in your Wordpress project.
 
 ## Install
 
 Using npm:
 
 ```sh
-npm install --save-dev @barba/scripts
+npm install --save @mill3-packages/barba-scripts
 ```
 
 or using yarn:
 
 ```sh
-yarn add @barba/scripts --dev
+yarn add @mill3-packages/barba-scripts
 ```
 
 ## How to use
@@ -24,7 +25,7 @@ yarn add @barba/scripts --dev
 First, import script in your file where you also init Barba.
 
 ```js
-import scripts from "@mill3-packages/barba-scripts/dist";
+import scripts from "@mill3-packages/barba-scripts";
 ```
 
 Then just before your main Barba init call, `use()` this script.
