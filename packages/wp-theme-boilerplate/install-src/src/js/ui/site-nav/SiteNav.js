@@ -1,8 +1,5 @@
-import anime from "animejs";
-
-import { $, $$, body, rect } from "@utils/dom";
+import { $, $$, body } from "@utils/dom";
 import { on, off } from "@utils/listener";
-import Viewport from "@utils/viewport";
 
 export const SELECTOR = `[data-site-nav]`;
 export const CLASSNAME = "--js-site-nav-opened";
@@ -27,7 +24,7 @@ class SiteNav {
 
     this.siteHeader = $(".site-header");
     this.el = $(SELECTOR);
-    this.triggers = [...$$(`[aria-controls="#${this.el.id}"]`)];
+    this.triggers = [...$$(`[aria-controls="${this.el.id}"]`)];
 
     this._bindEvents();
   }
