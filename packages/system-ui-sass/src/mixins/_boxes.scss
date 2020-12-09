@@ -1,30 +1,44 @@
+@use "sass:list";
+
 /// generate-boxes
 @mixin generate-boxes($boxes) {
+  $selectors: ();
+
+  // box basis
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+      .box#{$infix} {
+        display: block;
+        position: relative;
+
+        &:before {
+          content: "";
+          display: block;
+        }
+
+        > .box-content {
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 2;
+        }
+      }
+    }
+  }
+
   // Loop over each breakpoint
   @each $breakpoint in map-keys($grid-breakpoints) {
     @include media-breakpoint-up($breakpoint) {
       $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
       @each $key, $value in $boxes {
-        .box#{$infix}-#{$key} {
-          display: block;
-          position: relative;
-
-          &:before {
-            content: "";
-            display: block;
-            padding-top: $value;
-          }
-
-          > .box-content {
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2;
-          }
+        .box#{$infix}-#{$key}:before {
+          padding-top: $value;
         }
       }
     }

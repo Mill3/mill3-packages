@@ -11,9 +11,9 @@
 /// @name .box-[size]
 ///
 /// @example
-/// <figure class="box-square"><picture class="box-content">[box content starts here]</picture></figure>
+/// <figure class="box box-square"><picture class="box-content">[box content starts here]</picture></figure>
 
 // note: keep this line below for SassDoc
-// .box-[size] { ... }
+// .box.box-[size] { ... }
 
 @include generate-boxes($boxes);
