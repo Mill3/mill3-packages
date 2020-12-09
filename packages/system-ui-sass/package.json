@@ -28,7 +28,7 @@
     "build": "export NODE_ENV=production && node build.js",
     "prettier": "prettier ./src/**/*.scss --write",
     "test-webpack": "webpack --config ./tests/test.webpack.babel.js",
-    "storybook-start": "node copy-theme-to-es6.js && start-storybook",
+    "storybook-start": "node storybook-watch",
     "storybook-build": "node copy-theme-to-es6.js && build-storybook"
   },
   "bin": {
