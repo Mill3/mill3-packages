@@ -41,10 +41,15 @@ fs.readFile(PATHS[`main`], (err, data) => {
     function(err, result) {
       if (!err) {
         fs.writeFile(PATHS[`dist`], result.css, function(fsErr) {
-          if (!fsErr)
+          if (!fsErr) {
+            const stats = fs.statSync(PATHS[`dist`]);
+            const size = stats.size / 1024;
+            const kb = Math.round((size + Number.EPSILON) * 100) / 100;
+
             console.log(
-              `${chalk.green("SUCCESS!")} ${OUTPUT_FILENAME} file generated!`
+              `${chalk.green("SUCCESS!")} ${OUTPUT_FILENAME} file generated! ${chalk.yellow(`${kb}kb`)}`
             );
+          }
           else
             console.log(
               `${chalk.red(
