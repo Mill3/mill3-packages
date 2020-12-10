@@ -21,23 +21,22 @@ function setup()
         'social_links' => __('Liens résaux sociaux', 'mill3wp')
     ]);
 
+    // Enable features
+    //add_theme_support('post-formats', array('aside', 'gallery'));
+    add_theme_support('post-thumbnails');
+    add_theme_support('title-tag');
+    add_theme_support('menus');
+
     // Enable post thumbnails
     // http://codex.wordpress.org/Post_Thumbnails
     // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
     // http://codex.wordpress.org/Function_Reference/add_image_size
-    add_theme_support('post-thumbnails');
     add_image_size('pixel', 100);
     add_image_size('small', 576);
     add_image_size('large', 1024);
     add_image_size('largest', 1800);
     add_image_size('largest-retina', 2800);
     add_image_size('full', '');
-
-    // Enable features
-    add_theme_support('post-formats');
-    add_theme_support('post-thumbnails');
-    add_theme_support('title-tag');
-    add_theme_support('menus');
 
     // Enable HTML5 markup support
     // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
