@@ -124,6 +124,7 @@ const theme = {
     xl: "1200px",
     xxl: "1441px"
   },
+  "list-type": ["none"],
   gutter: "18px",
   spacers: {
     auto: "auto",
