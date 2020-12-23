@@ -15,6 +15,10 @@ export const cover = (width, height, ratio) => {
   };
 };
 
+export const hypothenuse = (x1, y1, x2, y2) => {
+  return Math.hypot(Math.abs(x2 - x1), Math.abs(y2 - y1))
+}
+
 /**
  * lerp(start, end, multiplier);
  * lerp(0, 100, 0.12);
@@ -29,6 +33,7 @@ export const limit = (min, max, value) => Math.max(min, Math.min(max, value));
 
 export default {
   cover,
+  hypothenuse,
   lerp,
   limit
 };

@@ -25,7 +25,7 @@ function mmCb(posX, posY, event) {
 */
 import { on, off } from "./listener";
 import { $ } from "./dom";
-import mobile from "./mobile";
+import { mobile } from "./mobile";
 
 const EVENT_TYPE = mobile ? "touchmove" : "mousemove";
 

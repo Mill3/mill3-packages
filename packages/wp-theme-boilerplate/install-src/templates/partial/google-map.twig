@@ -12,6 +12,8 @@
 {% set maptype = maptype|default(null) %}
 {% set language = language|default(null) %}
 {% set region = region|default(null) %}
+{% set marker = marker|default(null) %}
+{% set style = style|default(null) %}
 
 
 {% set ratio = (width / height)|default(1) %}
@@ -63,8 +65,16 @@
   {% set options = options|merge(['region=' ~ scale]) %}
 {% endif %}
 
-<img 
-  src="https://maps.googleapis.com/maps/api/staticmap?{{ options|join('&') }}" 
+{% if marker %}
+  {% set options = options|merge(['markers=' ~ marker]) %}
+{% endif %}
+
+{% if style %}
+  {% set options = options|merge(['style=' ~ style]) %}
+{% endif %}
+
+<img
+  src="https://maps.googleapis.com/maps/api/staticmap?{{ options|join('&') }}"
   alt="{{ alt }}"
   width="{{ width }}"
   height="{{ height }}"

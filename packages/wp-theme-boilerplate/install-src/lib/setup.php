@@ -101,7 +101,7 @@ function assets()
     } else {
         wp_enqueue_style(
             'mill3wp/css',
-            Assets\Asset_File_path('app', 'css'),
+            Assets\Asset_File_path('style', 'css'),
             false,
             null
         );

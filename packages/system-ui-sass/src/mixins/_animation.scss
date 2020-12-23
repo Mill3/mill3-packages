@@ -1,0 +1,3 @@
+@function duration($frames: 1, $fps: 24) {
+    @return #{strip-unit($frames / $fps)}s;
+}

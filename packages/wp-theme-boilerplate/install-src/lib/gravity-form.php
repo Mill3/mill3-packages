@@ -54,6 +54,8 @@ function enqueue_gf_scripts() {
   if(!$content_rows) return;
 
   foreach ($content_rows as $row) {
+    if( !array_key_exists("acf_fc_layout", $row) ) continue;
+
     $layout = $row["acf_fc_layout"];
     if( $layout === "pb_row_form" AND $row["gravity_form"] ) {
       gravity_form_enqueue_scripts($row["gravity_form"], true);

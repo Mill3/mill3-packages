@@ -49,7 +49,7 @@ const config = {
   entry: {
     app: PATHS.app,
     style: path.join(PATHS.scss, `App.scss`),
-    "editor-style": path.join(PATHS.scss, `editor-style.scss`),
+    "editor-style": path.join(PATHS.scss, `Editor-style.scss`),
     acfPreview: path.join(PATHS.scss, `ACF-preview.scss`)
   },
 
