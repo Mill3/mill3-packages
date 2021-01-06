@@ -59,7 +59,7 @@ class SiteNav {
     this.state.dispatch("SITE_NAV", this._opened);
 
     // inform <body> that SiteNav is opened
-    document.body.classList.add(CLASSNAME);
+    body.classList.add(CLASSNAME);
 
     // stop page scroll
     this.emitter.emit("SiteScroll.stop");
