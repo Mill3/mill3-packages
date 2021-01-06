@@ -90,8 +90,8 @@ class Theme_CustomTaxonomies
                 ),
                 // Control the slugs used for this taxonomy
                 'rewrite' => array(
-                    'slug' => 'dummy', // This controls the base slug that will display before each term
-                    'with_front' => true, // Don't display the category base before
+                    'slug' => 'dummy', // This controls the base slug that will display before each term (do not add / at the end of you slug)
+                    'with_front' => false, // Don't display the category base before
                     'hierarchical' => true // This will allow URL's like "/section/cat-name/cat-slug/"
                 )
             )
