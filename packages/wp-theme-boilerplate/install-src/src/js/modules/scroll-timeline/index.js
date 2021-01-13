@@ -6,8 +6,8 @@
  * Add data-timeline="your-animejs-animation-object" (must be JSON encode & html escaped)
  *
  * Optionally add data-scroll & data-scroll-call="timeline" to your HTML element.
- * If you emit data-scroll or data-scroll-call, they will be inserted automatically.
- * If you provide them, it will be faster for mobile device.diff
+ * If you omit data-scroll or data-scroll-call, they will be inserted automatically.
+ * If you provide them, it will be faster for mobile device.
  *
  * Example:
  * <div
@@ -15,7 +15,7 @@
  *  data-scroll
  *  data-scroll-call="timeline"
  *  data-module="scroll-timeline"
- *  data-timeline="{{ {y: -100, scale: [1, 1.5], opacity: [1, 0.5]}|json_encode|escape('html_attr') }}"
+ *  data-timeline="{{ {translateY: -100, scale: [1, 1.5], opacity: [1, 0.5]}|json_encode|escape('html_attr') }}"
  * >
  *  <img src="image-path.jpg" class="image-as-background" />
  * </div>
