@@ -55,7 +55,7 @@ class Theme_CustomPostTypes {
    * @method run
    */
   public function run() {
-    $this->texts();
+    $this->dummy();
   }
 
   /**
@@ -69,31 +69,31 @@ class Theme_CustomPostTypes {
   }
 
   /**
-   * Register 'text' post-type, serves as static texts accross the site
+   * Register 'dummy' post-type, serves as static texts accross the site
    *
    * @method texts
    */
-  public function texts() {
+  public function dummy() {
     $labels = array(
-        'name'                => __("Texts"),
-        'singular_name'       => __("Text"),
-        'menu_name'           => __( 'Texts', $this->theme_domain ),
-        'parent_item_colon'   => __( 'Parent Text', $this->theme_domain ),
-        'all_items'           => __( 'All Texts', $this->theme_domain ),
-        'view_item'           => __( 'View Text', $this->theme_domain ),
-        'add_new_item'        => __( 'Add New Text', $this->theme_domain ),
+        'name'                => __("Dummies"),
+        'singular_name'       => __("Dummy"),
+        'menu_name'           => __( 'Dummy', $this->theme_domain ),
+        'parent_item_colon'   => __( 'Parent Dummy', $this->theme_domain ),
+        'all_items'           => __( 'All Dummies', $this->theme_domain ),
+        'view_item'           => __( 'View Dummy', $this->theme_domain ),
+        'add_new_item'        => __( 'Add New Dummy', $this->theme_domain ),
         'add_new'             => __( 'Add New', $this->theme_domain ),
-        'edit_item'           => __( 'Edit Text', $this->theme_domain ),
-        'update_item'         => __( 'Update Text', $this->theme_domain ),
-        'search_items'        => __( 'Search Text', $this->theme_domain ),
+        'edit_item'           => __( 'Edit Dummy', $this->theme_domain ),
+        'update_item'         => __( 'Update Dummy', $this->theme_domain ),
+        'search_items'        => __( 'Search Dummies', $this->theme_domain ),
         'not_found'           => __( 'Not Found', $this->theme_domain ),
         'not_found_in_trash'  => __( 'Not found in Trash', $this->theme_domain ),
     );
 
     // Set other options for Custom Post Type
     $args = array(
-        'label'               => __( 'Texts', $this->theme_domain ),
-        'description'         => __( 'Text details', $this->theme_domain ),
+        'label'               => __( 'Dummies', $this->theme_domain ),
+        'description'         => __( 'Dummy details', $this->theme_domain ),
         'labels'              => $labels,
         'supports'            => array( 'title', 'editor', 'thumbnail' ),
         'hierarchical'        => false,
@@ -109,11 +109,11 @@ class Theme_CustomPostTypes {
         'publicly_queryable'  => false,
         'capability_type'     => 'post',
         'menu_icon'           => 'dashicons-editor-alignleft',
-        'rewrite'             => array('slug' => 'Texts')
+        'rewrite'             => array('slug' => 'dummies')
     );
 
-    // Register
-    register_post_type( 'texts', $args );
+    // Register, always use singular
+    register_post_type( 'dummy', $args );
   }
 
 }

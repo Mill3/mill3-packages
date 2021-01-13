@@ -61,7 +61,8 @@ $includes = [
     'lib/taxonomy-queries.php',
     'lib/titles.php',
     'lib/utils.php',
-    //'lib/yoast.php',
+    // model class per post-type
+    'lib/models/dummy.php',
 ];
 
 foreach ($includes as $file) {
@@ -114,7 +115,9 @@ class StarterSite extends Timber\Site
         $context['secondary_navigation'] = new Timber\Menu('secondary_navigation');
         $context['footer_navigation'] = new Timber\Menu('footer_navigation');
         $context['social_links'] = new Timber\Menu('social_links');
-        $context['options'] = get_fields('options');
+        if ( \function_exists('get_fields') ) {
+          $context['options'] = get_fields('options');
+        }
 
         return $context;
     }
