@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const { name, version } = require("./package.json");
+const { spawn } = require("child_process");
+const path = require("path");
+const { program } = require('commander');
+const figlet = require("figlet");
+const chalk = require("chalk");
+
+const PROCESS_PATH = path.join(process.cwd());
+const ROOT_PATH = path.join(__dirname);
+const CMD_PATH = path.join(ROOT_PATH, 'cmd');
+
+// console.log('CLI_VERSION:', version)
+
+program
+  .command('version')
+  .description('Display current version')
+  .action(() => {
+    console.log(chalk.blue(`${name} : version ${version}`));
+  });
+
+program
+  .command('wp-theme')
+  .description('Install our Wordpress boilerplate theme in a target directory')
+  .action(() => {
+    require(`${CMD_PATH}/theme`);
+  });
+
+program
+  .command('wp-docker')
+  .description('Install our Wordpress Docker config in a target directory')
+  .action(() => {
+    require(`${CMD_PATH}/docker`);
+  });
+
+program
+  .command('dev')
+  .description('start Webpack dev server')
+  .action(() => {
+    const cmd = spawn(`${PROCESS_PATH}/node_modules/.bin/webpack`, ['serve'], {stdio: "inherit"});
+  });
+
+program
+  .command('build')
+  .description('Build static files with Webpack')
+  .action(() => {
+    const cmd = spawn(`${PROCESS_PATH}/node_modules/.bin/webpack`, ['--config=webpack.config.babel.js', '--mode=production'], {stdio: "inherit"});
+  });
+
+
+// parse program argv
+program.parse(process.argv);

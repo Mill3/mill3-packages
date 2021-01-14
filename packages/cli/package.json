@@ -1,0 +1,33 @@
+{
+  "name": "mill3-cli",
+  "version": "0.0.1",
+  "description": "Our commands line tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mill3 Studio",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Mill3/mill3-packages.git"
+  },
+  "keywords": [
+    "cli",
+    "wordpress"
+  ],
+  "bugs": {
+    "url": "https://github.com/Mill3/mill3-packages/issues"
+  },
+  "bin": {
+    "mill3-cli": "./cli"
+  },
+  "homepage": "https://github.com/Mill3/mill3-packages#readme",
+  "dependencies": {
+    "args": "^5.0.1",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.1",
+    "figlet": "^1.5.0",
+    "prompts": "^2.4.0"
+  }
+}
