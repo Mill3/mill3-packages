@@ -1,7 +1,7 @@
 {
-  "name": "mill3-cli",
+  "name": "@mill3-packages/cli",
   "version": "0.0.2",
-  "description": "Our commands line tool.",
+  "description": "Our command line tool.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
