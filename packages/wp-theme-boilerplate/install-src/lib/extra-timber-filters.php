@@ -8,13 +8,13 @@ function filter_embeded_settings($iframe, $params = array())
 
     // add extra params to iframe src
     $default_params = array(
-      'controls' => 1,
-      'autopause' => 1,
-      'autoplay' => 0,
-      'color' => 'ffffff',
-      'api' => 1,
-      'responsive' => 1,
-      'playsinline' => 1,
+        'controls' => 1,
+        'autopause' => 1,
+        'autoplay' => 0,
+        'color' => 'ffffff',
+        'api' => 1,
+        'responsive' => 1,
+        'playsinline' => 1,
     );
     $params = array_merge($default_params, $params);
 

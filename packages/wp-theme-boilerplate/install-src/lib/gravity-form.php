@@ -5,7 +5,7 @@ use Timber;
 
 // change default error message
 function change_message( $message, $form ) {
-  return "<div class='validation_error'>" . __("We can't process your message. Please review the fields highlighted in red below.", "tdp") . "</div>";
+    return "<div class='validation_error'>" . __("We can't process your message. Please review the fields highlighted in red below.", "tdp") . "</div>";
 }
 
 add_filter( 'gform_validation_message', __NAMESPACE__ . '\\change_message', 10, 2 );
@@ -13,7 +13,7 @@ add_filter( 'gform_validation_message', __NAMESPACE__ . '\\change_message', 10, 
 
 // replace spinner URL
 function spinner_url($image_src, $form) {
-  return get_stylesheet_directory_uri() . '/src/images/spinner.gif';
+    return get_stylesheet_directory_uri() . '/src/images/spinner.gif';
 }
 
 //add_filter( 'gform_ajax_spinner_url', __NAMESPACE__ . '\\spinner_url', 10, 2 );
@@ -22,16 +22,16 @@ function spinner_url($image_src, $form) {
 
 // https://docs.gravityforms.com/gform_submit_button/
 function form_submit_button( $button, $form ) {
-  if( $form['button']['type'] !== 'text' ) return $button;
+    if( $form['button']['type'] !== 'text' ) return $button;
 
-  $data = array(
-    'id' => "gform_submit_button_{$form['id']}",
-    'title' => $form['button']['text'],
-    'classname' => 'gsubmit',
-    'attributes' => array('type="submit"')
-  );
+    $data = array(
+        'id' => "gform_submit_button_{$form['id']}",
+        'title' => $form['button']['text'],
+        'classname' => 'gsubmit',
+        'attributes' => array('type="submit"')
+    );
 
-  return Timber::compile('partial/button.twig', $data);
+    return Timber::compile('partial/button.twig', $data);
 }
 
 add_filter('gform_submit_button', __NAMESPACE__ . '\\form_submit_button', 10, 2);
@@ -43,24 +43,24 @@ add_filter('gform_submit_button', __NAMESPACE__ . '\\form_submit_button', 10, 2)
  * If so, include gf scripts in wp_head
  */
 function enqueue_gf_scripts() {
-  global $post;
+    global $post;
 
-  try {
-    $content_rows = get_field('page_builder', $post);
-  } catch (\Throwable $th) {
-    $content_rows = null;
-  }
-
-  if(!$content_rows) return;
-
-  foreach ($content_rows as $row) {
-    if( !array_key_exists("acf_fc_layout", $row) ) continue;
-
-    $layout = $row["acf_fc_layout"];
-    if( $layout === "pb_row_form" AND $row["gravity_form"] ) {
-      gravity_form_enqueue_scripts($row["gravity_form"], true);
+    try {
+        $content_rows = get_field('page_builder', $post);
+    } catch (\Throwable $th) {
+        $content_rows = null;
     }
-  }
+
+    if(!$content_rows) return;
+
+    foreach ($content_rows as $row) {
+        if( !array_key_exists("acf_fc_layout", $row) ) continue;
+
+        $layout = $row["acf_fc_layout"];
+        if( $layout === "pb_row_form" AND $row["gravity_form"] ) {
+            gravity_form_enqueue_scripts($row["gravity_form"], true);
+        }
+    }
 }
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\enqueue_gf_scripts', 100);

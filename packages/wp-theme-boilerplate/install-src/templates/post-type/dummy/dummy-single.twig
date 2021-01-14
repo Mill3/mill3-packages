@@ -14,6 +14,9 @@
       By <a href="{{post.author.path}}">{{ post.author.name }}</a> / {{ post.date }}
     </p>
 
+    {# custom attribute from model #}
+    {{ post.foo }}
+
     <div class="post-single__body">
       {{ post.content }}
     </div>

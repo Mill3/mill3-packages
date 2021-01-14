@@ -14,7 +14,7 @@ namespace Mill3WP\Menu;
  */
 function divider_menu_meta_box( $object ) {
     add_meta_box('custom-menu-metabox', __( 'Separator' ), __NAMESPACE__ . '\\divider_meta_box_html', 'nav-menus', 'side', 'low');
-	return $object;
+    return $object;
 }
 
 /**
@@ -23,22 +23,22 @@ function divider_menu_meta_box( $object ) {
 function divider_meta_box_html() {
     global $_nav_menu_placeholder, $nav_menu_selected_id;
 
-	$_nav_menu_placeholder = 0 > $_nav_menu_placeholder ? $_nav_menu_placeholder - 1 : -1;
+    $_nav_menu_placeholder = 0 > $_nav_menu_placeholder ? $_nav_menu_placeholder - 1 : -1;
 
-	?>
-	<div class="dividerdiv" id="dividerdiv">
-		<input type="hidden" value="divider" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" />
-		<input type="hidden" value="#" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-url]" />
+    ?>
+    <div class="dividerdiv" id="dividerdiv">
+        <input type="hidden" value="divider" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-type]" />
+        <input type="hidden" value="#" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-url]" />
         <input type="hidden" value="-" name="menu-item[<?php echo $_nav_menu_placeholder; ?>][menu-item-title]" />
 
-		<p class="button-controls wp-clearfix">
-			<span class="add-to-menu">
-				<input type="submit"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-divider" />
-				<span class="spinner"></span>
-			</span>
-		</p>
+        <p class="button-controls wp-clearfix">
+            <span class="add-to-menu">
+                <input type="submit"<?php wp_nav_menu_disabled_check( $nav_menu_selected_id ); ?> class="button right" value="<?php esc_attr_e( 'Add to Menu' ); ?>" name="add-divider" />
+                <span class="spinner"></span>
+            </span>
+        </p>
 
-	</div><!-- /.customlinkdiv -->
+    </div><!-- /.customlinkdiv -->
 
     <script type="text/javascript">
         (function($) {
@@ -106,7 +106,7 @@ function divider_meta_box_html() {
             display: none;
         }
     </style>
-	<?php
+    <?php
 }
 
 /**

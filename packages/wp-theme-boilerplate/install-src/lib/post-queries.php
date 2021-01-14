@@ -126,10 +126,10 @@ add_filter('timber/twig', __NAMESPACE__ . '\\add_to_twig');
 function add_to_twig($twig)
 {
     $twig->addFunction(
-      new \Twig\TwigFunction('get_posts', function ($post_type = 'post') {
-          $query = new \Mill3WP\PostQueries\Theme_PostQueries();
-          return $query->get_posts($post_type);
-      })
+        new \Twig\TwigFunction('get_posts', function ($post_type = 'post') {
+            $query = new \Mill3WP\PostQueries\Theme_PostQueries();
+            return $query->get_posts($post_type);
+        })
     );
 
     return $twig;
