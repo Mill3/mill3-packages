@@ -15,9 +15,14 @@ const PROCESS_PATH = path.join(process.cwd());
 let cancelled = false;
 
 const REPOSITORY_URL = "git@github.com:Mill3/wordpress-docker-boilerplate.git";
+const DEFAULT_DOCKER_PORT_WEB = 8000;
+const DEFAULT_DOCKER_PORT_PHPMYADMIN = 8001;
+const DEFAULT_DOCKER_MASTER_PATH = '/Users/myuser/wp-install-root/';
 
 // defaults
 let settings = {
+  DOCKER_PORT_WEB: DEFAULT_DOCKER_PORT_WEB,
+  DOCKER_PORT_PHPMYADMIN: DEFAULT_DOCKER_PORT_PHPMYADMIN,
   INSTALL_PATH: PROCESS_PATH,
 };
 
@@ -36,6 +41,24 @@ const run = async () => {
       initial: settings["INSTALL_PATH"],
       format: val => {
         return val !== settings["INSTALL_PATH"] ? path.join(PROCESS_PATH, val) : val;
+      }
+    },
+    {
+      type: "text",
+      name: "DOCKER_PORT_WEB",
+      initial: settings["DOCKER_PORT_WEB"],
+      message: "On what port should your Docker web service run ?",
+      validate: text => {
+        return /[0-9]/.test(text) ? true : "Only numbers.";
+      }
+    },
+    {
+      type: "text",
+      name: "DOCKER_PORT_PHPMYADMIN",
+      initial: settings["DOCKER_PORT_PHPMYADMIN"],
+      message: "On what port should your PhpMyAdmin service run ?",
+      validate: text => {
+        return /[0-9]/.test(text) ? true : "Only numbers.";
       }
     },
     {
@@ -73,7 +96,7 @@ const run = async () => {
   await install();
 
   // rename to new namespace
-  // await rename();
+  await rename();
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
 };
@@ -101,6 +124,29 @@ const clone = async () => {
     console.log(chalk.green(`Step 2 : repo cloning done.`));
   }
 }
+
+const rename = async () => {
+  // regex for domain and namespace
+  var reDockerWeb = new RegExp(DEFAULT_DOCKER_PORT_WEB, "g");
+  var reDockerPhpMyAdmin = new RegExp(DEFAULT_DOCKER_PORT_PHPMYADMIN, "g");
+  var reDockerMasterPath = new RegExp(DEFAULT_DOCKER_MASTER_PATH, "g");
+
+  // replace options
+  const options = {
+    files: [`${settings["INSTALL_PATH"]}/.env`],
+    ignore: ["node_modules/**"],
+    from: [reDockerWeb, reDockerPhpMyAdmin, reDockerMasterPath],
+    to: [settings["DOCKER_PORT_WEB"], settings["DOCKER_PORT_PHPMYADMIN"], settings["INSTALL_PATH"]],
+    countMatches: true
+  };
+
+  try {
+    await replace(options);
+    console.log(chalk.green("Step 3/3 : renamed all files."));
+  } catch (err) {
+    console.error(err);
+  }
+};
 
 
 run();
