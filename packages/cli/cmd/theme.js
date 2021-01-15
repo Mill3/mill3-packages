@@ -13,7 +13,6 @@ const PROCESS_PATH = path.join(process.cwd());
 
 // holder when user is cancel Prompts
 let cancelled = false;
-// let error = false;
 
 // current values for i18n domain & php classes namespace
 const DEFAULT_THEME_DOMAIN = "mill3wp";

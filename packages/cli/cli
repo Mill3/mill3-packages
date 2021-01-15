@@ -50,4 +50,9 @@ program
 
 
 // parse program argv
-program.parse(process.argv);
+program
+  .option('-r, --repository <url>', 'Use another repository URL for checkout')
+  .option('-k, --keepgit', 'Keep .git directory?', false)
+  .parse(process.argv);
+
+
