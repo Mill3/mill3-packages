@@ -47,7 +47,8 @@ const theme = {
     end: "flex-end",
     start: "flex-start",
     between: "space-between",
-    around: "around",
+    around: "space-around",
+    evenly: 'space-evenly',
     stretch: "stretch"
   },
   "align-items": {
