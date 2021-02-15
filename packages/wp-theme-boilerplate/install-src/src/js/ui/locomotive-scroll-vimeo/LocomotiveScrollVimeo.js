@@ -1,13 +1,22 @@
-import Player from "@vimeo/player";
-
 import { $$ } from "@utils/dom";
 import { mobile } from "@utils/mobile";
 
 export const SELECTOR = `.wysiwyg iframe[src*="vimeo.com"]`;
 
+const STATUS_DESTROYED = 0;
+const STATUS_INITIALIZED = 1;
+const STATUS_STOPPED = 2;
+const STATUS_STARTED = 3;
+
+let Player;
+
 class LocomotiveScrollVimeo {
   constructor(init = false) {
     this.items = null;
+
+    this._elements = null;
+    this._promise = null;
+    this._status = STATUS_DESTROYED;
 
     init ? this.init() : null;
   }
@@ -15,20 +24,48 @@ class LocomotiveScrollVimeo {
   init() {
     if (mobile) return;
 
-    this.items = Array.from($$(SELECTOR)).map(el => new LocomotiveScrollVimeoItem(el));
+    this._elements = Array.from($$(SELECTOR));
+    if( !this._elements || this._elements.length === 0 ) return;
+
+    this._status = STATUS_INITIALIZED;
+
+    if( !Player && !this._promise ) {
+      this._promise = import("@vimeo/player");
+      this._promise.then(chunk => {
+        Player = chunk.default;
+        if( this._status < STATUS_INITIALIZED ) return;
+        
+        this._initChildren();
+        if( this._status === STATUS_STARTED ) this.start();
+      });
+      this._promise.catch(e => {
+        console.error("Error loading Vimeo Player API :", e);
+      });
+    }
+    else if( Player ) this._initChildren();
   }
 
   destroy() {
     if (this.items) this.items.forEach(el => el.destroy());
     this.items = null;
+
+    this._elements = null;
+    this._status = STATUS_DESTROYED;
   }
 
   start() {
+    this._status = STATUS_STARTED;
     if (this.items) this.items.forEach(el => el.start());
   }
 
   stop() {
     if (this.items) this.items.forEach(el => el.stop());
+    this._status = STATUS_STOPPED;
+  }
+
+  _initChildren() {
+    this.items = this._elements.map(el => new LocomotiveScrollVimeoItem(el));
+    this._elements = null;
   }
 }
 
@@ -38,7 +75,7 @@ class LocomotiveScrollVimeoItem {
     this.parent = this.el.parentNode;
 
     // just to make sure this iframe is contained in a responsive box of our own
-    if (!this.parent.classList.contains("box-content")) this.parent = null;
+    //if (!this.parent.classList.contains("box")) this.parent = null;
 
     this._onClick = this._onClick.bind(this);
     this._onPlaying = this._onPlaying.bind(this);
