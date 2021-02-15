@@ -1,6 +1,7 @@
 import { isArray, isDomNode, isHTMLCollection, isNodeList, isString } from "./is";
 
 export const html = document.documentElement;
+export const head = document.head;
 export const body = document.body;
 
 export const $ = (query, target = html) => {
@@ -41,6 +42,7 @@ export const innerDimensions = node => {
 
 export default {
   html,
+  head,
   body,
   $,
   $$,
