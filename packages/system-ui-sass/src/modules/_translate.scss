@@ -1,4 +1,0 @@
-@include generate-translate($sizes, "t", "translateY", -1);
-@include generate-translate($sizes, "b", "translateY", 1);
-@include generate-translate($sizes, "l", "translateX", -1);
-@include generate-translate($sizes, "r", "translateX", 1);
