@@ -63,8 +63,6 @@ d.push(`<p class="m-0 px-5 py-2 bg-gray-700 color-white"><em>.inline-block</em>,
 const visibilities = [];
       visibilities.push(`<p><em class="fw-500">.visibility-visible</em>: Show element</p>`);
       visibilities.push(`<p><em class="fw-500">.visibility-hidden</em>: Hide element</p>`);
-      visibilities.push(`<p><em class="fw-500">.visibility-$prefix-visible</em>: Show element from a particular breakpoint</p>`);
-      visibilities.push(`<p><em class="fw-500">.visibility-$prefix-hidden</em>: Hide element from a particular breakpoint</p>`);
 
 const pointers = [];
       pointers.push(`<p><em class="fw-500">.pointer-events-all</em>: Enable all pointer-events for this element</p>`);
@@ -72,17 +70,17 @@ const pointers = [];
 
 
 const overflows = [];
-      overflows.push(`<p><em class="fw-500">.overflow-$prefix-auto</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-$prefix-hidden</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-$prefix-visible</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-$prefix-scroll</em></p>`);
+      overflows.push(`<p><em class="fw-500">.overflow-auto</em></p>`);
+      overflows.push(`<p><em class="fw-500">.overflow-hidden</em></p>`);
+      overflows.push(`<p><em class="fw-500">.overflow-visible</em></p>`);
+      overflows.push(`<p><em class="fw-500">.overflow-scroll</em></p>`);
 
 const positions = [];
-      positions.push(`<p><em class="fw-500">.position-$prefix-static</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-$prefix-fixed</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-$prefix-relative</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-$prefix-absolute</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-$prefix-sticky</em></p>`);
+      positions.push(`<p><em class="fw-500">.position-static</em></p>`);
+      positions.push(`<p><em class="fw-500">.position-fixed</em></p>`);
+      positions.push(`<p><em class="fw-500">.position-relative</em></p>`);
+      positions.push(`<p><em class="fw-500">.position-absolute</em></p>`);
+      positions.push(`<p><em class="fw-500">.position-sticky</em></p>`);
 
 const lists = [];
       lists.push(`
@@ -97,7 +95,7 @@ const lists = [];
       </ul>`);
 
 const z = `
-  <p class="fw-700 m-0 p-0">.z-$prefix-$value</p>
+  <p class="fw-700 m-0 p-0">.z-$value</p>
   <p class="m-0 p-0">Supported values: ${Object.values(theme["z-index"]).join(", ")}</p>
 `;
 
