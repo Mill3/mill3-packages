@@ -1,11 +1,8 @@
 @include generate-variants("flex-direction", $flex-direction, "flex");
-@include generate-variants(
-  "justify-content",
-  $justify-content,
-  "justify-content"
-);
+@include generate-variants("justify-content", $justify-content, "justify-content");
 @include generate-variants("align-items", $align-items, "align-items");
 @include generate-variants("align-self", $align-self, "align-self");
+@include generate-variants("justify-self", $align-self, "justify-self");
 @include generate-variants("align-content", $align-content, "align-content");
 @include generate-variants("flex-wrap", $flex-wrap, "flex", "", true);
 @include generate-variants("flex-grow", $flex-grow, "flex-grow");

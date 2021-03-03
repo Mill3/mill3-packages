@@ -58,6 +58,13 @@ const theme = {
     center: "center",
     stretch: "stretch"
   },
+  "justify-self": {
+    baseline: "baseline",
+    end: "end",
+    start: "start",
+    center: "center",
+    stretch: "stretch"
+  },
   "flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
   "flex-grow": generateValues(0, 5),
   "flex-shrink": generateValues(0, 5),
