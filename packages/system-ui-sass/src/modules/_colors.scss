@@ -23,7 +23,3 @@
 
 @include color-classes($colors);
 
-//
-// set all native css-var
-//
-@include color-css-variables($colors);

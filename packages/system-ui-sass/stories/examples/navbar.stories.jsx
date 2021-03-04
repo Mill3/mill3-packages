@@ -17,7 +17,7 @@ export const SimpleHorizontal = () => `
     </div>
     <nav class="justify-self-end d-flex h-100 align-items-center">
       <button>Button</button>
-      <button class="d-md-none ml-2">Burger</button>
+      <button class="d-md-none ml-2 bg-transparent">🍔</button>
     </nav>
   </header>
 `
