@@ -16,7 +16,7 @@ export const VerticalResultItem = () => `
   </style>
   <article class="MyComponent d-grid bg-gray-100">
     <figure class="MyComponent__image m-0 box box-square overflow-hidden">
-      <img class="box-content w-100" src="https://images.unsplash.com/photo-1614628005755-1bcb44520bda?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="unsplash"/>
+      <img class="box-content w-100" src="https://images.unsplash.com/photo-1614679369285-a7bbf7174bd8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="unsplash"/>
     </figure>
     <footer class="py-4 px-3">
       <h3 class="fz-lg color-primary m-0">My great product</h3>
@@ -26,4 +26,31 @@ export const VerticalResultItem = () => `
       </nav>
     </footer>
   </article>
+`
+
+export const Resized = () => `
+  <div class="w-25">
+    ${VerticalResultItem()}
+  </div>
+`
+
+export const ItemsGrid = () => `
+  <style>
+  .MyResults {
+  }
+  </style>
+  <section class="px-2 px-lg-6">
+    <header class="ta-center py-8">
+      <h4 class="gray-500 mt-0 mb-3">Tag line!</h4>
+      <h1 class="heading-h2 color-primary fw-300 m-0 tt-uppercase">My great section of products!</h1>
+    </header>
+    <div class="d-grid grid-column-md-2 grid-column-lg-3 grid-gap-4">
+      ${VerticalResultItem()}
+      ${VerticalResultItem()}
+      ${VerticalResultItem()}
+      ${VerticalResultItem()}
+      ${VerticalResultItem()}
+      ${VerticalResultItem()}
+    </div>
+  </section>
 `
