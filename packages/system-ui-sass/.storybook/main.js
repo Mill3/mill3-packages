@@ -6,7 +6,9 @@ module.exports = {
     },
     {
       name: '@storybook/addon-viewport'
+    },
+    {
+      name: '@whitespace/storybook-addon-html'
     }
-
   ]
 };
