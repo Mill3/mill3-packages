@@ -14,8 +14,8 @@ export const FullViewport = () => `
       object-fit: cover;
     }
   </style>
-  <header class="MyComponent d-grid grid-column-lg-2 vh-50">
-    <aside class="h-100 order-2 order-lg-1">
+  <header class="MyComponent d-grid grid-column-lg-2 vh-lg-85">
+    <aside class="h-100 order-2 order-lg-1 overflow-hidden">
       <img class="w-100 h-100 object-fit-cover" src="https://images.unsplash.com/photo-1614736716982-20773c68c3c0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80" alt="unsplash"/>
     </aside>
     <aside class="bg-gray-300 p-5 d-grid order-1 order-lg-2">
