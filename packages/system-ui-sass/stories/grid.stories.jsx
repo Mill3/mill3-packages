@@ -43,10 +43,11 @@ export const order = () => `
   </div>
 `;
 
-export const justifySelf = Object.entries(theme["justify-self"]).map(
+export const justifySelf = () => Object.entries(theme["justify-self"]).map(
   obj => `
     <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
-      <ul class="d-grid vh-10 list-none m-0 p-0 bg-gray-200">
+      <ul class="d-grid grid-column-2 grid-gap-2 vh-10 list-none m-0 p-0 bg-gray-200">
+        <li class="bg-color-primary color-white p-2">Sibling item</li>
         <li class="bg-color-primary color-white p-2 justify-self-${obj[0]}">.justify-self-${obj[0]}</li>
       </ul>
     </div>`

@@ -7,7 +7,12 @@ export default { title: "Texts" };
 
 export const headings = () =>
   Object.entries(theme.heading)
-    .map(obj => `<${obj[0]}>Heading ${obj[0]}</${obj[0]}>`)
+    .map(obj => `<${obj[0]}>${obj[0]} default style</${obj[0]}>`)
+    .join("");
+
+export const headingClassnames = () =>
+  Object.entries(theme.heading)
+    .map(obj => `<p class='heading-${obj[0]}'>I'm a p.heading-${obj[0]}</${obj[0]}>`)
     .join("");
 
 export const fontWeights = () =>
