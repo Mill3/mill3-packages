@@ -4,13 +4,14 @@ import theme from "../theme.babel.js";
 export default { title: "Flex" };
 
 const directions = Object.values(theme["flex-direction"]).map(
-  direction => `
+  (direction) => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
+    <pre>.flex-${direction}</pre>
     <ul class="d-flex flex-${direction} list-none m-0 p-0">
-      <li class="bg-color-primary color-white p-2">.flex-${direction}</li>
-      <li class="bg-color-primary color-white p-2">.flex-${direction}</li>
-      <li class="bg-color-primary color-white p-2">.flex-${direction}</li>
-      <li class="bg-color-primary color-white p-2">.flex-${direction}</li>
+      <li class="bg-gray-400 color-white p-2 m-2">1</li>
+      <li class="bg-gray-500 color-white p-2 m-2">2</li>
+      <li class="bg-gray-600 color-white p-2 m-2">3</li>
+      <li class="bg-gray-700 color-white p-2 m-2">4</li>
     </ul>
   </div>`
 );
@@ -18,11 +19,12 @@ const directions = Object.values(theme["flex-direction"]).map(
 const justifies = Object.entries(theme["justify-content"]).map(
   obj => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
+    <pre>.justify-content-${obj[0]}</pre>
     <ul class="d-flex justify-content-${obj[0]} vh-10 list-none m-0 p-0 bg-gray-200">
-      <li class="bg-color-primary color-white p-2">.justify-content-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.justify-content-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.justify-content-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.justify-content-${obj[0]}</li>
+      <li class="bg-color-primary color-white p-2 m-2">1</li>
+      <li class="bg-color-primary color-white p-2 m-2">2</li>
+      <li class="bg-color-primary color-white p-2 m-2">3</li>
+      <li class="bg-color-primary color-white p-2 m-2">4</li>
     </ul>
   </div>`
 );
@@ -30,11 +32,12 @@ const justifies = Object.entries(theme["justify-content"]).map(
 const alignmentsItems = Object.entries(theme["align-items"]).map(
   obj => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
+    <pre>.align-items-${obj[0]}</pre>
     <ul class="d-flex align-items-${obj[0]} vh-10 list-none m-0 p-0 bg-gray-200">
-      <li class="bg-color-primary color-white p-2">.align-items-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.align-items-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.align-items-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.align-items-${obj[0]}</li>
+      <li class="bg-color-primary color-white p-2 m-2">1</li>
+      <li class="bg-color-primary color-white p-2 m-2">2</li>
+      <li class="bg-color-primary color-white p-2 m-2">3</li>
+      <li class="bg-color-primary color-white p-2 m-2">4</li>
     </ul>
   </div>`
 );
@@ -42,15 +45,16 @@ const alignmentsItems = Object.entries(theme["align-items"]).map(
 const alignmentsContent = Object.entries(theme["align-content"]).map(
   obj => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
+    <pre>.align-content-${obj[0]}</pre>
     <ul class="d-flex flex-wrap align-content-${obj[0]} vh-20 list-none m-0 p-0 bg-gray-200">
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.align-content-${obj[0]}</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">1</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">2</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">3</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">4</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">5</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">6</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">7</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">8</li>
     </ul>
   </div>`
 );
@@ -60,11 +64,12 @@ alignmentsContent.unshift('<p class="m-0 mb-5 p-5 bg-color-primary color-white f
 const alignmentsSelf = Object.entries(theme["align-self"]).map(
   obj => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
-    <ul class="d-flex vh-10 list-none m-0 p-0 bg-gray-200">
-      <li class="bg-color-primary color-white p-2">.align-self-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2 align-self-${obj[0]}">.align-self-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.align-self-${obj[0]}</li>
-      <li class="bg-color-primary color-white p-2">.align-self-${obj[0]}</li>
+    <pre>.align-self-${obj[0]}</pre>
+    <ul class="d-flex vh-20 list-none m-0 p-0 bg-gray-200">
+      <li class="bg-gray-500 color-white p-2 m-2">1</li>
+      <li class="bg-color-primary color-white p-2 m-2 align-self-${obj[0]}">.align-self-${obj[0]}</li>
+      <li class="bg-gray-500 color-white p-2 m-2">2</li>
+      <li class="bg-gray-500 color-white p-2 m-2">3</li>
     </ul>
   </div>`
 );
@@ -72,15 +77,16 @@ const alignmentsSelf = Object.entries(theme["align-self"]).map(
 const wraps = Object.values(theme["flex-wrap"]).map(
   wrap => `
   <div class="bg-gray-100 m-0 mb-5 p-0 p-5">
+    <pre>.flex-${wrap}</pre>
     <ul class="d-flex flex-${wrap} list-none m-0 p-0 bg-gray-200">
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
-      <li class="w-20 bg-color-primary color-white p-2">.flex-${wrap}</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">1</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">2</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">3</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">4</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">5</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">6</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">7</li>
+      <li class="w-20 bg-color-primary color-white p-2 m-2">8</li>
     </ul>
   </div>
   `
