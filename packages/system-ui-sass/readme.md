@@ -2,7 +2,7 @@
 
 # Mill3-packages : system-ui-sass
 
-Our utility CSS classes system for typography, layout, sizings, colors, effects. Built with SASS, largely inspired by Bootstrap (for mixins) and TailWindCSS for classes naming conventions and the idea around an utiliy-first style framework.
+Our utility CSS classes system for typography, layout, sizings, colors, effects. Built with SASS, largely inspired by Bootstrap (for mixins) and TailWindCSS for classes naming conventions and the idea around an utility-first style framework.
 
 ## Credits
 
