@@ -66,7 +66,7 @@ export const CrossGridLayout = () => `
     <div class="MyCrossGridLayout d-sm-grid grid-column-2 grid-column-lg-3 grid-gap-3">
       <header class="MyCrossGridLayout__cell d-block overflow-hidden position-relative vh-100 vh-md-60">
         <hgroup class="position-absolute b-0 l-0 z-1000 w-100 w-xl-70 p-3 p-lg-6 color-white">
-          <h1 class="heading-h3 heading-md-h2 heading-xl-h1 fw-300 ff-serif m-0">My kinda complex grid layout</h1>
+          <h1 class="heading-h3 heading-md-h2 heading-xl-h1 fw-300 ff-heading m-0">My kinda complex grid layout</h1>
           <h4 class="mt-2 mb-0 fw-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quia modi vel delectus? Quidem, quam. Esse facilis alias doloremque consequatur veritatis enim ullam deserunt, sed, corrupti repellat eum aliquam provident?</h4>
         </hgroup>
         <img class="image-as-background" src="https://images.unsplash.com/photo-1614769507210-bf9482e2f32f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80" alt="unsplash"/>

@@ -71,7 +71,7 @@ const theme = {
   order: generateValues(0, 5),
   overflow: ["auto", "hidden", "visible", "scroll"],
   "font-family": {
-    sans: [
+    heading: [
       "-apple-system",
       "BlinkMacSystemFont",
       "Segoe UI",
@@ -85,7 +85,7 @@ const theme = {
       "Segoe UI Symbol",
       "Noto Color Emoji"
     ],
-    serif: ["Georgia", "serif"],
+    body: ["Georgia", "serif"],
     mono: [
       "SFMono-Regular",
       "Menlo",
