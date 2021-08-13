@@ -30,7 +30,7 @@ export class Scripts {
   /**
    * Plugin installation.
    */
-  install(barba) {
+   install(barba) {
     this.logger = new barba.Logger(this.name);
     this.logger.info(this.version);
 
@@ -43,7 +43,6 @@ export class Scripts {
    * Plugin installation.
    */
   init() {
-
     // Register hook for CSS classes
     this.barba.hooks.beforeEnter(this._beforeEnter, this);
     this.barba.hooks.afterEnter(this._afterEnter, this);
@@ -53,27 +52,26 @@ export class Scripts {
    * Add scripts (external source or inlined) to document <head>.
    */
   add(js) {
-
     // if scripts is empty, do nothing
     if (!js || js.length === 0) {
       return Promise.resolve();
     }
 
-    // Collect all scripts in head
-    const head = document.querySelector('head');
-    const currentScripts = [...head.querySelectorAll(SCRIPTS_SELECTOR)].map(script => this._getScriptNamespace(script));
+    const head = document.querySelector("head");
+
+    // Collect all scripts in document
+    const currentScripts = this._getScripts(document).map((script) => this._getScriptNamespace(script));
     const newScripts = [];
 
-
     // for each script found in head
-    js.forEach(script => {
+    js.forEach((script) => {
       // if this script is already in head, do nothing
       if (currentScripts.includes(this._getScriptNamespace(script))) {
         return;
       }
 
       // create new script tag
-      const tag = document.createElement('script');
+      const tag = document.createElement("script");
 
       // copy all attributes from script
       this._copyAttributes(tag, script);
@@ -110,9 +108,9 @@ export class Scripts {
     const newScripts = [];
 
     // for each scripts
-    js.forEach(script => {
+    js.forEach((script) => {
       // create new script tag
-      const tag = document.createElement('script');
+      const tag = document.createElement("script");
 
       // copy all attributes from script
       this._copyAttributes(tag, script);
@@ -126,16 +124,25 @@ export class Scripts {
       }
 
       // enqueue script
-      newScripts.push({script: tag, target: script.parentNode});
+      newScripts.push({ script: tag, target: script.parentNode });
 
       // remove script from DOM to avoid pollution
       script.parentNode.removeChild(script);
     });
 
     // synchronously run each script
-    return newScripts.reduce((promise, {script, target}) => {
+    return newScripts.reduce((promise, { script, target }) => {
       return promise.then(() => this._inlineScript(script, target));
     }, Promise.resolve());
+  }
+
+  /**
+   * Get all <head> + <body> script from a HTML source
+   */
+  _getScripts(source) {
+    const head = source.querySelector("head");
+    const body = source.querySelector("body");
+    return [...head.querySelectorAll(SCRIPTS_SELECTOR), ...body.querySelectorAll(SCRIPTS_SELECTOR)];
   }
 
   /**
@@ -154,7 +161,7 @@ export class Scripts {
    * Append script to document and execute it.
    */
   _inlineScript(script, target) {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       target.appendChild(script);
       resolve();
     });
@@ -183,13 +190,11 @@ export class Scripts {
    * `beforeEnter` hook.
    */
   _beforeEnter(data) {
-
     // parse html return from Barba
-    this._source = this._parser.parseFromString(data.next.html, 'text/html');
+    this._source = this._parser.parseFromString(data.next.html, "text/html");
 
-    // Find head + scripts returned from Barba
-    const head = this._source.querySelector('head');
-    const js = [...head.querySelectorAll(SCRIPTS_SELECTOR)];
+    // Find head & body scripts returned from Barba
+    const js = this._getScripts(this._source);
 
     // Inject new external scripts
     return this.add(js);
