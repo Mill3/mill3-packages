@@ -13,7 +13,7 @@
 import { version } from '../package.json';
 
 export const SCRIPTS_SELECTOR = 'script[type="text/javascript"]';
-export const INLINE_SCRIPTS_SELECTOR = 'script:not([type="text/html"])';
+export const INLINE_SCRIPTS_SELECTOR = 'script:not([src]):not([type="application/ld+json"]):not([type="application/json"])';
 
 export class Scripts {
 
@@ -119,7 +119,7 @@ export class Scripts {
       if (script.text) {
         tag.appendChild(document.createTextNode(script.text));
       } else {
-        this.logger.error(`Unable to execute this script because it does not contains inlined code.`, script);
+        this.logger.warn(`Unable to execute this script because it does not contains inlined code.`, script);
         return;
       }
 
