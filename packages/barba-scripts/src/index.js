@@ -10,15 +10,16 @@
  * @preferred
  */
 
-import { version } from '../package.json';
+//  import { version } from '../package.json';
+
+const version = "0.2.1";
 
 export const SCRIPTS_SELECTOR = 'script[type="text/javascript"]';
-export const INLINE_SCRIPTS_SELECTOR = 'script:not([type="text/html"])';
+export const INLINE_SCRIPTS_SELECTOR = 'script:not([src]):not([type="application/ld+json"]):not([type="application/json"])';
 
 export class Scripts {
-
   constructor() {
-    this.name = '@barba/scripts';
+    this.name = "@barba/scripts";
     this.version = version;
     this.barba;
     this.logger;
@@ -30,7 +31,7 @@ export class Scripts {
   /**
    * Plugin installation.
    */
-   install(barba) {
+  install(barba) {
     this.logger = new barba.Logger(this.name);
     this.logger.info(this.version);
 
@@ -43,9 +44,9 @@ export class Scripts {
    * Plugin installation.
    */
   init() {
-    // Register hook for CSS classes
+    // Register barba hooks
     this.barba.hooks.beforeEnter(this._beforeEnter, this);
-    this.barba.hooks.afterEnter(this._afterEnter, this);
+    this.barba.hooks.after(this._after, this);
   }
 
   /**
@@ -69,7 +70,6 @@ export class Scripts {
       if (currentScripts.includes(this._getScriptNamespace(script))) {
         return;
       }
-
       // create new script tag
       const tag = document.createElement("script");
 
@@ -119,7 +119,7 @@ export class Scripts {
       if (script.text) {
         tag.appendChild(document.createTextNode(script.text));
       } else {
-        this.logger.error(`Unable to execute this script because it does not contains inlined code.`, script);
+        this.logger.warn(`Unable to execute this script because it does not contains inlined code.`, script);
         return;
       }
 
@@ -130,6 +130,8 @@ export class Scripts {
       script.parentNode.removeChild(script);
     });
 
+    // return true;
+
     // synchronously run each script
     return newScripts.reduce((promise, { script, target }) => {
       return promise.then(() => this._inlineScript(script, target));
@@ -139,11 +141,12 @@ export class Scripts {
   /**
    * Get all <head> + <body> script from a HTML source
    */
-  _getScripts(source) {
+  _getScripts(source, selector = SCRIPTS_SELECTOR) {
     const head = source.querySelector("head");
     const body = source.querySelector("body");
-    return [...head.querySelectorAll(SCRIPTS_SELECTOR), ...body.querySelectorAll(SCRIPTS_SELECTOR)];
+    return [...head.querySelectorAll(selector), ...body.querySelectorAll(selector)];
   }
+
 
   /**
    * Load external script and append it to document.
@@ -163,6 +166,11 @@ export class Scripts {
   _inlineScript(script, target) {
     return new Promise((resolve) => {
       target.appendChild(script);
+      try {
+        eval(script.innerHTML);
+      } catch (error) {
+        this.logger.error(error);
+      }
       resolve();
     });
   }
@@ -201,12 +209,13 @@ export class Scripts {
   }
 
   /**
-   * `afterEnter` hook.
+   * `enter` hook.
    */
-  _afterEnter(data) {
+   _after(data) {
     // Find inlined scripts in source and eval() any text values as JS scripts
     // This is for useful for WP plugins like Gravity Forms who inject inline scripts
-    const js = [...data.next.container.querySelectorAll(INLINE_SCRIPTS_SELECTOR)];
+    const source = this._parser.parseFromString(data.next.html, "text/html");
+    const js = this._getScripts(source, INLINE_SCRIPTS_SELECTOR);
 
     // Run inlined scripts
     return this.run(js);
