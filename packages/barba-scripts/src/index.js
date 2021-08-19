@@ -12,10 +12,10 @@
 
 //  import { version } from '../package.json';
 
-const version = "0.2.1";
+const version = "0.2.2";
 
 export const SCRIPTS_SELECTOR = 'script[type="text/javascript"]';
-export const INLINE_SCRIPTS_SELECTOR = 'script:not([src]):not([type="application/ld+json"]):not([type="application/json"])';
+export const INLINE_SCRIPTS_SELECTOR = 'script:not([src]):not([type="application/ld+json"]):not([type="application/json"]):not([type="text/html"])';
 
 export class Scripts {
   constructor() {
