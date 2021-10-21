@@ -302,6 +302,19 @@ textarea {
   font: inherit; /* 2 */
 }
 
+/**
+ * 1. Fix default color applied in iOS 15.
+ * 2. Use of color-[color-name] classname is still valid on a HTML element.
+ */
+input:is([type="button"],
+[type="submit"],
+[type="reset"]),
+input[type="file"]::file-selector-button,
+button,
+select {
+  color: currentColor;
+}
+
 /* Interactive
    ========================================================================== */
 
