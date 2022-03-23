@@ -4,8 +4,8 @@
     @each $key, $value in $colors {
       --#{$key}: #{$value};
     }
-    @each $key, $value in $spacers {
-      --spacer-#{$key}: #{$value};
-    }
+    //@each $key, $value in $spacers {
+    //  --spacer-#{$key}: #{$value};
+    //}
   }
 }

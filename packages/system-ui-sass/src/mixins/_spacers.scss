@@ -1,4 +1,6 @@
 /// color-css-variables
+
+/*
 @mixin spacer-css-variables($spacers) {
   :root {
     @each $key, $value in $spacers {
@@ -6,6 +8,7 @@
     }
   }
 }
+*/
 
 @function spacer($key) {
   $value: map-get($spacers, $key);
