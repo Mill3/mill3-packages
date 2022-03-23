@@ -10,10 +10,12 @@ export const headings = () =>
     .map(obj => `<${obj[0]}>${obj[0]} default style</${obj[0]}>`)
     .join("");
 
+/*
 export const headingClassnames = () =>
   Object.entries(theme.heading)
     .map(obj => `<p class='heading-${obj[0]}'>I'm a p.heading-${obj[0]}</${obj[0]}>`)
     .join("");
+*/
 
 export const fontWeights = () =>
   Object.entries(theme["font-weight"])
@@ -32,14 +34,14 @@ export const fontSize = () =>
 
 export const fontFamily = () =>
   Object.entries(theme["font-family"])
-    .map(obj => `<p class="heading-h1 ff-${obj[0]}">.ff-${obj[0]}</p>`)
+    .map(obj => `<p class="fz-6xl ff-${obj[0]}">.ff-${obj[0]}</p>`)
     .join("");
 
 export const lineHeight = () =>
   Object.entries(theme["line-height"])
     .map(
       obj =>
-        `<p class="mb-5 lh-${obj[0]}"><strong class="ff-mono">.lh-${obj[0]}</strong> ${lorem}</p>`
+        `<p class="mb-40 lh-${obj[0]}"><strong class="ff-mono">.lh-${obj[0]}</strong> ${lorem}</p>`
     )
     .join("");
 
@@ -47,18 +49,18 @@ export const textAlign = () =>
   Object.entries(theme["text-align"])
     .map(
       obj =>
-        `<p class="mb-5 ta-${obj[1]}"><strong class="ff-mono">.ta-${obj[1]}</strong> ${lorem}</p>`
+        `<p class="mb-40 ta-${obj[1]}"><strong class="ff-mono">.ta-${obj[1]}</strong> ${lorem}</p>`
     )
     .join("");
 
 export const textTransform = () =>
   Object.entries(theme["text-transform"])
-    .map(obj => `<p class="heading-h1 tt-${obj[1]}">.tt-${obj[1]}</p>`)
+    .map(obj => `<p class="fz-6xl tt-${obj[1]}">.tt-${obj[1]}</p>`)
     .join("");
 
 export const textDecoration = () =>
   Object.entries(theme["text-decoration"])
-    .map(obj => `<p class="heading-h1 td-${obj[1]}">.td-${obj[1]}</p>`)
+    .map(obj => `<p class="fz-6xl td-${obj[1]}">.td-${obj[1]}</p>`)
     .join("");
 
 export const baseElements = () => `

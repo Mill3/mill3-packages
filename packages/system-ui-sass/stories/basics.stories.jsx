@@ -25,19 +25,17 @@ const d = Object.values(theme.display).map(
       break;
       case "flex":
         content = `
-          <div class="w-25 p-1 bg-gray-200">block 1</div>
-          <div class="w-25 p-1 bg-gray-200">block 2</div>
-          <div class="w-25 p-1 bg-gray-200">block 3</div>
-          <div class="w-25 p-1 bg-gray-200">block 4</div>
+          <div class="w-50 p-5 bg-gray-200">block 1</div>
+          <div class="w-50 p-5 bg-gray-200">block 2</div>
         `;
       break;
       case "grid":
-        classname += " grid-column-4 grid-gap-5";
+        classname += " grid-column-4 grid-gap-40";
         content = `
-          <div class="p-1 bg-gray-200">block 1</div>
-          <div class="p-1 bg-gray-200">block 2</div>
-          <div class="p-1 bg-gray-200">block 3</div>
-          <div class="p-1 bg-gray-200">block 4</div>
+          <div class="p-5 bg-gray-200">block 1</div>
+          <div class="p-5 bg-gray-200">block 2</div>
+          <div class="p-5 bg-gray-200">block 3</div>
+          <div class="p-5 bg-gray-200">block 4</div>
         `;
       break;
 
@@ -46,7 +44,7 @@ const d = Object.values(theme.display).map(
       case "inline-grid": return;
     }
 
-    const output = `<div class="d-block m-0 mb-5 p-5 bg-gray-100">
+    const output = `<div class="d-block m-0 mb-40 p-40 bg-gray-100">
       <p class="m-0 p-0">.d-${display}</p>
       <div class="${classname} mt-3" style="border: 1px solid currentColor;">
         ${content}
@@ -57,7 +55,7 @@ const d = Object.values(theme.display).map(
   }
 );
 
-d.push(`<p class="m-0 px-5 py-2 bg-gray-700 color-white"><em>.inline-block</em>, <em>.inline-flex</em> and <em>.inline-grid</em> are also available.</p>`);
+d.push(`<p class="m-0 pl-40 pr-40 pt-10 pb-10 bg-gray-700 color-white"><em>.inline-block</em>, <em>.inline-flex</em> and <em>.inline-grid</em> are also available.</p>`);
 
 
 const visibilities = [];
@@ -85,7 +83,7 @@ const positions = [];
 const lists = [];
       lists.push(`
       <p class="fw-700 m-0 p-0">.list-none</p>
-      <p class="m-0 mb-3 p-0">Remove list bullet/numbers at the beginning of each &lt;li&gt;</p>
+      <p class="m-0 mb-20 p-0">Remove list bullet/numbers at the beginning of each &lt;li&gt;</p>
 
       <ul class="list-none">
         <li>item 1</li>

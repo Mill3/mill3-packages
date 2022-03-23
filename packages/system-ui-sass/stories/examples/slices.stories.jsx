@@ -13,13 +13,13 @@ export const HorizontalSimple = () => `
     }
   </style>
   <div class="bg-gray-300">
-    <section class="MyComponent d-grid grid-column-lg-2 grid-gap-4 grid-gap-lg-8 px-4 px-xl-10 py-6">
+    <section class="MyComponent d-grid grid-column-lg-2 grid-gap-30 grid-gap-lg-90 pt-50 pb-50 pl-30 pl-xl-200 pr-30 pr-xl-200">
       <aside class="MyComponent__content d-grid flex-column">
         <header>
           <h5 class="gray-500 m-0">Tagline</h5>
-          <h2 class="fz-xxl fw-300 mt-4 lh-none">Long headline to turn your visitors into users</h2>
+          <h2 class="fz-xxl fw-300 mt-30 lh-none">Long headline to turn your visitors into users</h2>
         </header>
-        <footer class="align-self-end d-grid grid-column-2 grid-gap-3">
+        <footer class="align-self-end d-grid grid-column-2 grid-gap-20">
           <aside>
             <figure class="m-0">
               ${IconDummer()}
