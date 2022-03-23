@@ -1,1 +1,3 @@
-@include generate-variants("list-style", $list-type, "list");
+.list-none {
+    list-style: none;
+}
