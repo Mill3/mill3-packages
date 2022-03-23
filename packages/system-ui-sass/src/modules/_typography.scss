@@ -2,7 +2,7 @@
 
 @include generate-variants("font-family", $font-family, "ff");
 
-@include generate-variants("font-size", $heading, "heading");
+//@include generate-variants("font-size", $heading, "heading");
 
 @include generate-variants("text-align", $text-align, "ta");
 
