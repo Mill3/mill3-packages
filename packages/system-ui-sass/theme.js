@@ -21,10 +21,12 @@ const theme = {
     superscope: "45%",
     "half-square": "50%",
     widescreen: "56.25%",
-    landscape: "74%",
+    "postal-card": "66.666666667%",
+    landscape: "75%",
     "wide-angle": "87.5%",
     square: "100%",
-    portrait: "130%"
+    portrait: "133%",
+    photography: "150%"
   },
   "flex-direction": ["column", "column-reverse", "row", "row-reverse"],
   visiblity: ["visible", "hidden"],
@@ -35,7 +37,8 @@ const theme = {
     start: "flex-start",
     between: "space-between",
     around: "space-around",
-    evenly: 'space-evenly'
+    evenly: "space-evenly",
+    stretch: "stretch"
   },
   "align-items": {
     baseline: "baseline",
@@ -58,13 +61,6 @@ const theme = {
     center: "center",
     stretch: "stretch"
   },
-  "justify-self": {
-    baseline: "baseline",
-    end: "end",
-    start: "start",
-    center: "center",
-    stretch: "stretch"
-  },
   "flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
   "flex-grow": generateValues(0, 5),
   "flex-shrink": generateValues(0, 5),
@@ -72,6 +68,7 @@ const theme = {
   overflow: ["auto", "hidden", "visible", "scroll"],
   "font-family": {
     heading: [
+      "Madras",
       "-apple-system",
       "BlinkMacSystemFont",
       "Segoe UI",
@@ -97,24 +94,25 @@ const theme = {
     ]
   },
   "font-size": {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    base: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-    "3xl": "1.875rem",
-    "4xl": "2.25rem",
-    "5xl": "3rem",
-    "6xl": "4rem"
+    base: "18px",
+
+    12: "12px",
+    14: "14px",
+    15: "15px",
+    16: "16px",
+    18: "18px",
+    20: "20px",
+    24: "24px",
+    36: "36px",
+    48: "48px",
   },
   heading: {
-    h1: "4rem",
-    h2: "3rem",
-    h3: "2rem",
-    h4: "1rem",
-    h5: "0.8rem",
-    h6: "0.7rem"
+    h1: "56px",
+    h2: "48px",
+    h3: "36px",
+    h4: "24px",
+    h5: "18px",
+    h6: "16px"
   },
   position: ["static", "fixed", "absolute", "sticky", "relative"],
   "font-weight": [100, 200, 300, 400, 500, 600, 700, 800, 900],
@@ -138,7 +136,7 @@ const theme = {
     xxxl: "1800px"
   },
   spacers: {
-    auto: "auto",
+    "auto": "auto",
     "0": 0,
     "5": "5px",
     "10": "10px",
