@@ -1,8 +1,8 @@
 @include generate-variants("font-weight", $font-weight, "fw");
 
-@include generate-variants("font-family", $font-family, "ff");
+@include generate-fluid-font-size($font-size, "ffz");
 
-//@include generate-variants("font-size", $heading, "heading");
+@include generate-variants("font-family", $font-family, "ff");
 
 @include generate-variants("text-align", $text-align, "ta");
 
@@ -15,3 +15,4 @@
 @include generate-variants("text-transform", $text-transform, "tt");
 
 @include generate-variants("text-decoration", $text-decoration, "td");
+

@@ -32,6 +32,21 @@ export const fontSize = () =>
     .map(obj => `<p class="fz-${obj[0]}">.fz-${obj[0]}</p>`)
     .join("");
 
+export const fontSizeFluid = () =>
+  Object.entries(theme["font-size"])
+    .map(obj => `<p class="ffz-${obj[0]}">.ffz-${obj[0]}</p>`)
+    .join("");
+
+export const fontSizeFluidXsToMd = () =>
+  Object.entries(theme["font-size"])
+    .map(obj => `<p class="ffz-${obj[0]} ffz-md-${obj[0]}">.ffz-md-${obj[0]}</p>`)
+    .join("");
+
+export const fontSizeFluidXsToLg = () =>
+  Object.entries(theme["font-size"])
+    .map(obj => `<p class="ffz-${obj[0]} ffz-md-${obj[0]} ffz-lg-${obj[0]}">.ffz-lg-${obj[0]}</p>`)
+    .join("");
+
 export const fontFamily = () =>
   Object.entries(theme["font-family"])
     .map(obj => `<p class="fz-6xl ff-${obj[0]}">.ff-${obj[0]}</p>`)
