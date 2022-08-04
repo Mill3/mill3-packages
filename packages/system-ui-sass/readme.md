@@ -79,15 +79,9 @@ Now start webpack, customize theme.js file, enjoy !
 
 ## Usage
 
-Quick start documentation coming soon, refer to our Sassdoc below.
+Quick start documentation is missing, refer to our StoryBook site below :
 
-StoryBook stories (WIP) : [https://mill3-system-ui-sass-demo-site.netlify.com/](https://mill3-system-ui-sass-demo-site.netlify.com/)
-
-## SassDoc :
-
-All classes, mixins & functions are documented on our Sassdoc site.
-
-[https://mill3-system-ui-sass-docs.netlify.com/](https://mill3-system-ui-sass-docs.netlify.com/)
+[https://mill3-system-ui-sass-demo-site.netlify.com/](https://mill3-system-ui-sass-demo-site.netlify.com/)
 
 ## Todo
 
@@ -99,7 +93,7 @@ All classes, mixins & functions are documented on our Sassdoc site.
 - [x] Add normalizing css
 - [x] Modules and variables for basic HTML text body elements: H1-H6, p, ul, ol
 - [ ] Add tests and Travis config
-- [ ] Finish Sassdoc documentation
+- [-] Finish Sassdoc documentation (DEPRECATED)
 - [x] Add extra colors
-- [ ] Finish stories
+- [X] Finish stories
 - [ ] Add .prettierrc file
