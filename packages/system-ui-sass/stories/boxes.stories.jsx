@@ -4,7 +4,7 @@ import theme from "../theme.babel.js";
 export default { title: "Boxes" };
 
 const boxes = Object.entries(theme.boxes).map(
-  obj => `<pre class="box box-${obj[0]} w-50 bg-color-primary mb-40 d-flex align-items-center justify-content-center heading-h3">.box-${obj[0]}</pre>`
+  obj => `<pre>.box-${obj[0]}</pre><div class="box box-${obj[0]} w-50 mb-40 bg-gray-400"></div>`
 );
 
 

@@ -17,25 +17,25 @@ const d = Object.values(theme.display).map(
       case "inline":
         classname = "d-block";
         content = `
-          <div class="d-inline">block 1</div>
-          <div class="d-inline">block 2</div>
-          <div class="d-inline">block 3</div>
-          <div class="d-inline">block 4</div>
+          <div class="d-inline bg-gray-200">block 1</div>
+          <div class="d-inline bg-gray-300">block 2</div>
+          <div class="d-inline bg-gray-200">block 3</div>
+          <div class="d-inline bg-gray-400">block 4</div>
         `;
       break;
       case "flex":
         content = `
-          <div class="w-50 p-5 bg-gray-200">block 1</div>
-          <div class="w-50 p-5 bg-gray-200">block 2</div>
+          <div class="w-50 p-10 bg-gray-200">block 1</div>
+          <div class="w-50 p-10 bg-gray-400">block 2</div>
         `;
       break;
       case "grid":
-        classname += " grid-column-4 grid-gap-40";
+        classname += " grid-column-4 grid-gap-10";
         content = `
-          <div class="p-5 bg-gray-200">block 1</div>
-          <div class="p-5 bg-gray-200">block 2</div>
-          <div class="p-5 bg-gray-200">block 3</div>
-          <div class="p-5 bg-gray-200">block 4</div>
+          <div class="p-10 bg-gray-200">block 1</div>
+          <div class="p-10 bg-gray-300">block 2</div>
+          <div class="p-10 bg-gray-400">block 3</div>
+          <div class="p-10 bg-gray-500">block 4</div>
         `;
       break;
 
@@ -44,9 +44,9 @@ const d = Object.values(theme.display).map(
       case "inline-grid": return;
     }
 
-    const output = `<div class="d-block m-0 mb-40 p-40 bg-gray-100">
-      <p class="m-0 p-0">.d-${display}</p>
-      <div class="${classname} mt-3" style="border: 1px solid currentColor;">
+    const output = `<div class="d-block m-0 mb-40 p-20 bg-gray-100">
+      <pre class="mb-20">.d-${display}</pre>
+      <div class="${classname} p-20" style="border: 1px solid var(--gray-400);">
         ${content}
       </div>
     </div>`;
@@ -59,26 +59,26 @@ d.push(`<p class="m-0 pl-40 pr-40 pt-10 pb-10 bg-gray-700 color-white"><em>.inli
 
 
 const visibilities = [];
-      visibilities.push(`<p><em class="fw-500">.visibility-visible</em>: Show element</p>`);
-      visibilities.push(`<p><em class="fw-500">.visibility-hidden</em>: Hide element</p>`);
+      visibilities.push(`<div><pre>.visibility-visible</pre> Show element</div>`);
+      visibilities.push(`<div><pre>.visibility-hidden</pre> Hide element</div>`);
 
 const pointers = [];
-      pointers.push(`<p><em class="fw-500">.pointer-events-all</em>: Enable all pointer-events for this element</p>`);
-      pointers.push(`<p><em class="fw-500">.pointer-events-none</em>: Disable all pointer-events for this element, and his children. If a child of his has .pointer-events-all, it will received pointer-events.</p>`);
+      pointers.push(`<div><pre>.pointer-events-all</pre> Enable all pointer-events for this element</div>`);
+      pointers.push(`<div><pre>.pointer-events-none</pre> Disable all pointer-events for this element, and his children. If a child of his has .pointer-events-all, it will received pointer-events.</div>`);
 
 
 const overflows = [];
-      overflows.push(`<p><em class="fw-500">.overflow-auto</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-hidden</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-visible</em></p>`);
-      overflows.push(`<p><em class="fw-500">.overflow-scroll</em></p>`);
+      overflows.push(`<div><pre>.overflow-auto</pre></div>`);
+      overflows.push(`<div><pre>.overflow-hidden</pre></div>`);
+      overflows.push(`<div><pre>.overflow-visible</pre></div>`);
+      overflows.push(`<div><pre>.overflow-scroll</pre></div>`);
 
 const positions = [];
-      positions.push(`<p><em class="fw-500">.position-static</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-fixed</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-relative</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-absolute</em></p>`);
-      positions.push(`<p><em class="fw-500">.position-sticky</em></p>`);
+      positions.push(`<div><pre>.position-static</pre></div>`);
+      positions.push(`<div><pre>.position-fixed</pre></div>`);
+      positions.push(`<div><pre>.position-relative</pre></div>`);
+      positions.push(`<div><pre>.position-absolute</pre></div>`);
+      positions.push(`<div><pre>.position-sticky</pre></div>`);
 
 const lists = [];
       lists.push(`
