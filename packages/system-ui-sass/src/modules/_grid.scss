@@ -3,23 +3,53 @@
 ////
 
 /// Set grid template columns
+/// Set grid col-start / col-end
 ///
-/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
-///
-/// @see {mixin} generate-variants
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for amount of columns.
 ///
 /// @name .grid-column-[value]
+/// @name .col-start-[value]
+/// @name .col-end-[value]
+/// @name .col-full
 ///
-/// @example .grid-column-1, .grid-column-md-3
+/// @example .grid-column-1, .grid-column-md-3, .col-start-1, .col-end-5
 
 // note: keep this line below for SassDoc
 // .grid-column-[size] { ... }
+// .col-start-[size] { ... }
+// .col-end-[size] { ... }
+// .col-full { ... }
 
-@include generate-variants(
-  "grid-template-columns",
-  $grid-columns,
-  "grid-column"
-);
+// @include generate-variants(
+//   "grid-template-columns",
+//   $grid-columns,
+//   "grid-column"
+// );
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @for $i from 1 through $grid-columns {
+      .grid-column#{$infix}-#{$i} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
+      }
+
+      .col-start#{$infix}-#{$i} {
+        grid-column-start: #{$i};
+      }
+
+      .col-end#{$infix}-#{$i} {
+        grid-column-end: span #{$i};
+      }
+    }
+
+    // full width
+    .col-full#{$infix} {
+      grid-column: 1 / -1;
+    }
+  }
+}
 
 /// Set grid gap
 ///
@@ -35,3 +65,46 @@
 // .grid-gap-[size] { ... }
 
 @include generate-variants("grid-gap", $spacers);
+
+
+/// Set grid template rows
+/// Set grid row-start / row-end
+///
+/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for amount of rows.
+///
+/// @name .grid-row-[value]
+/// @name .row-start-[value]
+/// @name .row-end-[value]
+/// @name .row-full
+///
+/// @example .grid-row-1, .grid-row-md-3, .row-start-1, .row-end-5
+
+// note: keep this line below for SassDoc
+// .grid-row-[size] { ... }
+// .row-start-[size] { ... }
+// .row-end-[size] { ... }
+// .row-full { ... }
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+    @for $i from 1 through $grid-rows {
+      .grid-row#{$infix}-#{$i} {
+        grid-template-rows: repeat($i, 1fr);
+      }
+
+      .row-start#{$infix}-#{$i} {
+        grid-row-start: #{$i};
+      }
+
+      .row-end#{$infix}-#{$i} {
+        grid-row-end: span #{$i};
+      }
+    }
+
+    // full width
+    .row-full#{$infix} {
+      grid-row: 1 / -1;
+    }
+  }
+}

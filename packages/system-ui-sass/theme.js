@@ -166,12 +166,14 @@ const theme = {
     100
   ],
   "z-index": generateValues(0, 10000, 1000),
-  "grid-columns": {
-    "1": "1fr",
-    "2": "repeat(2, 1fr)",
-    "3": "repeat(3, 1fr)",
-    "4": "repeat(4, 1fr)"
-  },
+  "grid-columns": 8,
+  "grid-rows": 6,
+  // "grid-columns": {
+  //   "1": "1fr",
+  //   "2": "repeat(2, 1fr)",
+  //   "3": "repeat(3, 1fr)",
+  //   "4": "repeat(4, 1fr)"
+  // },
   colors: {
     "color-transparent": "transparent",
     "color-current": "currentColor",
