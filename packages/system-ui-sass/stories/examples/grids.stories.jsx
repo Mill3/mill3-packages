@@ -17,7 +17,7 @@ export const AdvancedGridLayout = () => `
       </div>
       <div class="MyComponent__cell bg-gray-100 p-20">Cell 2</div>
       <div class="MyComponent__cell bg-gray-100 p-20">Cell 3</div>
-      <div class="col-start-1 col-end-2 col-start-lg-2 col-end-span-lg-2 bg-gray-100 p-20">Cell 4 <span class="d-none d-lg-inline">- now I'm spaning 2 grid column, from column 2</span></div>
+      <div class="col-start-1 col-end-limit col-start-lg-2 bg-gray-100 p-20">Cell 4 <span class="d-none d-lg-inline">- now I'm spaning 2 grid column, from column 2</span></div>
     </div>
   </section>
 `
@@ -37,7 +37,7 @@ export const CrossGridLayout = () => `
   <section class="p-md-30 p-lg-50 bg-gray-500">
     <div class="d-sm-grid grid-column-2 grid-column-lg-3 grid-gap-20 overflow-hidden">
 
-      <header class="col-start-1 col-end-2 col-end-lg-3 d-block overflow-hidden position-relative vh-100 vh-md-50">
+      <header class="col-start-1 col-end-2 col-end-span-lg-3 d-block overflow-hidden position-relative vh-100 vh-md-50">
         <hgroup class="position-absolute b-0 l-0 z-1000 w-100 w-xl-50 p-20 p-lg-50 color-white">
           <h1 class="fz-3xl fz-md-5xl fz-xl-6xl fw-300 ff-heading m-0">My kinda complex grid layout</h1>
           <h4 class="mt-10 mb-0 fw-500">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum quia modi vel delectus? Quidem, quam. Esse facilis alias doloremque consequatur veritatis enim ullam deserunt, sed, corrupti repellat eum aliquam provident?</h4>
