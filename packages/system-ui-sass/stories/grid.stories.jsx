@@ -36,10 +36,13 @@ export const gridColumnStart = () =>
 export const gridColumnEnd = () =>
   [...Array(theme["grid-columns"])]
     .map((obj, i) => {
-      const column = `<pre class="col-start-1 col-end-${i+1}">.col-end-${i+1}</pre>`;
+      const column = `<pre class="col-start-1 col-end-${i+1}">.col-end-${i+1}</pre><pre class="col-start-1 col-end-span-${i+1}">.col-end-span-${i+1}</pre>`;
       return `<div class="d-grid grid-column-${theme["grid-columns"]} grid-gap-5">${column}</div>`;
     })
-    .join("");
+    .join("")
+    +
+    `<div class="d-grid grid-column-${theme["grid-columns"]} grid-gap-5"><pre class="col-start-1 col-end-limit">.col-end-limit</pre></div>`
+    ;
 
 export const gridColumnFull = () => `
   <div class="d-grid grid-column-${theme["grid-columns"]} grid-gap-5">
@@ -58,10 +61,10 @@ export const gridRows = () =>
     .join("");
 
 export const gridRowStart = () => `
-  <div class="d-grid grid-column-2 grid-row-${theme["grid-rows"]} grid-gap-5">`+
+  <div class="d-grid grid-column-${theme["grid-rows"]} grid-row-${theme["grid-rows"]} grid-gap-5">`+
       [...Array(theme["grid-rows"])]
       .map((obj, i) => {
-        return `<pre class="m-0 row-start-${i+1}">.row-start-${i+1}</pre>`;
+        return `<pre class="m-0 col-start-${i+1} row-start-${i+1}">.row-start-${i+1}</pre>`;
       })
       .join("")+
   `</div>
@@ -71,7 +74,16 @@ export const gridRowEnd = () => `
   <div class="d-grid grid-column-${theme["grid-rows"]} grid-row-${theme["grid-rows"]} grid-gap-5">`+
       [...Array(theme["grid-rows"])]
       .map((obj, i) => {
+        if (i > 0)
         return `<pre class="m-0 row-end-${i+1}">.row-end-${i+1}</pre>`;
+      })
+      .join("")+
+      `<pre class="m-0 col-start-2 row-start-3 row-end-limit">.row-start-3 </br>.row-end-limit</pre>
+  </div>
+  <div class="d-grid grid-column-${theme["grid-rows"]} grid-row-${theme["grid-rows"]} grid-gap-5 mt-10">`+
+      [...Array(theme["grid-rows"])]
+      .map((obj, i) => {
+        return `<pre class="m-0 row-end-span-${i+1}">.row-end-span-${i+1}</pre>`;
       })
       .join("")+
   `</div>

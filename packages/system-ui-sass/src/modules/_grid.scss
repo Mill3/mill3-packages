@@ -40,8 +40,16 @@
       }
 
       .col-end#{$infix}-#{$i} {
+        grid-column-end: #{$i};
+      }
+      .col-end-span#{$infix}-#{$i} {
         grid-column-end: span #{$i};
       }
+    }
+
+    // col end to bounds
+    .col-end#{$infix}-limit {
+      grid-column-end: -1;
     }
 
     // full width
@@ -98,8 +106,16 @@
       }
 
       .row-end#{$infix}-#{$i} {
+        grid-row-end: #{$i};
+      }
+      .row-end-span#{$infix}-#{$i} {
         grid-row-end: span #{$i};
       }
+    }
+
+    // row end to bounds
+    .row-end#{$infix}-limit {
+      grid-row-end: -1;
     }
 
     // full width
