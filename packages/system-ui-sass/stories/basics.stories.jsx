@@ -82,10 +82,11 @@ const positions = [];
 
 const lists = [];
       lists.push(`
-      <p class="fw-700 m-0 p-0">.list-none</p>
+      <pre class="fw-700 m-0 mb-20">.list-none</pre>
+
       <p class="m-0 mb-20 p-0">Remove list bullet/numbers at the beginning of each &lt;li&gt;</p>
 
-      <ul class="list-none">
+      <ul class="list-none bg-gray-200 p-10">
         <li>item 1</li>
         <li>item 2</li>
         <li>item 3</li>
@@ -93,7 +94,7 @@ const lists = [];
       </ul>`);
 
 const z = `
-  <p class="fw-700 m-0 p-0">.z-$value</p>
+  <pre class="fw-700 m-0 mb-20">.z-$value</pre>
   <p class="m-0 p-0">Supported values: ${Object.values(theme["z-index"]).join(", ")}</p>
 `;
 
