@@ -66,7 +66,7 @@ export const gridRows = () =>
       const rows = new Array((i + 1) * 2).fill(
         `<pre class="m-0">.grid-row-${i+1}</pre>`
       );
-      return `<section class="p-10 bg-gray-200 mb-20"><div class="d-grid grid-column-2 grid-row-${i+1} grid-gap-5 m-10">${rows.join("")}</div></section>`;
+      return `<section class="p-10 bg-gray-200 mb-20"><div class="d-grid grid-column-2 grid-row-${i+1} grid-gap-5">${rows.join("")}</div></section>`;
     })
     .join("");
 
