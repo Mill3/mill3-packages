@@ -4,27 +4,27 @@ import theme from "../theme.babel.js";
 export default { title: "Sizings" };
 
 export const width = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block w-${obj[1]}">.w-${obj[1]}</pre>`
-).join("");
+    obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="position-absolute t-0 l-0 h-100 p-10 m-0 mb-20 d-block w-${obj[1]}">.w-${obj[1]}</pre></div>`
+  ).join("");
 
 export const minWidth = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block min-w-${obj[1]}" style="width: 5%;">.min-w-${obj[1]}</pre>`
+  obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="p-10 m-0 mb-20 d-block min-w-${obj[1]}" style="width: 5%;">.min-w-${obj[1]}</pre></div>`
 ).join("");
 
 export const maxWidth = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block w-100 max-w-${obj[1]}">.max-w-${obj[1]}</pre>`
+  obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="p-10 m-0 mb-20 d-block w-100 max-w-${obj[1]}">.max-w-${obj[1]}</pre></div>`
 ).join("");
 
 export const viewportWidth = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block vw-${obj[1]}">.vw-${obj[1]}</pre>`
+  obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="p-10 m-0 mb-20 d-block vw-${obj[1]}">.vw-${obj[1]}</pre></div>`
 ).join("");
 
 export const viewportMinWidth = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block w-0 min-vw-${obj[1]}">.min-vw-${obj[1]}</pre>`
+  obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="p-10 m-0 mb-20 d-block w-0 min-vw-${obj[1]}">.min-vw-${obj[1]}</pre></div>`
 ).join("");
 
 export const viewportMaxWidth = () => Object.entries(theme.sizes).map(
-  obj => `<pre class="p-10 m-0 mb-20 d-block w-100 max-vw-${obj[1]}">.max-vw-${obj[1]}</pre>`
+  obj => `<div class="position-relative mb-20 bg-gray-600" style="height: 34px;"><pre class="p-10 m-0 mb-20 d-block w-100 max-vw-${obj[1]}">.max-vw-${obj[1]}</pre></div>`
 ).join("");
 
 export const height = () => Object.entries(theme.sizes).map(
