@@ -20,7 +20,7 @@ program
 
 program
   .command('wp-bootstrap')
-  .description('Install our Wordpress boilerplate theme in a target directory')
+  .description('Install our Docker + Wordpress boilerplate theme in a target directory in a single command')
   .action(() => {
     const run = require(`${CMD_PATH}/bootstrap`).run;
     run();
