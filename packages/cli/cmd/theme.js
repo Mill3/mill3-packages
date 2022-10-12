@@ -27,11 +27,13 @@ let settings = {
 };
 
 // start Prompts
-const run = async () => {
+const run = async (INSTALL_PATH = null) => {
   // First Intro message
   console.log(chalk.blue("*****************************************************"));
   console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
   console.log(chalk.blue("*****************************************************"));
+
+  if(INSTALL_PATH) settings['INSTALL_PATH'] = INSTALL_PATH
 
   const questions = [
     {
@@ -99,6 +101,8 @@ const run = async () => {
   await rename();
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
+
+  return { settings };
 };
 
 // clone and cleanup files
@@ -147,6 +151,7 @@ const rename = async () => {
   }
 };
 
-run();
+// run();
+module.exports.run = run;
 
 exports.module = run;

@@ -20,7 +20,8 @@ const REPOSITORY_URL = "git@github.com:Mill3/wordpress-docker-boilerplate.git";
 const DEFAULT_DOCKER_PORT_WEB = 8000;
 const DEFAULT_DOCKER_PORT_PHPMYADMIN = 8001;
 const DEFAULT_DOCKER_MASTER_PATH = "/Users/myuser/wp-install-root/";
-const DEFAULT_THEME_NAME = "mytheme";
+const DEFAULT_THEME_NAME = "mill3-wp-theme-boilerplate";
+const DEFAULT_WPENGINE_SITENAME = `wpenginesitename`
 
 // defaults
 let settings = {
@@ -28,7 +29,8 @@ let settings = {
   DOCKER_PORT_WEB: DEFAULT_DOCKER_PORT_WEB,
   DOCKER_PORT_PHPMYADMIN: DEFAULT_DOCKER_PORT_PHPMYADMIN,
   INSTALL_PATH: PROCESS_PATH,
-  THEME_NAME: DEFAULT_THEME_NAME
+  THEME_NAME: DEFAULT_THEME_NAME,
+  WP_ENGINE_SITENAME: DEFAULT_WPENGINE_SITENAME
 };
 
 // start Prompts
@@ -82,6 +84,15 @@ const run = async () => {
       }
     },
     {
+      type: "text",
+      name: "WP_ENGINE_SITENAME",
+      initial: settings["WP_ENGINE_SITENAME"],
+      message: "What is your project name on WP Engine?",
+      validate: text => {
+        return /^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$/.test(text) ? true : "In slug-format only.";
+      }
+    },
+    {
       type: "toggle",
       name: "confirm",
       message: `Are you sure? This will overwrite any same exiting file in target directory !`,
@@ -119,6 +130,8 @@ const run = async () => {
   await rename(options);
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
+
+  return { options, settings };
 };
 
 // clone and cleanup files
@@ -139,6 +152,9 @@ const install = async options => {
 
     // rename .env
     await fse.copy(`${settings["INSTALL_PATH"]}/.env.sample`, `${settings["INSTALL_PATH"]}/.env`, { overwrite: false });
+
+    return options;
+
   } catch (err) {
     // display Git error
     console.error(err);
@@ -153,17 +169,25 @@ const rename = async () => {
   var reDockerPhpMyAdmin = new RegExp(DEFAULT_DOCKER_PORT_PHPMYADMIN, "g");
   var reDockerMasterPath = new RegExp(DEFAULT_DOCKER_MASTER_PATH, "g");
   var reDockerThemeName = new RegExp(DEFAULT_THEME_NAME, "g");
+  var reWPEngineSiteName = new RegExp(DEFAULT_WPENGINE_SITENAME, "g");
+
+  console.log(reWPEngineSiteName, settings);
 
   // replace options
   const options = {
-    files: [`${settings["INSTALL_PATH"]}/.env`],
+    files: [
+      `${settings["INSTALL_PATH"]}/.env`,
+      `${settings["INSTALL_PATH"]}/.env.sample`,
+      `${settings["INSTALL_PATH"]}/.github/workflows/wp-engine-deploy.yml`
+    ],
     ignore: ["node_modules/**"],
-    from: [reDockerWeb, reDockerPhpMyAdmin, reDockerMasterPath, reDockerThemeName],
+    from: [reDockerWeb, reDockerPhpMyAdmin, reDockerMasterPath, reDockerThemeName, reWPEngineSiteName],
     to: [
       settings["DOCKER_PORT_WEB"],
       settings["DOCKER_PORT_PHPMYADMIN"],
       settings["INSTALL_PATH"],
-      settings["THEME_NAME"]
+      settings["THEME_NAME"],
+      settings["WP_ENGINE_SITENAME"]
     ],
     countMatches: true
   };
@@ -176,6 +200,6 @@ const rename = async () => {
   }
 };
 
-run();
+module.exports.run = run;
 
 exports.module = run;

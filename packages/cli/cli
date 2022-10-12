@@ -11,8 +11,6 @@ const PROCESS_PATH = path.join(process.cwd());
 const ROOT_PATH = path.join(__dirname);
 const CMD_PATH = path.join(ROOT_PATH, 'cmd');
 
-// console.log('CLI_VERSION:', version)
-
 program
   .command('version')
   .description('Display current version')
@@ -21,17 +19,27 @@ program
   });
 
 program
+  .command('wp-bootstrap')
+  .description('Install our Wordpress boilerplate theme in a target directory')
+  .action(() => {
+    const run = require(`${CMD_PATH}/bootstrap`).run;
+    run();
+  });
+
+program
   .command('wp-theme')
   .description('Install our Wordpress boilerplate theme in a target directory')
   .action(() => {
-    require(`${CMD_PATH}/theme`);
+    const run = require(`${CMD_PATH}/theme`).run;
+    run();
   });
 
 program
   .command('wp-docker')
   .description('Install our Wordpress Docker config in a target directory')
   .action(() => {
-    require(`${CMD_PATH}/docker`);
+    const run = require(`${CMD_PATH}/docker`).run;
+    run();
   });
 
 program
