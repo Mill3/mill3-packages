@@ -171,8 +171,6 @@ const rename = async () => {
   var reDockerThemeName = new RegExp(DEFAULT_THEME_NAME, "g");
   var reWPEngineSiteName = new RegExp(DEFAULT_WPENGINE_SITENAME, "g");
 
-  console.log(reWPEngineSiteName, settings);
-
   // replace options
   const options = {
     files: [
