@@ -176,6 +176,7 @@ const rename = async () => {
     files: [
       `${settings["INSTALL_PATH"]}/.env`,
       `${settings["INSTALL_PATH"]}/.env.sample`,
+      `${settings["INSTALL_PATH"]}/.gitignore`,
       `${settings["INSTALL_PATH"]}/.github/workflows/wp-engine-deploy.yml`
     ],
     ignore: ["node_modules/**"],
