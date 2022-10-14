@@ -1,6 +1,6 @@
 {
   "name": "@mill3-packages/cli",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "Our command line tool.",
   "main": "index.js",
   "scripts": {
