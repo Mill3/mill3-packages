@@ -27,6 +27,14 @@ program
   });
 
 program
+  .command('wp-repository')
+  .description('Create Github repository')
+  .action(() => {
+    const run = require(`${CMD_PATH}/repository`).run;
+    run();
+  });
+
+program
   .command('wp-theme')
   .description('Install our Wordpress boilerplate theme in a target directory')
   .action(() => {

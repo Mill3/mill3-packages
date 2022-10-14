@@ -1,17 +1,38 @@
-const run_docker = require('./docker').run;
-const run_theme = require('./theme').run;
+const figlet = require("figlet");
+const chalk = require("chalk");
 
-const run = async () => {
-  // first install docker
-  const docker = await run_docker();
-
-  // get settings from docker install process
-  const { INSTALL_PATH, THEME_NAME } = docker.settings
-
-  // send saved settings to theme install process
-  const theme = await run_theme(`${INSTALL_PATH}/wp-content/themes/${THEME_NAME}`);
+let BOOTSTRAP_SETTINGS = {
+  wpengine: null,
+  docker: null,
+  theme: null,
+  repository: null
 }
 
-module.exports.run = run;
+const run = async () => {
+  // INTRO MESSSAGE
+  console.log(chalk.greenBright(figlet.textSync("Mill3 CLI - BOOTSTRAP", { horizontalLayout: "full" })));
 
-exports.module = run;
+  // import all run() engines
+  const run_wpengine = require('./wpengine').run;
+  const run_docker = require('./docker').run;
+  const run_theme = require('./theme').run;
+  const run_repository = require('./repository').run;
+
+  // run wpengine
+  await run_wpengine();
+
+  // first install docker
+  await run_docker();
+
+  // send saved settings to theme install process
+  await run_theme();
+
+  // create repository and git init
+  await run_repository();
+}
+
+// exports.BOOTSTRAP_SETTINGS = BOOTSTRAP_SETTINGS;
+
+exports.BOOTSTRAP_SETTINGS = BOOTSTRAP_SETTINGS;
+exports.run = run;
+// module.exports.run = run;

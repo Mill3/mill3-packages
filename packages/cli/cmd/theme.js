@@ -11,29 +11,34 @@ const { features } = require("process");
 
 const PROCESS_PATH = path.join(process.cwd());
 
+// get global settings from bootstrap command
+let { BOOTSTRAP_SETTINGS } = require(`./bootstrap`);
+
 // holder when user is cancel Prompts
 let cancelled = false;
 
 // current values for i18n domain & php classes namespace
 const DEFAULT_THEME_DOMAIN = "mill3wp";
 const DEFAULT_THEME_NAMESPACE = "Mill3WP";
+const DEFAULT_THEME_NAME = "mill3-wp-theme-boilerplate";
 const REPOSITORY_URL = "git@github.com:Mill3/mill3-wp-theme-boilerplate.git";
 
 // defaults
 let settings = {
   INSTALL_PATH: PROCESS_PATH,
   THEME_DOMAIN: DEFAULT_THEME_DOMAIN,
-  THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE
+  THEME_NAMESPACE: DEFAULT_THEME_NAMESPACE,
+  THEME_NAME: DEFAULT_THEME_NAME
 };
 
 // start Prompts
-const run = async (INSTALL_PATH = null) => {
+const run = async () => {
   // First Intro message
-  console.log(chalk.blue("*****************************************************"));
-  console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
-  console.log(chalk.blue("*****************************************************"));
+  console.log(chalk.blue(figlet.textSync("THEME", { horizontalLayout: "full" })));
 
-  if(INSTALL_PATH) settings['INSTALL_PATH'] = INSTALL_PATH
+  // suggest install path if BOOTSTRAP_SETTINGS['docker'] values exists
+  if(BOOTSTRAP_SETTINGS?.docker?.INSTALL_PATH) settings['INSTALL_PATH'] = `${BOOTSTRAP_SETTINGS.docker.INSTALL_PATH}/wp-content/themes/${BOOTSTRAP_SETTINGS.docker.THEME_NAME}`
+  if(BOOTSTRAP_SETTINGS?.docker?.THEME_NAME) settings['THEME_NAME'] = BOOTSTRAP_SETTINGS.docker.THEME_NAME;
 
   const questions = [
     {
@@ -102,7 +107,10 @@ const run = async (INSTALL_PATH = null) => {
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
 
-  return { settings };
+  // merge settings to global BOOTSTRAP_SETTINGS
+  BOOTSTRAP_SETTINGS['theme'] = settings
+
+  return true;
 };
 
 // clone and cleanup files
@@ -133,13 +141,18 @@ const rename = async () => {
   // regex for domain and namespace
   var reDomain = new RegExp(DEFAULT_THEME_DOMAIN, "g");
   var reNamespace = new RegExp(DEFAULT_THEME_NAMESPACE, "g");
+  var reThemename = new RegExp(DEFAULT_THEME_NAME, "g");
 
   // replace options
   const options = {
-    files: [`${settings["INSTALL_PATH"]}/**/*.php`, `${settings["INSTALL_PATH"]}/**/*.js`, `${settings["INSTALL_PATH"]}/**/*.json`],
+    files: [
+      `${settings["INSTALL_PATH"]}/**/*.php`,
+      `${settings["INSTALL_PATH"]}/**/*.js`,
+      `${settings["INSTALL_PATH"]}/**/*.json`
+    ],
     ignore: ["node_modules/**"],
-    from: [reDomain, reNamespace],
-    to: [settings["THEME_DOMAIN"], settings["THEME_NAMESPACE"]],
+    from: [reDomain, reNamespace, reThemename],
+    to: [settings["THEME_DOMAIN"], settings["THEME_NAMESPACE"], settings["THEME_NAME"]],
     countMatches: true
   };
 

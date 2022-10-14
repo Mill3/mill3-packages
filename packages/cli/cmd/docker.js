@@ -13,6 +13,9 @@ const { options } = require("args");
 
 const PROCESS_PATH = path.join(process.cwd());
 
+// get global settings from bootstrap command
+let { BOOTSTRAP_SETTINGS } = require(`./bootstrap`);
+
 // holder when user is cancel Prompts
 let cancelled = false;
 
@@ -30,21 +33,20 @@ let settings = {
   DOCKER_PORT_PHPMYADMIN: DEFAULT_DOCKER_PORT_PHPMYADMIN,
   INSTALL_PATH: PROCESS_PATH,
   THEME_NAME: DEFAULT_THEME_NAME,
-  WP_ENGINE_SITENAME: DEFAULT_WPENGINE_SITENAME
+  WPENGINE_SITENAME: DEFAULT_WPENGINE_SITENAME
 };
 
 // start Prompts
 const run = async () => {
   const options = program.opts();
 
-  if (options.repository) {
-    settings["REPOSITORY_URL"] = options.repository;
-  }
+  if (options.repository) settings["REPOSITORY_URL"] = options.repository;
+
+  // suggest install path if BOOTSTRAP_SETTINGS['wpengine'] values exists
+  if(BOOTSTRAP_SETTINGS?.wpengine?.WPENGINE_INSTALL_NAME) settings['WPENGINE_SITENAME'] = BOOTSTRAP_SETTINGS.wpengine.WPENGINE_INSTALL_NAME;
 
   // First Intro message
-  console.log(chalk.blue("*****************************************************"));
-  console.log(chalk.blue(figlet.textSync("MILL3", { horizontalLayout: "full" })));
-  console.log(chalk.blue("*****************************************************"));
+  console.log(chalk.blue(figlet.textSync("DOCKER", { horizontalLayout: "full" })));
 
   const questions = [
     {
@@ -85,8 +87,8 @@ const run = async () => {
     },
     {
       type: "text",
-      name: "WP_ENGINE_SITENAME",
-      initial: settings["WP_ENGINE_SITENAME"],
+      name: "WPENGINE_SITENAME",
+      initial: settings["WPENGINE_SITENAME"],
       message: "What is your project name on WP Engine?",
       validate: text => {
         return /^[A-Za-z0-9]+(?:[-_][A-Za-z0-9]+)*$/.test(text) ? true : "In slug-format only.";
@@ -94,7 +96,7 @@ const run = async () => {
     },
     {
       type: "toggle",
-      name: "confirm",
+      name: "CONFIRM",
       message: `Are you sure? This will overwrite any same exiting file in target directory !`,
       initial: false,
       active: "yes",
@@ -116,7 +118,7 @@ const run = async () => {
   const response = await prompts(questions, { onSubmit, onCancel });
 
   // stop here if did not confirm
-  if (!response.confirm) return;
+  if (!response['CONFIRM']) return;
 
   // stop here if canceled
   if (cancelled) return;
@@ -131,7 +133,11 @@ const run = async () => {
 
   console.log(chalk.blue(`\nInstallation done in ${settings["INSTALL_PATH"]}\n`));
 
-  return { options, settings };
+  // merge settings to global BOOTSTRAP_SETTINGS
+  BOOTSTRAP_SETTINGS['docker'] = settings;
+
+  // return true to promise
+  return true;
 };
 
 // clone and cleanup files
@@ -152,8 +158,6 @@ const install = async options => {
 
     // rename .env
     await fse.copy(`${settings["INSTALL_PATH"]}/.env.sample`, `${settings["INSTALL_PATH"]}/.env`, { overwrite: false });
-
-    return options;
 
   } catch (err) {
     // display Git error
@@ -186,7 +190,7 @@ const rename = async () => {
       settings["DOCKER_PORT_PHPMYADMIN"],
       settings["INSTALL_PATH"],
       settings["THEME_NAME"],
-      settings["WP_ENGINE_SITENAME"]
+      settings["WPENGINE_SITENAME"]
     ],
     countMatches: true
   };
