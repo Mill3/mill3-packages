@@ -37,6 +37,11 @@ const run = async () => {
   // First Intro message
   console.log(chalk.blue(figlet.textSync("WPENGINE", { horizontalLayout: "full" })));
 
+  if(!WPENGINE_ACCOUNT_ID || !WPENGINE_USER_ID || !WPENGINE_PASSWORD) {
+    console.log(chalk.red(`WPENGINE script cant continue.\nCredentials WPENGINE_ACCOUNT_ID, WPENGINE_USER_ID & WPENGINE_PASSWORD not found in your process env.\nExport those to your bash session before running this script.`));
+    return;
+  }
+
   // get all sites from WPENGINE
   const sites = await wpengineSites();
 
