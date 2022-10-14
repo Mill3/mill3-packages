@@ -1,13 +1,8 @@
 #!/usr/bin/env node
-const util = require("util");
 const fetch = require('node-fetch');
-// const exec = util.promisify(require("child_process").exec);
 const prompts = require("prompts");
-const path = require("path");
 const figlet = require("figlet");
 const chalk = require("chalk");
-const { program } = require("commander");
-const { options } = require("args");
 
 const WPENGINE_ACCOUNT_ID = process.env.WPENGINE_API_ACCOUNT_ID;
 const WPENGINE_USER_ID = process.env.WPENGINE_API_USER;
@@ -32,7 +27,6 @@ let settings = {
 
 // start Prompts
 const run = async () => {
-  const options = program.opts();
 
   // First Intro message
   console.log(chalk.blue(figlet.textSync("WPENGINE", { horizontalLayout: "full" })));

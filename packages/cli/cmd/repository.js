@@ -5,8 +5,6 @@ const prompts = require("prompts");
 const path = require("path");
 const figlet = require("figlet");
 const chalk = require("chalk");
-const { program } = require("commander");
-const { options } = require("args");
 
 // get global settings from bootstrap command
 let { BOOTSTRAP_SETTINGS } = require(`./bootstrap`);

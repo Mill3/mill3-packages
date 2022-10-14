@@ -7,7 +7,6 @@ const path = require("path");
 const figlet = require("figlet");
 const chalk = require("chalk");
 const replace = require("replace-in-file");
-const { features } = require("process");
 
 const PROCESS_PATH = path.join(process.cwd());
 

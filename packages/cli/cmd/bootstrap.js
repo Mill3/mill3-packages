@@ -51,8 +51,5 @@ const run = async () => {
   console.log(chalk.green(`\n🦅 ENJOY\n`));
 }
 
-// exports.BOOTSTRAP_SETTINGS = BOOTSTRAP_SETTINGS;
-
 exports.BOOTSTRAP_SETTINGS = BOOTSTRAP_SETTINGS;
 exports.run = run;
-// module.exports.run = run;
