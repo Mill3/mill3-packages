@@ -21,7 +21,7 @@ let settings = {
   'WPENGINE_SITE_ID': null,
   'WPENGINE_INSTALL_NAME': null,
   'WPENGINE_INSTALL_ID': null,
-  'WPENGINE_INSTALL_ENV': null,
+  'WPENGINE_INSTALL_ENV': 'production',
   'WPENGINE_DOMAIN_NAME': null,
 };
 
@@ -38,8 +38,13 @@ const run = async () => {
 
   // get all sites from WPENGINE
   const sites = await wpengineSites();
+  const installs = await wpengineInstalls();
+  console.log('installs:', installs)
 
   const questions = [
+    //
+    // INSTALL_TYPE
+    //
     {
       type: 'select',
       name: "INSTALL_TYPE",
@@ -51,15 +56,26 @@ const run = async () => {
         { title: 'Select', value: 'select' }
       ]
     },
+    //
+    // WPENGINE_SITENAME or WPENGINE_SITE_ID
+    //
     {
-      type: prev => {
+      type: (prev) => {
         if(!prev) return null
         if(prev == 'new') return 'text'
         if(prev == 'select') return 'select'
       },
       name: prev => prev == 'select' ? "WPENGINE_SITE_ID" : "WPENGINE_SITENAME",
-      message: prev => prev == false ? 'In which site ?' : 'Type site name',
-      initial: null,
+      message: prev => !prev ? 'In which site ?' : 'Type site name',
+      validate: text => {
+        // try to find site with same name
+        const match = sites.results.find((site) => site.name == text)
+
+        if(match) return `${text} already exists in your WPENGINE sites.`
+
+        // no validation by default
+        return true
+      },
       choices: sites.results.map((site) => {
         return {
           title: site.name,
@@ -67,38 +83,65 @@ const run = async () => {
         }
       })
     },
+    //
+    // WPENGINE_INSTALL_NAME or WPENGINE_INSTALL_ID
+    //
     {
-      type: prev => prev != 'skip' ? "text" : null,
-      name: "WPENGINE_INSTALL_NAME",
+      type: () => {
+        // check if selected WPENGINE_SITE_ID has any installs
+        const install = installs.results.filter((site) => site.site.id === settings.WPENGINE_SITE_ID)[0];
+
+        // ATTENTION :if no install exists, ***REVERT*** install type to 'new'
+        if(!install) settings['INSTALL_TYPE'] = "new";
+
+        //
+        return settings['INSTALL_TYPE'] == "new" ? "text" : "select"
+      },
+      name: () => {
+        return settings['INSTALL_TYPE'] == "new" ? "WPENGINE_INSTALL_NAME" : "WPENGINE_INSTALL_ID"
+      },
       message: `WPEngine installation name (slug format, less than 14 chars) :`,
+      initial: null,
       validate: text => {
-        return /^[A-Za-z0-9]+(?:[A-Za-z0-9]+)*$/.test(text) && text.length <= 14 ? true : "In slug-format only, no dash or underlines.";
+        // try to find install with same name
+        const match = installs.results.find((install) => install.name == text)
+
+        // site already exists, should not allow, NOTE: this could still fail if another WPENGINE *globally* is sharing the same value
+        if(match) return `${text} already exists in your WPENGINE installs.`
+
+        // regular validation
+        return /^[A-Za-z0-9]+(?:[A-Za-z0-9]+)*$/.test(text) && text.length <= 14 ? true : "In slug-format only, no dash or underlines, max 14 characters.";
+      },
+      choices: () => {
+        return sites.results.filter((site) => site.id === settings.WPENGINE_SITE_ID)[0]?.installs.map((install) => {
+          return {
+            title: install.name,
+            value: install.id
+          }
+        })
       }
     },
+    //
+    // WPENGINE_INSTALL_ENV
+    //
     {
-      type: prev => prev !== null ? "select" : null,
+      type: () => {
+        return settings['INSTALL_TYPE'] == "new" ? "select" : null;
+      },
       name: "WPENGINE_INSTALL_ENV",
-      message: `Select a WPEngine environment `,
-      initial: false,
+      message: `Select a WPEngine environment`,
       choices: [
         { title: 'Production', value: 'production' },
         { title: 'Staging', value: 'staging' },
         { title: 'Development', value: 'dev' },
       ]
-    },
-    // {
-    //   type: 'text',
-    //   name: "WPENGINE_DOMAIN_NAME",
-    //   message: `WPEngine primary domain name :`,
-    //   validate: text => {
-    //     return /^[A-Za-z0-9]+(?:[.-][A-Za-z0-9]+)*$/.test(text) ? true : "In slug-format only, no underlines.";
-    //   }
-    // }
+    }
   ];
 
   const onSubmit = (prompt, answer) => {
     // merge each answer to settings
     answer.length ? (settings[prompt.name] = answer) : null;
+
   };
 
   const onCancel = prompt => {
@@ -109,14 +152,13 @@ const run = async () => {
 
   await prompts(questions, { onSubmit, onCancel });
 
-  // console.log(settings);
   if (cancelled) return;
 
   // stop here if INSTALL_TYPE is null
   if(!settings['INSTALL_TYPE']) return { options, settings };
 
-    // create WPEngine site
-  if (settings['WPENGINE_SITENAME']) {
+  // create WPEngine site only when INSTALL_TYPE is set to 'new'
+  if (!settings['WPENGINE_SITE_ID']) {
 
     console.log(chalk.whiteBright(`✔ Creating new WPENGINE site`));
 
@@ -136,8 +178,8 @@ const run = async () => {
     console.log(chalk.whiteBright(`✔ Done sleeping !`));
   }
 
-  // create WPEngine install
-  if(settings['WPENGINE_SITE_ID']) {
+  // create WPEngine install only when WPENGINE_INSTALL_ID is null
+  if(!settings['WPENGINE_INSTALL_ID']) {
 
     console.log(chalk.whiteBright(`✔ Creating new WPENGINE install`));
 
@@ -150,12 +192,9 @@ const run = async () => {
     } else {
       settings['WPENGINE_INSTALL_ID'] = installResponse.id
     }
-
-    // sleep
-    // console.log(chalk.whiteBright(`✔ Sleeping for 5 sec while WPENGINE creates permission the new installation...`));
-    // await new Promise(r => setTimeout(r, 5000));
-    // console.log(chalk.whiteBright(`✔ Done sleeping !`));
   }
+
+  // console.log(settings);
 
   // attach WPEngine domain
   // if(settings['WPENGINE_DOMAIN_NAME']) {
@@ -177,6 +216,17 @@ const run = async () => {
   return true;
 };
 
+const wpengineSites = async () => {
+  return await fetch(`${WPENGINE_API_BASE}/sites`,
+    {
+      method: 'GET',
+      headers: { 'authorization': wpengineAuth() }
+    })
+    .then(res => res.json())
+    .then(json => {
+      return json;
+    });
+}
 
 const wpengineSite = async () => {
   return await fetch(`${WPENGINE_API_BASE}/sites`,
@@ -193,6 +243,18 @@ const wpengineSite = async () => {
         'accept': 'application/json',
         'authorization': wpengineAuth()
       }
+    })
+    .then(res => res.json())
+    .then(json => {
+      return json;
+    });
+}
+
+const wpengineInstalls = async () => {
+  return await fetch(`${WPENGINE_API_BASE}/installs`,
+    {
+      method: 'GET',
+      headers: { 'authorization': wpengineAuth() }
     })
     .then(res => res.json())
     .then(json => {
@@ -246,17 +308,23 @@ const wpengineDomain = async () => {
     });
 }
 
-const wpengineSites = async () => {
-  return await fetch(`${WPENGINE_API_BASE}/sites`,
-    {
-      method: 'GET',
-      headers: { 'authorization': wpengineAuth() }
-    })
-    .then(res => res.json())
-    .then(json => {
-      return json;
-    });
+const wpengineValidateSiteName = async (text) => {
+  // console.log(text);
+  const installs = await fetch(`${WPENGINE_API_BASE}/installs`,
+  {
+    method: 'GET',
+    headers: { 'authorization': wpengineAuth() }
+  })
+  .then(res => res.json())
+  .then(json => {
+    return json;
+  });
+
+  console.log('installs:', installs)
+
 }
+
+
 
 const wpengineAuth = () => "Basic " + Buffer.from(WPENGINE_USER_ID + ":" + WPENGINE_PASSWORD).toString('base64');
 
