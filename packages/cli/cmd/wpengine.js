@@ -38,8 +38,9 @@ const run = async () => {
 
   // get all sites from WPENGINE
   const sites = await wpengineSites();
+
+  // get all installs from WPENGINE
   const installs = await wpengineInstalls();
-  console.log('installs:', installs)
 
   const questions = [
     //
@@ -49,7 +50,7 @@ const run = async () => {
       type: 'select',
       name: "INSTALL_TYPE",
       message: `Do you want to create or select a WPEngine site ?`,
-      initial: false,
+      initial: null,
       choices: [
         { title: 'Skip', value: null },
         { title: 'Create new site', value: 'new' },
@@ -61,12 +62,12 @@ const run = async () => {
     //
     {
       type: (prev) => {
-        if(!prev) return null
-        if(prev == 'new') return 'text'
-        if(prev == 'select') return 'select'
+        if (!prev) return null
+        if (prev == 'new') return 'text'
+        if (prev == 'select') return 'select'
       },
       name: prev => prev == 'select' ? "WPENGINE_SITE_ID" : "WPENGINE_SITENAME",
-      message: prev => !prev ? 'In which site ?' : 'Type site name',
+      message: prev => prev == 'select' ? "In which site ?" : 'Type site name',
       validate: text => {
         // try to find site with same name
         const match = sites.results.find((site) => site.name == text)
@@ -91,10 +92,9 @@ const run = async () => {
         // check if selected WPENGINE_SITE_ID has any installs
         const install = installs.results.filter((site) => site.site.id === settings.WPENGINE_SITE_ID)[0];
 
-        // ATTENTION :if no install exists, ***REVERT*** install type to 'new'
+        // ATTENTION : if no install exists, ***REVERT*** install type to 'new'
         if(!install) settings['INSTALL_TYPE'] = "new";
 
-        //
         return settings['INSTALL_TYPE'] == "new" ? "text" : "select"
       },
       name: () => {
@@ -157,7 +157,7 @@ const run = async () => {
   // stop here if INSTALL_TYPE is null
   if(!settings['INSTALL_TYPE']) return { options, settings };
 
-  // create WPEngine site only when INSTALL_TYPE is set to 'new'
+  // create WPEngine site only when WPENGINE_SITE_ID is null
   if (!settings['WPENGINE_SITE_ID']) {
 
     console.log(chalk.whiteBright(`✔ Creating new WPENGINE site`));
@@ -173,7 +173,7 @@ const run = async () => {
     }
 
     // sleep
-    console.log(chalk.whiteBright(`✔ Sleeping for 5 sec while WPENGINE creates permission the new site...`));
+    console.log(chalk.whiteBright(`✔ Sleeping for 5 sec while WPENGINE creates permissions the new site...`));
     await new Promise(r => setTimeout(r, 5000));
     console.log(chalk.whiteBright(`✔ Done sleeping !`));
   }
@@ -193,8 +193,6 @@ const run = async () => {
       settings['WPENGINE_INSTALL_ID'] = installResponse.id
     }
   }
-
-  // console.log(settings);
 
   // attach WPEngine domain
   // if(settings['WPENGINE_DOMAIN_NAME']) {
@@ -286,45 +284,27 @@ const wpengineInstall = async () => {
     });
 }
 
-const wpengineDomain = async () => {
-  return await fetch(`${WPENGINE_API_BASE}/installs/${settings['WPENGINE_INSTALL_ID']}/domains`,
-    {
-      method: 'POST',
-      body: JSON.stringify(
-        {
-          "name": settings['WPENGINE_DOMAIN_NAME'],
-          "primary": true
-        }
-      ),
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'application/json',
-        'authorization': wpengineAuth()
-      }
-    })
-    .then(res => res.json())
-    .then(json => {
-      return json;
-    });
-}
-
-const wpengineValidateSiteName = async (text) => {
-  // console.log(text);
-  const installs = await fetch(`${WPENGINE_API_BASE}/installs`,
-  {
-    method: 'GET',
-    headers: { 'authorization': wpengineAuth() }
-  })
-  .then(res => res.json())
-  .then(json => {
-    return json;
-  });
-
-  console.log('installs:', installs)
-
-}
-
-
+// const wpengineDomain = async () => {
+//   return await fetch(`${WPENGINE_API_BASE}/installs/${settings['WPENGINE_INSTALL_ID']}/domains`,
+//     {
+//       method: 'POST',
+//       body: JSON.stringify(
+//         {
+//           "name": settings['WPENGINE_DOMAIN_NAME'],
+//           "primary": true
+//         }
+//       ),
+//       headers: {
+//         'Content-Type': 'application/json',
+//         'accept': 'application/json',
+//         'authorization': wpengineAuth()
+//       }
+//     })
+//     .then(res => res.json())
+//     .then(json => {
+//       return json;
+//     });
+// }
 
 const wpengineAuth = () => "Basic " + Buffer.from(WPENGINE_USER_ID + ":" + WPENGINE_PASSWORD).toString('base64');
 
