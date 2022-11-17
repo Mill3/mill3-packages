@@ -1,5 +1,5 @@
 // build.js
-const sass = require("node-sass");
+const sass = require("sass");
 const chalk = require("chalk");
 const fs = require("fs");
 const path = require(`path`);

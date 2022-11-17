@@ -87,13 +87,13 @@ $ffz_breakpoints: "xs", "md", "lg";
       @each $key, $value in $values {
         .#{$classname}#{$infix}-#{$key} {
           @if $breakpoint == "xs" {
-            font-size: vw($value / $FIGMA_MOBILE_WIDTH * 100);
+            font-size: vw(calc($value / $FIGMA_MOBILE_WIDTH * 100));
           }
           @else if $breakpoint == "md" {
-            font-size: vw($value / $FIGMA_TABLET_WIDTH * 100);
+            font-size: vw(calc($value / $FIGMA_TABLET_WIDTH * 100));
           }
           @else if $breakpoint == "lg" {
-            $vw: vw($value / $FIGMA_DESKTOP_WIDTH * 100);
+            $vw: vw(calc($value / $FIGMA_DESKTOP_WIDTH * 100));
             font-size: unquote('min(#{$vw}, #{$value})');
           }
         }
