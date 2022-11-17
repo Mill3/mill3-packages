@@ -2,7 +2,7 @@
 //
 // Breakpoints are defined as a map of (name: minimum width), order from small to large:
 //
-//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px)
+//    (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px)
 //
 // The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
 
@@ -10,7 +10,7 @@
 //
 //    >> breakpoint-next(sm)
 //    md
-//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px))
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl xxl))
 //    md
@@ -24,7 +24,7 @@
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
 //
-//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px))
 //    576px
 @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
   $min: strip(map-get($breakpoints, $name));
@@ -38,7 +38,7 @@
 // Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
 // See https://bugs.webkit.org/show_bug.cgi?id=178261
 //
-//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    >> breakpoint-max(md, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px)
 //    767.98px
 @function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
   $max: map-get($breakpoints, $name);
@@ -48,9 +48,9 @@
 // Returns a blank string if smallest breakpoint, otherwise returns the name with a dash in front.
 // Useful for making responsive utilities.
 //
-//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px)
 //    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px))
+//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 1024px, xl: 1200px, xxl: 1401px, xxxl: 1800px)
 //    "-sm"
 @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
   @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
