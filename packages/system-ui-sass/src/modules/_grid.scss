@@ -38,6 +38,9 @@
       .col-start#{$infix}-#{$i} {
         grid-column-start: #{$i};
       }
+      .col-start-span#{$infix}-#{$i} {
+        grid-column-start: span #{$i};
+      }
 
       .col-end#{$infix}-#{$i} {
         grid-column-end: #{$i};
@@ -103,6 +106,9 @@
 
       .row-start#{$infix}-#{$i} {
         grid-row-start: #{$i};
+      }
+      .row-start-span#{$infix}-#{$i} {
+        grid-row-start: span #{$i};
       }
 
       .row-end#{$infix}-#{$i} {

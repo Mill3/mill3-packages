@@ -41,7 +41,15 @@ export const gridColumnStart = () =>
       const column = `<pre class="col-start-${i+1} m-0">.col-start-${i+1}</pre>`;
       return `<div class="p-10 bg-gray-200 d-grid grid-column-${theme["grid-columns"]} grid-gap-5">${column}</div>`;
     })
-    .join("");
+    .join("")
+    +
+    [...Array(theme["grid-columns"])]
+    .map((obj, i) => {
+      const columnSpan = `<pre class="col-end-limit col-start-span-${i+1} m-0">.col-start-span-${i+1}</pre>`;
+      return `<div class="p-10 bg-gray-200 d-grid grid-column-${theme["grid-columns"]} grid-gap-5">${columnSpan}</div>`;
+    })
+    .join("")
+    ;
 
 export const gridColumnEnd = () =>
   [...Array(theme["grid-columns"])]
@@ -75,6 +83,13 @@ export const gridRowStart = () => `
       [...Array(theme["grid-rows"])]
       .map((obj, i) => {
         return `<pre class="m-0 col-start-${i+1} row-start-${i+1}">.row-start-${i+1}</pre>`;
+      })
+      .join("")+
+  `</div>
+  <div class="p-10 bg-gray-200 d-grid grid-column-${theme["grid-rows"]} grid-row-${theme["grid-rows"]} grid-gap-5">`+
+      [...Array(theme["grid-rows"])]
+      .map((obj, i) => {
+        return `<pre class="m-0 col-start-${i+1} row-end-limit row-start-span-${i+1}">.row-start-span-${i+1}</pre>`;
       })
       .join("")+
   `</div>
