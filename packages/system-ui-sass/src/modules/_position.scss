@@ -1,5 +1,9 @@
-@include generate-variants("position", $position);
-@include generate-variants("top", $sizes, "t", "%");
-@include generate-variants("bottom", $sizes, "b", "%");
-@include generate-variants("left", $sizes, "l", "%");
-@include generate-variants("right", $sizes, "r", "%");
+@use "../mixins/variants";
+@use "../vars/positions" as positions;
+@use "../vars/sizes" as sizes;
+
+@include variants.generate-variants("position", positions.$position);
+@include variants.generate-variants("top", sizes.$sizes, "t", "%");
+@include variants.generate-variants("bottom", sizes.$sizes, "b", "%");
+@include variants.generate-variants("left", sizes.$sizes, "l", "%");
+@include variants.generate-variants("right", sizes.$sizes, "r", "%");

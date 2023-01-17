@@ -1,6 +1,9 @@
-////
+@use "../mixins/variants";
+@use "../vars/display" as vars;
+
+///
 /// @group display
-////
+///
 
 /// Display classes, block, flex, inline, etc
 ///
@@ -16,4 +19,4 @@
 // note: keep this line below for SassDoc
 // .d-[size] { ... }
 
-@include generate-variants("display", $display, "d");
+@include variants.generate-variants("display", vars.$display, "d");

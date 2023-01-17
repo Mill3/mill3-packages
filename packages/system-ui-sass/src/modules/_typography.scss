@@ -1,18 +1,14 @@
-@include generate-variants("font-weight", $font-weight, "fw");
+@use "../mixins/variants";
+@use "../mixins/typography";
+@use "../vars/typography" as vars;
 
-@include generate-fluid-font-size($font-size, "ffz");
-
-@include generate-variants("font-family", $font-family, "ff");
-
-@include generate-variants("text-align", $text-align, "ta");
-
-@include generate-variants("font-style", $font-style, "fs");
-
-@include generate-variants("font-size", $font-size, "fz");
-
-@include generate-variants("line-height", $line-height, "lh");
-
-@include generate-variants("text-transform", $text-transform, "tt");
-
-@include generate-variants("text-decoration", $text-decoration, "td");
+@include variants.generate-variants("font-family", vars.$font-family, "ff");
+@include variants.generate-variants("font-weight", vars.$font-weight, "fw");
+@include variants.generate-variants("text-align", vars.$text-align, "ta");
+@include variants.generate-variants("font-size", vars.$font-size, "fz");
+@include variants.generate-variants("font-style", vars.$font-style, "fs");
+@include variants.generate-variants("line-height", vars.$line-height, "lh");
+@include variants.generate-variants("text-transform", vars.$text-transform, "tt");
+@include variants.generate-variants("text-decoration", vars.$text-decoration, "td");
+@include typography.generate-fluid-font-size(vars.$font-size, "ffz");
 

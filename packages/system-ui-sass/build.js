@@ -35,7 +35,7 @@ fs.readFile(PATHS[`main`], (err, data) => {
       // concat parsed JSON theme variables with SCSS raw string source
       data: jsonToSassVars(theme) + source,
       outFile: PATHS[`dist`],
-      outputStyle: `compressed`,
+      // outputStyle: `compressed`,
       includePaths: [SRC_PATH]
     },
     function(err, result) {

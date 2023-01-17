@@ -1,1 +1,4 @@
-@include generate-variants("overflow", $overflow);
+@use "../mixins/variants";
+@use "../vars/overflow" as vars;
+
+@include variants.generate-variants("overflow", vars.$overflow);

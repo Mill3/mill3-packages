@@ -1,11 +1,5 @@
-// normalize
-@import 'vendors/normalize';
-
-// mixins
-@import 'mixins/index';
+// @use './mixins/colors';
+// @use './mixins/typography';
 
 // css vars
-@import 'cssvars/index';
-
-// all modules
-@import 'modules/index';
+@import "vendors/normalize", "cssvars/index", "modules/index";

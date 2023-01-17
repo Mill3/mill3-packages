@@ -1,1 +1,4 @@
-@include generate-variants("visibility", $visiblity, "visibility");
+@use "../mixins/variants";
+@use "../vars/visibility" as vars;
+
+@include variants.generate-variants("visibility", vars.$visiblity, "visibility");

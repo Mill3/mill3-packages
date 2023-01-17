@@ -1,10 +1,13 @@
-@include generate-variants("flex-direction", $flex-direction, "flex");
-@include generate-variants("justify-content", $justify-content, "justify-content");
-@include generate-variants("align-items", $align-items, "align-items");
-@include generate-variants("align-self", $align-self, "align-self");
-@include generate-variants("justify-self", $align-self, "justify-self");
-@include generate-variants("align-content", $align-content, "align-content");
-@include generate-variants("flex-wrap", $flex-wrap, "flex", "", true);
-@include generate-variants("flex-grow", $flex-grow, "flex-grow");
-@include generate-variants("flex-shrink", $flex-shrink, "flex-shrink");
-@include generate-variants("order", $order, "order");
+@use "../mixins/variants";
+@use "../vars/flex" as vars;
+
+@include variants.generate-variants("flex-direction", vars.$flex-direction, "flex");
+@include variants.generate-variants("justify-content", vars.$justify-content, "justify-content");
+@include variants.generate-variants("align-items", vars.$align-items, "align-items");
+@include variants.generate-variants("align-self", vars.$align-self, "align-self");
+@include variants.generate-variants("justify-self", vars.$align-self, "justify-self");
+@include variants.generate-variants("align-content", vars.$align-content, "align-content");
+@include variants.generate-variants("flex-wrap", vars.$flex-wrap, "flex", "", true);
+@include variants.generate-variants("flex-grow", vars.$flex-grow, "flex-grow");
+@include variants.generate-variants("flex-shrink", vars.$flex-shrink, "flex-shrink");
+@include variants.generate-variants("order", vars.$order, "order");

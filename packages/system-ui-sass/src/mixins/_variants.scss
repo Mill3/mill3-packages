@@ -1,3 +1,7 @@
+@use "sass:string";
+@use "../vars/breakpoints" as vars;
+@use "../mixins/breakpoints";
+
 /// generate-variants
 @mixin generate-variants(
   $property,
@@ -7,9 +11,9 @@
   $important: false
 ) {
   // Loop over each breakpoint
-  @each $breakpoint in map-keys($grid-breakpoints) {
-    @include media-breakpoint-up($breakpoint) {
-      $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  @each $breakpoint in map-keys(vars.$grid-breakpoints) {
+    @include breakpoints.media-breakpoint-up($breakpoint) {
+      $infix: breakpoints.breakpoint-infix($breakpoint, vars.$grid-breakpoints);
 
       // Loop over each values in map
       @each $key, $value in $values {
@@ -62,7 +66,7 @@
 
   // append !important flag
   @if $important {
-    $value: $value unquote("!important");
+    $value: $value string.unquote("!important");
   }
 
   @return $value;

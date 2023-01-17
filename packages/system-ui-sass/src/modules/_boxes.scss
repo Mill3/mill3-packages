@@ -1,6 +1,8 @@
-////
+@use "../mixins/boxes";
+
+///
 /// @group boxes
-////
+///
 
 /// Generate responsive boxes container with various height ratio
 ///
@@ -16,4 +18,4 @@
 // note: keep this line below for SassDoc
 // .box.box-[size] { ... }
 
-@include generate-boxes($boxes);
+@include boxes.generate-boxes();

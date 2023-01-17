@@ -4,7 +4,7 @@
   $value: map-get($spacers, $key);
 
   @if not $value {
-    @error "spacer `#{$key}` not found in `#{$spacers}`";
+    @error "spacer `#{$key}` not found in $spacers";
   } @else {
     $unit: "";
 

@@ -1,6 +1,9 @@
-////
+@use "../mixins/colors";
+@use "../vars/colors" as vars;
+
+///
 /// @group colors
-////
+///
 
 /// Color classes for changing color or background-color of an element, native CSS variables are also available, check both examples below.
 ///
@@ -21,5 +24,5 @@
 // note: keep this line below for SassDoc
 // .color-[value] { ... }
 
-@include color-classes($colors);
+@include colors.color-classes(vars.$colors);
 

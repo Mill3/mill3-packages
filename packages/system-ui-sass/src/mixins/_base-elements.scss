@@ -1,5 +1,7 @@
+@use "./typography";
+
 ///
-/// Output base element rules, Headings, P, list
+/// Output base element rules, typography.Headings, P, list
 ///
 @mixin base-elements() {
   *,
@@ -10,32 +12,32 @@
 
   html,
   body {
-    font-family: font-family("body");
-    font-size: font-size("base");
-    line-height: line-height("base");
+    font-family: typography.font-family(heading);
+    font-size: typography.font-size(base);
+    line-height: typography.line-height(base);
   }
 
   h1 {
-    font-size: heading("h1");
+    font-size: typography.heading(h1);
   }
 
   h2 {
-    font-size: heading("h2");
+    font-size: typography.heading("h2");
   }
 
   h3 {
-    font-size: heading("h3");
+    font-size: typography.heading("h3");
   }
 
   h4 {
-    font-size: heading("h4");
+    font-size: typography.heading("h4");
   }
 
   h5 {
-    font-size: heading("h5");
+    font-size: typography.heading("h5");
   }
 
   h6 {
-    font-size: heading("h6");
+    font-size: typography.heading("h6");
   }
 }
