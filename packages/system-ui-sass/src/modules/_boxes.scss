@@ -1,21 +1,3 @@
 @use "../mixins/boxes";
 
-///
-/// @group boxes
-///
-
-/// Generate responsive boxes container with various height ratio
-///
-/// Check [theme.js](https://github.com/Mill3/mill3-packages/blob/master/packages/system-ui-sass/theme.js) for available values.
-///
-/// @see {mixin} generate-boxes
-///
-/// @name .box-[size]
-///
-/// @example
-/// <figure class="box box-square"><picture class="box-content">[box content starts here]</picture></figure>
-
-// note: keep this line below for SassDoc
-// .box.box-[size] { ... }
-
 @include boxes.generate-boxes();

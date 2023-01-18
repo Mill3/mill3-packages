@@ -4,7 +4,6 @@ const path = require("path");
 const cp = require("child_process");
 const chalk = require("chalk");
 
-
 const theme = path.resolve("theme.js");
 const theme_es6 = path.resolve("copy-theme-to-es6.js");
 

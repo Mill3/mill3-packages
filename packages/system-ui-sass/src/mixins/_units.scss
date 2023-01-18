@@ -6,15 +6,6 @@
 /// @param {Number} $number - Number to remove unit from
 /// @return {Number} - Unitless number
 
-@function strip-unit($number) {
-  $number: string.unquote($number);
-  @if type-of($number) == "number" and not unitless($number) {
-    @return math.div($number, ($number * 0 + 1));
-  }
-
-  @return $number;
-}
-
 @function strip($value) {
   @if meta.type-of($value) != "number" {
       @error "Invalid `#{meta.type-of($value)}` type. Choose a number type instead.";

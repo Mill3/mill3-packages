@@ -106,7 +106,8 @@
             font-size: units.vw(math.div(units.strip($value), grid-breakpoints.$FIGMA_TABLET_WIDTH) * 100);
           }
           @else if $breakpoint == "lg" {
-            font-size: units.vw(math.div(units.strip($value), grid-breakpoints.$FIGMA_DESKTOP_WIDTH) * 100);
+            $vw: units.vw(math.div(units.strip($value), grid-breakpoints.$FIGMA_DESKTOP_WIDTH) * 100);
+            font-size: min($vw, $value);
           }
         }
       }

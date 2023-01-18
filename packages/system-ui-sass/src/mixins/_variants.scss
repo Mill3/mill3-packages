@@ -1,6 +1,7 @@
 @use "sass:string";
 @use "../vars/breakpoints" as vars;
 @use "../mixins/breakpoints";
+@use "./units";
 
 /// generate-variants
 @mixin generate-variants(
@@ -52,11 +53,11 @@
 
     // if value is in vw, use our custom vw function
     @if $unit == "vw" or $value_unit == "vw" {
-      $value: vw($value);
+      $value: units.vw($value);
     }
     // if value is in vh, use our custom vh function
     @else if $unit == "vh" or $value_unit == "vh" {
-      $value: vh($value);
+      $value: units.vh($value);
     }
     // otherwise, use argument unit
     @else {

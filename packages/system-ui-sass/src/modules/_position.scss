@@ -3,6 +3,7 @@
 @use "../vars/sizes" as sizes;
 
 @include variants.generate-variants("position", positions.$position);
+
 @include variants.generate-variants("top", sizes.$sizes, "t", "%");
 @include variants.generate-variants("bottom", sizes.$sizes, "b", "%");
 @include variants.generate-variants("left", sizes.$sizes, "l", "%");

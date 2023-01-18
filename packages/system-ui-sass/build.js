@@ -7,18 +7,34 @@ const path = require(`path`);
 const jsonToSassVars = require("./utils/jsonToSassVars");
 
 const SRC_PATH = path.join(__dirname, `./src`);
+const TESTS_PATH = path.join(__dirname, `./src/tests`);
 const DIST_PATH = path.join(__dirname, `./dist`);
 const INPUT_FILENAME = `system-ui.scss`;
 const OUTPUT_FILENAME = `system-ui.css`;
 
 const PATHS = {
   main: path.resolve(SRC_PATH, INPUT_FILENAME),
-  theme: path.resolve(`theme.js`),
+  test: path.resolve(TESTS_PATH, `index.scss`),
   dist: path.resolve(DIST_PATH, OUTPUT_FILENAME)
 };
 
-// load theme file
-const theme = require(PATHS["theme"]);
+
+// Read test SCSS file
+fs.readFile(PATHS[`test`], (err, data) => {
+  if (err) {
+    console.error("err:", err);
+    return;
+  }
+
+  const result = sass.compileString(data.toString(),
+    {
+      loadPaths: [TESTS_PATH]
+    }
+  );
+
+  // output test rests
+  console.log(result.css.toString());
+});
 
 // Read main SCSS content
 fs.readFile(PATHS[`main`], (err, data) => {
@@ -33,7 +49,7 @@ fs.readFile(PATHS[`main`], (err, data) => {
   sass.render(
     {
       // concat parsed JSON theme variables with SCSS raw string source
-      data: jsonToSassVars(theme) + source,
+      data: source,
       outFile: PATHS[`dist`],
       // outputStyle: `compressed`,
       includePaths: [SRC_PATH]

@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "../mixins/units";
+
 @function duration($frames: 1, $fps: 24) {
-  @return #{strip-unit($frames / $fps)}s;
+  @return #{math.div(units.strip($frames), $fps)}s;
 }

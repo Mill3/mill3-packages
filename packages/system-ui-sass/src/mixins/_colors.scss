@@ -1,3 +1,5 @@
+@use "sass:color";
+@use "sass:math";
 @use "../vars/colors" as vars;
 
 /// color-css-variables
@@ -22,17 +24,17 @@
 }
 
 @mixin text-contrast($n) {
-  $color-brightness: round(
-    (red($n) * 299) + (green($n) * 587) + (blue($n) * 114) / 1000
+  $color-brightness: math.round(
+    (color.red($n) * 299) + (color.green($n) * 587) + math.div(color.blue($n) * 114, 1000)
   );
-  $light-color: round(
-    (red(#ffffff) * 299) + (green(#ffffff) * 587) + (blue(#ffffff) * 114) / 1000
+  $light-color: math.round(
+    (color.red(#ffffff) * 299) + (color.green(#ffffff) * 587) + math.div((color.blue(#ffffff) * 114), 1000)
   );
 
-  @if abs($color-brightness) < ($light-color/2) {
-    color: lighten($n, 80%);
+  @if math.abs($color-brightness) < math.div($light-color, 2) {
+    color: color.adjust($n, $lightness: 80%);
   } @else {
-    color: darken($n, 50%);
+    color: color.adjust($n, $lightness: -50%);
   }
 }
 
