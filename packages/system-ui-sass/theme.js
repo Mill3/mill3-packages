@@ -1,10 +1,3 @@
-const generateValues = (start, end, step = 1) => {
-  const len = Math.floor((end - start) / step) + 1;
-  return Array(len)
-    .fill()
-    .map((_, idx) => start + idx * step);
-};
-
 const theme = {
   display: [
     "none",
@@ -62,9 +55,9 @@ const theme = {
     stretch: "stretch"
   },
   "flex-wrap": ["nowrap", "wrap", "wrap-reverse"],
-  "flex-grow": generateValues(0, 5),
-  "flex-shrink": generateValues(0, 5),
-  order: generateValues(0, 5),
+  "flex-grow": [0, 1, 2, 3, 4, 5],
+  "flex-shrink": [0, 1, 2, 3, 4, 5],
+  order: [0, 1, 2, 3, 4, 5],
   overflow: ["auto", "hidden", "visible", "scroll"],
   "font-family": {
     heading: [
@@ -165,9 +158,9 @@ const theme = {
     50,
     100
   ],
-  "z-index": generateValues(0, 10000, 1000),
-  "grid-columns": 8,
-  "grid-rows": 6,
+  "z-index": [0, 1, 2, 3, 4, 5, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000],
+  "grid-columns": 12,
+  "grid-rows": 3,
   colors: {
     "color-transparent": "transparent",
     "color-current": "currentColor",
